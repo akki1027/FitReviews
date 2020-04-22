@@ -17,6 +17,7 @@
 どのプロテインパウダーやプロテインスナックを買えばいいかわからない、もっとおすすめの味や栄養価のパフォーマンスの良い商品はないか、このサイトでユーザーによる実際のレビューを比較することによって自分が求めているものを購入する手助けになる。
 
 ## 設計書
+https://drive.google.com/drive/folders/1RuaUaIUQw8gfpeNvcEF0xFK2O10ijFGI?usp=sharing
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/12e0huV0xxld_0SAGjxnzJT9gKJmOFaBJ3P7VzYWYjxU/edit?usp=sharing
