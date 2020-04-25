@@ -4,12 +4,19 @@
     <title>FitReviews</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/ef1a52193c.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <%= yield %>
+    <!-- フッター -->
+    <div class="container">
+      <div class="row">
+        <h6 style="text-align: center; height: 30px; padding-top: 8px">Copyright Akihito Otsuka ©︎ All Rights Reserved.</h6>
+      </div>
+    </div>
   </body>
 </html>
