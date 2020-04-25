@@ -2,7 +2,11 @@ Rails.application.routes.draw do
 	root "homes#top"
  	get 'fr_top' => 'homes#fr_top', as: 'fr_top'
   	get 'about' => 'homes#about', as: 'about'
-  	devise_for :users
+  	devise_for :users, controllers: {
+    	sessions: 'users/sessions',
+    	passwords: 'users/passwords',
+    	registrations: 'users/registrations'
+	}
   	resources :users, only: [:edit, :show, :update]
 	get 'users/:id/leave' => 'users#leave', as: 'users_leave'
 	put 'users/:id/hide' => 'users#hide', as: 'users_hide'

@@ -7,4 +7,9 @@ class User < ApplicationRecord
     validates :name, presence: true
 	attachment :profile_photo
 	attachment :background_photo
+
+	# is_deletedカラムがtrueのuser（退会済）をはじく
+  	def active_for_authentication?
+    	super && (self.is_deleted == false)
+  	end
 end
