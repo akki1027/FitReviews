@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 	root "homes#top"
  	get 'fr_top' => 'homes#fr_top', as: 'fr_top'
   	get 'about' => 'homes#about', as: 'about'
+
   	devise_for :users, controllers: {
     	sessions: 'users/sessions',
     	passwords: 'users/passwords',
@@ -12,5 +13,8 @@ Rails.application.routes.draw do
 	put 'users/:id/hide' => 'users#hide', as: 'users_hide'
 	get 'users/:id/my_reviews' => 'users#my_reviews', as: 'users_my_reviews'
 	get 'users/:id/my_bookmarks' => 'users#my_bookmarks', as: 'users_my_bookmarks'
+
+	get 'reviews/search' => 'reviews#search', as: 'reviews_search'
+	resources :reviews
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
