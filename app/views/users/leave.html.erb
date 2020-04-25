@@ -1,0 +1,30 @@
+<div class="container">
+	<div class="row">
+		<%= link_to edit_user_path(@user) do %>
+			<h4><i class="fas fa-chevron-left"></i> 戻る</h4>
+		<% end %>
+	</div>
+	<div class="row">
+		<div class="delete_account">
+			<h3 style="margin-top: 100px;">退会すると、ユーザー登録情報や<br>
+				ユーザーに関する全ての情報が閲覧できなくなります。</h3>
+			<h3 style="margin-top: 45px;"><strong>本当に退会しますか？</strong></h3>
+
+			<div style="margin-top: 50px; text-align: center">
+				<% if user_signed_in? && @user.id == current_user.id %>
+				    <%= link_to "退会する", users_hide_path(@user), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger", style:"width: 10%;" %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.delete_account {
+		text-align: center;
+		margin-bottom: 330px;
+	}
+	h4 {
+		color: black;
+	}
+</style>

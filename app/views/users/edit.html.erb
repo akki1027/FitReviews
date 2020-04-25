@@ -1,0 +1,79 @@
+<div class="container">
+	<div class="row">
+		<%= link_to user_path(@user) do %>
+			<h4><i class="fas fa-chevron-left"></i> 戻る</h4>
+		<% end %>
+	</div>
+	<div class="row">
+		<% if @user.errors.any? %>
+		<div class="alert">
+			<ul>
+				<% @user.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+	</div>
+
+	<%= form_for @user do |f| %>
+		<div class="row">
+			<div class="col-xs-7">
+				<%= image_tag 'no_image.jpg', style:"height: 300px; width: 100%;" %>
+				<%= f.attachment_field :background_photo, placeholder: "背景画像" %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-6">
+				<%= image_tag 'no_image.jpg', size: '200x200', style:"border-radius: 50%;" %>
+				<%= f.attachment_field :profile_photo, placeholder: "プロファイル画像" %>
+			</div>
+			<div class="col-xs-6">
+				<table class="table-borderless">
+					<tbody>
+						<tr>
+							<td><%= f.label :name, 'ユーザーネーム' %></td>
+							<td><%= f.text_field :name %></td>
+						</tr>
+						<tr>
+							<td><%= f.label :introduction, '自己紹介' %>
+							<td><%= f.text_area :introduction, style:"border-radisu: 10px;" %></td>
+						</tr>
+						<tr>
+							<td><%= f.label :email, "メールアドレス" %></td>
+							<td><%= f.email_field :email %></td>
+						</tr>
+						<tr>
+							<td><%= f.submit "更新する", class:"btn btn-primary", style:"background-color: #0099CC; width: 100%;" %></td>
+							<td><%= link_to '退会する', users_leave_path(@user), class:"btn btn-danger", style:"background-color: #DC143C;" %></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+<style>
+	h4 {
+		color: black;
+	}
+	td {
+		height: 40px;
+		padding: 10px;
+	}
+	table {
+	    margin: 0 auto;
+	    border-collapse: separate;
+	}
+	td {
+	    padding-top: 10px;
+	    padding-bottom: 4px;
+	}
+	input[type="text"], input[type="email"] {
+	    height: 30px;
+	    width: 250px;
+	    border-radius: 3px;
+	    border: 1px solid #222222;
+	}
+</style>
