@@ -72,3 +72,10 @@ gem 'jquery-rails'
 # 画像投稿機能
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
+
+# 楽天API
+gem 'rakuten_web_service'
+
+# 環境変数
+gem 'dotenv-rails'
+
