@@ -79,3 +79,4 @@ gem 'rakuten_web_service'
 # 環境変数
 gem 'dotenv-rails'
 
+gem 'pry-rails'
