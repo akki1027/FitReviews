@@ -16,5 +16,9 @@ Rails.application.routes.draw do
 
 	get 'reviews/search' => 'reviews#search', as: 'reviews_search'
 	resources :reviews
+
+	get 'items/search' => 'items#search', as: 'items_search'
+  	get 'items/select_genre' => 'items#select_genre', as: 'select_genre'
+  	get 'items/ranking' => 'items#ranking', as: 'items_ranking'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
