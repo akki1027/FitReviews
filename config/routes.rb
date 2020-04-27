@@ -15,7 +15,8 @@ Rails.application.routes.draw do
 	get 'users/:id/my_bookmarks' => 'users#my_bookmarks', as: 'users_my_bookmarks'
 
 	get 'reviews/search' => 'reviews#search', as: 'reviews_search'
-	resources :reviews
+	get 'reviews/new/:itemCode' => 'reviews#new', as: 'reviews_new'
+	resources :reviews, except: :new
 
 	get 'items/search' => 'items#search', as: 'items_search'
   	get 'items/select_genre' => 'items#select_genre', as: 'select_genre'
