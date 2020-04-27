@@ -1,2 +1,53 @@
-<h1>Items#search</h1>
-<p>Find me in app/views/items/search.html.erb</p>
+<%= render 'homes/header' %>
+<div class="container">
+	<div class="row" style="margin-top: 50px; margin-bottom: 70px;">
+		<% if @items.present? %>
+		<% @items.each do |item| %>
+		<div class="col-xs-3">
+			<!-- <div class="flex"> -->
+				<table class="table-borderless">
+					<tbody>
+						<tr>
+							<td><%= image_tag item["mediumImageUrls"][0] %></td>
+						</tr>
+						<tr>
+							<td><%= link_to item.name, "#{item.url}" %></td>
+						</tr>
+						<tr>
+							<td align="right"><%= number_with_delimiter(item.price) %>円</td>
+						</tr>
+						<tr>
+							<td><%= link_to 'レビューする', new_review_path, class:"btn review_btn" %></td>
+						</tr>
+					</tbody>
+				</table>
+			<!-- </div> -->
+		</div>
+		<% end %>
+		<% end %>
+	</div>
+</div>
+
+<style>
+	.search_for_purchase {
+		display: block;
+	}
+	.review_btn {
+    	color: white;
+    	border-radius: 5px;
+    	background-color: #FF773E;;
+    	width: 100%;
+    }
+    .review_btn:hover {
+    	color: white;
+    	background-color: #FF4F02;
+    }
+/*    .flex {
+    	display: flex;
+    }*/
+    table {
+    	height: 350px;
+    	margin: 10px;
+    	border-top: 1px solid #CCCCCC;
+    }
+</style>

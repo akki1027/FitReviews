@@ -1,2 +1,55 @@
-<h1>Reviews#search</h1>
-<p>Find me in app/views/reviews/search.html.erb</p>
+<%= render 'homes/header' %>
+<div class="container">
+	<div class="row" style="margin-top: 50px; margin-bottom: 70px;">
+		<% if @items.present? %>
+		<% @items.each do |item| %>
+		<div class="col-xs-3">
+			<!-- <div class="flex"> -->
+				<table class="table-borderless">
+					<tbody>
+						<tr>
+							<td><%= image_tag item["mediumImageUrls"][0] %></td>
+						</tr>
+						<tr>
+							<td><%= item.name %></td>
+						</tr>
+						<tr>
+							<td>価格: <%= (item.price) %>円</td>
+						</tr>
+						<tr>
+							<td>
+								<%= link_to 'レビューする', reviews_new_path(item["itemCode"]), class:"btn review_btn" %>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			<!-- </div> -->
+		</div>
+		<% end %>
+		<% end %>
+	</div>
+</div>
+
+<style>
+	.search_for_review {
+		display: block;
+	}
+    .review_btn {
+    	color: white;
+    	border-radius: 5px;
+    	background-color: #FF773E;;
+    	width: 100%;
+    }
+    .review_btn:hover {
+    	color: white;
+    	background-color: #FF4F02;
+    }
+/*    .flex {
+    	display: flex;
+    }*/
+    table {
+    	height: 400px;
+    	margin: 10px;
+    	border-top: 1px solid #CCCCCC;
+    }
+</style>
