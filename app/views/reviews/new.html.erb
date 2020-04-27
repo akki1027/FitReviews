@@ -65,6 +65,9 @@
 			<%= hidden_field_tag :item_code, @item.first["itemCode"] %>
 		<% end %>
 	</div>
+	<!-- レビューがない場合エラーになる -->
+	<!-- present?をつけることで、まだ商品が保存されていないものを表示してもエラーにならない -->
+	<% if @saved_item.present? %>
 	<% @saved_item.reviews.each do |review| %>
 		<div class="row">
 		<!-- この商品のレビューを全て表示する -->
@@ -76,7 +79,7 @@
 				<table class="table-borderless" style="width: 100%;">
 					<tbody>
 						<tr>
-							<td class="rated"></td>
+							<td id="rated"></td>
 						</tr>
 						<tr>
 							<td><%= review.body %></td>
@@ -88,6 +91,7 @@
 				</table>
 			</div>
 		</div>
+	<% end %>
 	<% end %>
 </div>
 <!-- 評価に必要なjavascriptとcssを読み込む -->
