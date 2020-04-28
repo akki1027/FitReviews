@@ -37,6 +37,11 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    review = Review.find(params[:id])
+    item = Item.find_by(id: review.item_id)
+    review.destroy
+    # newページのURLには、楽天の商品Codeを含みたいので、rakuten_item_idに返す
+    redirect_to reviews_new_path(item.rakuten_item_id)
   end
 
   def search
