@@ -57,7 +57,7 @@
 							<td><%= f.text_area :body, class:"form-control", rows: "7", placeholder: "この商品の口コミを書こう！" %></td>
 						</tr>
 						<tr>
-							<td><%= f.submit "投稿する", class:"btn review_submit_btn" %></td>
+							<td><%= f.submit "投稿", class:"btn review_submit_btn" %></td>
 						</tr>
 					</tbody>
 				</table>
@@ -66,12 +66,12 @@
 			<%= hidden_field_tag :item_code, @item.first["itemCode"] %>
 		<% end %>
 	</div>
+	<!-- この商品のレビューを全て表示する -->
 	<!-- レビューがない場合エラーになる -->
 	<!-- 今回はレビューを投稿した際に初めてその商品情報を保存するので、present?をつけることでまだ商品が保存されていないものを表示してもエラーにならない -->
 	<% if @saved_item.present? %>
 	<% @saved_item.reviews.each do |review| %>
 		<div class="row">
-		<!-- この商品のレビューを全て表示する -->
 			<div class="col-xs-3">
 				<%= attachment_image_tag review.user, :profile_photo, size: "60x60", style:"border-radius: 10px;" %>
 				<%= review.user.name %>
@@ -101,11 +101,12 @@
 							<td><%= review.body %></td>
 						</tr>
 						<tr>
-							<td><%= attachment_image_tag review, :item_image, :fill, 350, 320 %></td>
+							<td><%= attachment_image_tag review, :item_image, :fill, 330, 300 %></td>
 						</tr>
 						<tr>
 							<td><% if review.user == current_user %>
-								<%= link_to '削除する', review_path(review), method: :delete, class:"btn btn-danger", style:"float: right;" %>
+								<%= link_to '削除', review_path(review), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger", style:"float: right;" %>
+								<%= link_to '編集', edit_review_path(review), class:"btn btn-success", style:"float: right; margin-right: 10px;" %>
 								<% end %>
 							</td>
 						</tr>
@@ -139,7 +140,6 @@
 		// Reviewモデルのrateカラムに評価の値を保存する
 		scoreName: 'review[rate]',
 	});
-
 	});
 </script>
 

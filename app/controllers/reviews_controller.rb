@@ -28,12 +28,17 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    @review = Review.find(params[:id])
   end
 
   def show
   end
 
   def update
+    review = Review.find(params[:id])
+    item = Item.find_by(id: review.item_id)
+    review.update(review_update_params)
+    redirect_to reviews_new_path(item.rakuten_item_id)
   end
 
   def destroy
@@ -54,6 +59,10 @@ class ReviewsController < ApplicationController
   def review_params(item)
     params.require(:review).permit(:body, :item_image, :rate).merge({item_id: item.id})
     # { body: '', item_image: 'utl/ho/huga/item.img, rate: 5 }
+  end
+
+  def review_update_params
+    params.require(:review).permit(:body, :item_image, :rate)
   end
 
   def item_params
