@@ -11,12 +11,13 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-5"></div>
-		<div class="col-xs-5">
-			<table class="table-borderless">
-				<tbody>
+		<div class="col-xs-6">
+			<table class="table-borderless introduction_table" cellspacing="50">
+				<thead>
 					<tr>
-						<td><%= @user.name %></td>
+						<th><%= @user.name %></th>
 					</tr>
+				</thead>
 					<tr>
 						<td><%= @user.introduction %></td>
 					</tr>
@@ -39,6 +40,54 @@
 	<div class="row">
 		<div class="my_reviews">
 			<h4><%= link_to 'レビューした商品', users_my_reviews_path(@user) %></h4>
+			<% @user.reviews.each do |review| %>
+			<div class="row">
+				<div class="col-xs-4">
+					<div class="table table-borderless">
+						<tbody>
+							<tr><td><%= review.item.name%></td></tr>
+						</tbody>
+					</div>
+				</div>
+				<div class="col-xs-8">
+					<table class="table-borderless" style="width: 100%;">
+						<tbody>
+							<tr>
+								<td class="rated"></td>
+								<link rel="stylesheet" href="/assets/jquery.raty.css">
+								<script src="/assets/jquery.raty.js"></script>
+								<script>
+									$('.rated').raty({
+										// デフォルトで、星5個に設定されている
+										starOff:  '<%= asset_path('star-off.png') %>',
+							            starOn : '<%= asset_path('star-on.png') %>',
+							            starHalf: '<%= asset_path('star-half.png') %>',
+										// halfをtrueにすることで、星半分刻みで評価できる
+										half: true,
+										// readOnlyにすることで、変更することができなくなる
+										readOnly: true,
+										score: <%= review.rate %>,
+									});
+								</script>
+							</tr>
+							<tr>
+								<td><%= review.body %></td>
+							</tr>
+							<tr>
+								<td><%= attachment_image_tag review, :item_image, :fill, 330, 300 %></td>
+							</tr>
+							<tr>
+								<td><% if review.user == current_user %>
+									<%= link_to '削除', review_path(review), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger", style:"float: right;" %>
+									<%= link_to '編集', edit_review_path(review), class:"btn btn-success", style:"float: right; margin-right: 10px;" %>
+									<% end %>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<% end %>
 		</div>
 	</div>
 </div>
@@ -47,16 +96,15 @@
 	.row:nth-child(n+2) {
 		margin-top: 60px;
 	}
-	table {
+	.introduction_table {
 		display: inline-block;
-		height: 170px;
-		width: 500px;
+		width: 100%;
 		padding: 30px;
 		box-shadow: 5px 5px 10px -7px gray;
 		background-color: #FFFAFA;
 	}
-	tr {
-		height: 30px;
+	th, td {
+		padding-bottom: 20px;
 	}
 	h4 {
 		padding-left: 50px;
