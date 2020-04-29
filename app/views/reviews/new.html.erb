@@ -104,7 +104,18 @@
 							<td><%= attachment_image_tag review, :item_image, :fill, 330, 300 %></td>
 						</tr>
 						<tr>
-							<td><% if review.user == current_user %>
+							<td><% if review.liked_by?(current_user) %>
+									<%= link_to review_likes_path(review), method: :delete do %>
+										<%= review.likes.count %> いいね
+										<i class="far fa-thumbs-up" aria-hidden="true" style="color: red;"></i>
+									<% end %>
+								<% else %>
+									<%= link_to review_likes_path(review), method: :post do%>
+										<%= review.likes.count %> いいね
+										<i class="far fa-thumbs-up" aria-hidden="true"></i>
+									<% end %>
+								<% end %>
+								<% if review.user == current_user %>
 								<%= link_to '削除', review_path(review), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger", style:"float: right;" %>
 								<%= link_to '編集', edit_review_path(review), class:"btn btn-success", style:"float: right; margin-right: 10px;" %>
 								<% end %>

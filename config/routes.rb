@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 	get 'reviews/search' => 'reviews#search', as: 'reviews_search'
 	get 'reviews/new/:itemCode' => 'reviews#new', as: 'reviews_new'
 	resources :reviews, except: :new do
-		resources :likes, only: [:create, :destroy]
+		resource :likes, only: [:create, :destroy]
 	end
 
 	get 'items/search' => 'items#search', as: 'items_search'
