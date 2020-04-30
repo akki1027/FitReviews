@@ -1,0 +1,65 @@
+<div class="mv">
+	<%= render 'homes/header' %>
+	<div class="container">
+	    <!-- フラッシュノーティス -->
+	    <div class="row">
+		    <div style="font-size: 18px; color: #0099CC; text-align: left">
+				<%= flash[:notice] %>
+		    </div>
+		</div>
+	    	<!-- 検索欄 -->
+	    <div class="row" style="margin-top: 180px; text-align: center;">
+	    	<%= form_tag :items_search, method: :get do  %>
+				<%= text_field_tag 'keyword', params[:keyword], placeholder:"プロテイン、プロテインバー、シェイカー..." %>
+				<%= submit_tag "検索" %>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<style>
+	.mv {
+		height: 600px;
+		width: 100%;
+		background-image: url("/assets/plates-and-protein.jpg");
+		background-position: center;
+		background-size: cover;
+	}
+    /*header*/
+    .FitReviews_logo {
+	    color: white;
+  	}
+  	.FitReviews_logo:hover {
+	    color: white;
+	    text-decoration: none;
+  	}
+	.btn {
+		color: white;
+	}
+	.btn:hover {
+		color: white;
+		background-color: transparent;
+		border: 1px solid white;
+	}
+	.ranking {
+		border: 1px solid white;
+	}
+	.ranking:hover {
+		color: #FFFFAA;
+		background-color: transparent;
+		border: 1px solid #FFFFAA;
+	}
+	/*search bar*/
+	input[type="text"] {
+        width: 700px;
+        height: 40px;
+        border-radius: 5px;
+        border-color: transparent;
+        box-shadow: 0 0 5px gray;
+    }
+    input[type="submit"] {
+        height: 40px;
+        border-color: transparent;
+        box-shadow: 0 0 10px gray;
+    }
+</style>
