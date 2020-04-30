@@ -13,10 +13,25 @@
   <body>
     <%= yield %>
     <!-- フッター -->
-    <div class="container">
-      <div class="row">
-        <h6 style="text-align: center; height: 30px; padding-top: 8px">Copyright Akihito Otsuka ©︎ All Rights Reserved.</h6>
+    <footer style="margin-top: 50px; background-color: #EEEEEE">
+      <div class="container">
+        <div class="row" style="text-align: left; padding-top: 20px">
+          <h5 style="color: #DD0000; padding-left: 10px;">About</h5>
+          <%= link_to 'FitReviewsとは', about_path, class:"btn btn-sm about-btn" %>
+          <style>
+            .about-btn {
+              color: black;
+            }
+            .about-btn:hover {
+              color: black;
+              background-color: transparent;
+            }
+          </style>
+        </div>
+        <div class="row">
+          <h6 style="text-align: center;">Copyright ©︎ 2020 FitReviews, All Rights Reserved.</h6>
+        </div>
       </div>
-    </div>
+    </footer>
   </body>
 </html>
