@@ -12,7 +12,7 @@
 		</div>
 		<% end %>
 	</div>
-	<div class="row">
+	<div class="row item-area">
 		<% @item.each do |item | %>
 			<div class="col-xs-3">
 				<%= image_tag item["mediumImageUrls"][0], style:"height: 250px; width: 250px" %>
@@ -29,16 +29,13 @@
 						<tr>
 							<td><h5>価格: <%= item["itemPrice"] %>円</h5></td>
 						</tr>
-						<tr>
-							<td><%= item["itemCode"] %></td>
-						</tr>
 					</tbody>
 				</table>
 			<%= link_to '楽天の購入ページへ', "#{item.url}", class:"btn btn-lg rakuten_btn" %>
 			</div>
 		<% end %>
 	</div>
-	<div class="row">
+	<div class="row review-field">
 		<!-- この商品のレビューを書く -->
 		<%= form_for @review do |f| %>
 			<div class="col-xs-4">
@@ -71,7 +68,7 @@
 	<!-- 今回はレビューを投稿した際に初めてその商品情報を保存するので、present?をつけることでまだ商品が保存されていないものを表示してもエラーにならない -->
 	<% if @saved_item.present? %>
 	<% @saved_item.reviews.each do |review| %>
-		<div class="row">
+		<div class="row all-review">
 			<div class="col-xs-3">
 				<%= attachment_image_tag review.user, :profile_photo, size: "60x60", style:"border-radius: 10px;" %>
 				<%= review.user.name %>
@@ -158,16 +155,17 @@
 	#rate_for_this_item {
 		color: #FF6928;
 	}
-	.row:nth-child(2) {
+	.item-area {
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+	.review-field {
 		border-top: 1px solid #CCCCCC;
 		border-bottom: 1px solid #CCCCCC;
 		padding: 30px;
-		margin-top: 30px;
 	}
-	.row:nth-child(n+3) {
+	.all-review {
 		padding: 10px;
-		margin-top: 10px;
-		margin-bottom: 10px;
 		border-bottom: 1px solid #CCCCCC;
 	}
 	td {
