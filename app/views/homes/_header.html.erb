@@ -1,0 +1,98 @@
+<div class="container">
+	<div class="row header">
+		<div class="col-xs-2">
+			<div class="nav navbar-nav navbar-left">
+				<%= link_to 'FitReviews', fr_top_path, class:"FitReviews_logo" %>
+			</div>
+		</div>
+		<div class="col-xs-5">
+			<div class="search_for_purchase">
+				<!-- 購入したい商品を検索する -->
+				<%= form_tag :items_search, method: :get do  %>
+					<%= text_field_tag 'keyword', params[:keyword], placeholder:"プロテイン、プロテインバー、シェイカー..." %>
+					<%= submit_tag "検索" %>
+				<% end %>
+			</div>
+			<div class="search_for_review">
+				<!-- レビューする商品を検索する -->
+				<%= form_tag :reviews_search, method: :get do  %>
+					<%= text_field_tag 'keyword', params[:keyword], placeholder:"レビューする商品を検索する" %>
+					<%= submit_tag "検索" %>
+				<% end %>
+			</div>
+		</div>
+		<div class="col-xs-5">
+			<% if user_signed_in? %>
+				<div class="nav navbar-nav navbar-right">
+					<%= link_to 'ランキング', items_ranking_path, class:"btn btn-sm ranking" %>
+					<%= link_to 'レビューを書く', reviews_search_path, class:"btn btn-sm header-btn" %>
+					<%= link_to 'マイページ', user_path(current_user), class:"btn btn-sm header-btn" %>
+					<%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"btn btn-sm header-btn" %>
+				</div>
+			<% else%>
+				<div class="nav navbar-nav navbar-right">
+					<%= link_to 'ランキング', items_ranking_path, class:"btn btn-sm ranking header-btn" %>
+					<%= link_to 'レビューを書く', reviews_search_path, class:"btn btn-sm header-btn" %>
+					<%= link_to 'ログイン', new_user_session_path, class:"btn btn-sm header-btn" %>
+					<%= link_to 'サインアップ', new_user_registration_path, class:"btn btn-sm header-btn" %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+<style>
+	.header {
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+	/*logo*/
+	.FitReviews_logo {
+	    color: black;
+	    font-size: 24px;
+	    font-family: Helvetica;
+	    font-weight: bold;
+  	}
+  	.FitReviews_logo:hover {
+	    color: black;
+	    text-decoration: none;
+  	}
+	.header-btn {
+		font-size: 12px;
+		color: black;
+		border-radius: 5px;
+		margin-left: 5px;
+	}
+	.header-btn:hover {
+		background-color: transparent;
+		border: 1px solid #708090;
+	}
+	/*ranking-btn*/
+	.ranking {
+    	color: #FF4F02;
+		background-color: transparent;
+	}
+	.ranking:hover {
+		color: #FF4F02;
+		background-color: transparent;
+		border: 1px solid #FF4F02;
+	}
+	/*search bar*/
+	input[type="text"] {
+        width: 85%;
+        height: 35px;
+        border-radius: 5px;
+        border-color: transparent;
+        box-shadow: 0 0 10px #BBBBBB;
+    }
+    input[type="submit"] {
+        height: 35px;
+        border-color: transparent;
+        box-shadow: 0 0 10px #BBBBBB;
+    }
+	.search_for_purchase {
+		display: none;
+	}
+	.search_for_review {
+		display: none;
+	}
+</style>
