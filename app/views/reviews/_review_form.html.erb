@@ -1,0 +1,28 @@
+<div class="row review-field">
+	<!-- この商品のレビューを書く -->
+	<%= form_with(model: review, remote: true) do |f| %>
+		<div class="col-xs-4">
+			<%= image_tag 'no_image.jpg', size: '150x150' %>
+			<%= f.attachment_field :item_image, placeholder: "商品画像を追加する" %>
+		</div>
+		<div class="col-xs-6">
+			<table class="table-borderless" style="width: 100%;">
+				<tbody>
+					<tr>
+						<td class="form-group row" id="rate_by_star">
+			    			<%= f.hidden_field :rate %>
+			    		</td>
+					</tr>
+					<tr>
+						<td><%= f.text_area :body, class:"form-control", rows: "7", placeholder: "この商品の口コミを書こう！" %></td>
+					</tr>
+					<tr>
+						<td><%= f.submit "投稿", class:"btn review_submit_btn" %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- これがないと、商品情報を取得できない。itemCodeはreviewに保存しない。 -->
+		<%= hidden_field_tag :item_code, item.first["itemCode"] %>
+	<% end %>
+</div>

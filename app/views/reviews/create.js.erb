@@ -1,0 +1,4 @@
+$("#review_<%= @item.id %>").append("<%= j(render 'review_each', {review: @review} ) %>");
+$('#review_rate').val('')
+$('#review_body').val('')
+$('#review_item_image').val('')

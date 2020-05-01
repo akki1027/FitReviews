@@ -1,0 +1,54 @@
+<div class="row all-review" id="reviews-<%= review.id %>">
+	<div class="col-xs-3">
+		<%= attachment_image_tag review.user, :profile_photo, size: "60x60", style:"border-radius: 10px;" %>
+		<%= review.user.name %>
+	</div>
+	<div class="col-xs-8">
+		<table class="table-borderless" style="width: 100%;">
+			<tbody>
+				<tr>
+					<td class="rated"></td>
+					<link rel="stylesheet" href="/assets/jquery.raty.css">
+					<script src="/assets/jquery.raty.js"></script>
+					<script>
+						$('.rated').raty({
+							// デフォルトで、星5個に設定されている
+							starOff:  '<%= asset_path('star-off.png') %>',
+				            starOn : '<%= asset_path('star-on.png') %>',
+				            starHalf: '<%= asset_path('star-half.png') %>',
+							// halfをtrueにすることで、星半分刻みで評価できる
+							half: true,
+							// readOnlyにすることで、変更することができなくなる
+							readOnly: true,
+							score: <%= review.rate %>,
+						});
+					</script>
+				</tr>
+				<tr>
+					<td><%= review.body %></td>
+				</tr>
+				<tr>
+					<td><%= attachment_image_tag review, :item_image, :fill, 330, 300 %></td>
+				</tr>
+				<tr>
+					<td><% if review.liked_by?(current_user) %>
+							<%= link_to review_likes_path(review), method: :delete do %>
+								<%= review.likes.count %> いいね
+								<i class="far fa-thumbs-up" aria-hidden="true" style="color: red;"></i>
+							<% end %>
+						<% else %>
+							<%= link_to review_likes_path(review), method: :post do%>
+								<%= review.likes.count %> いいね
+								<i class="far fa-thumbs-up" aria-hidden="true"></i>
+							<% end %>
+						<% end %>
+						<% if review.user == current_user %>
+						<%= link_to '削除', review_path(review), method: :delete, remote: true, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger", style:"float: right;" %>
+						<%= link_to '編集', edit_review_path(review), class:"btn btn-success", style:"float: right; margin-right: 10px;" %>
+						<% end %>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

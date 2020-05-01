@@ -8,13 +8,14 @@ class ReviewsController < ApplicationController
     # アイテムの保存
     # transactionを使うことで、itemが保存され、尚且つreviewも保存されないと処理が完了しない
     result = ActiveRecord::Base.transaction do
-      item = Item.find_or_create_by(item_params)
-      current_user.reviews.create(review_params(item))
+      @item = Item.find_or_create_by(item_params)
+      @review = current_user.reviews.create(review_params(@item))
       true
     end
     if result
       flash[:notice] = "レビューを作成しました。"
-      redirect_to reviews_new_path(@items.first["itemCode"])
+      # 非同期通信のためコメントアウト
+      # redirect_to reviews_new_path(@items.first["itemCode"])
     else
       render 'new'
     end
@@ -42,11 +43,12 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    review = Review.find(params[:id])
-    item = Item.find_by(id: review.item_id)
-    review.destroy
+    @review = Review.find(params[:id])
+    item = Item.find_by(id: @review.item_id)
+    @review.destroy
     # newページのURLには、楽天の商品Codeを含みたいので、rakuten_item_idに返す
-    redirect_to reviews_new_path(item.rakuten_item_id)
+    # 非同期通信のためコメントアウト
+    # redirect_to reviews_new_path(item.rakuten_item_id)
   end
 
   def search

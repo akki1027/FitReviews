@@ -35,93 +35,18 @@
 			</div>
 		<% end %>
 	</div>
-	<div class="row review-field">
-		<!-- この商品のレビューを書く -->
-		<%= form_for @review do |f| %>
-			<div class="col-xs-4">
-				<%= image_tag 'no_image.jpg', size: '150x150' %>
-				<%= f.attachment_field :item_image, placeholder: "商品画像を追加する" %>
-			</div>
-			<div class="col-xs-6">
-				<table class="table-borderless" style="width: 100%;">
-					<tbody>
-						<tr>
-							<td class="form-group row" id="rate_by_star">
-				    			<%= f.hidden_field :rate %>
-				    		</td>
-						</tr>
-						<tr>
-							<td><%= f.text_area :body, class:"form-control", rows: "7", placeholder: "この商品の口コミを書こう！" %></td>
-						</tr>
-						<tr>
-							<td><%= f.submit "投稿", class:"btn review_submit_btn" %></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<!-- これがないと、商品情報を取得できない。itemCodeはreviewに保存しない。 -->
-			<%= hidden_field_tag :item_code, @item.first["itemCode"] %>
-		<% end %>
-	</div>
+
+	<!-- form_with -->
+	<%= render 'review_form', item: @item, review: @review %>
+
 	<!-- この商品のレビューを全て表示する -->
 	<!-- レビューがない場合エラーになる -->
 	<!-- 今回はレビューを投稿した際に初めてその商品情報を保存するので、present?をつけることでまだ商品が保存されていないものを表示してもエラーにならない -->
+</div>
+<div class="container" id="review_<%= @saved_item.id %>">
 	<% if @saved_item.present? %>
 	<% @saved_item.reviews.each do |review| %>
-		<div class="row all-review">
-			<div class="col-xs-3">
-				<%= attachment_image_tag review.user, :profile_photo, size: "60x60", style:"border-radius: 10px;" %>
-				<%= review.user.name %>
-			</div>
-			<div class="col-xs-8">
-				<table class="table-borderless" style="width: 100%;">
-					<tbody>
-						<tr>
-							<td class="rated"></td>
-							<link rel="stylesheet" href="/assets/jquery.raty.css">
-							<script src="/assets/jquery.raty.js"></script>
-							<script>
-								$('.rated').raty({
-									// デフォルトで、星5個に設定されている
-									starOff:  '<%= asset_path('star-off.png') %>',
-						            starOn : '<%= asset_path('star-on.png') %>',
-						            starHalf: '<%= asset_path('star-half.png') %>',
-									// halfをtrueにすることで、星半分刻みで評価できる
-									half: true,
-									// readOnlyにすることで、変更することができなくなる
-									readOnly: true,
-									score: <%= review.rate %>,
-								});
-							</script>
-						</tr>
-						<tr>
-							<td><%= review.body %></td>
-						</tr>
-						<tr>
-							<td><%= attachment_image_tag review, :item_image, :fill, 330, 300 %></td>
-						</tr>
-						<tr>
-							<td><% if review.liked_by?(current_user) %>
-									<%= link_to review_likes_path(review), method: :delete do %>
-										<%= review.likes.count %> いいね
-										<i class="far fa-thumbs-up" aria-hidden="true" style="color: red;"></i>
-									<% end %>
-								<% else %>
-									<%= link_to review_likes_path(review), method: :post do%>
-										<%= review.likes.count %> いいね
-										<i class="far fa-thumbs-up" aria-hidden="true"></i>
-									<% end %>
-								<% end %>
-								<% if review.user == current_user %>
-								<%= link_to '削除', review_path(review), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger", style:"float: right;" %>
-								<%= link_to '編集', edit_review_path(review), class:"btn btn-success", style:"float: right; margin-right: 10px;" %>
-								<% end %>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
+		<%= render 'review_each', review: review %>
 	<% end %>
 	<% end %>
 </div>
@@ -139,7 +64,6 @@
 		readOnly: true,
 	});
 	$('#rate_by_star').raty({
-		size: 100,
 		starOff:  '<%= asset_path('star-off.png') %>',
 	    starOn : '<%= asset_path('star-on.png') %>',
 	    starHalf: '<%= asset_path('star-half.png') %>',
