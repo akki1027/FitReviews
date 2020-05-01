@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
       true
     end
     if result
-      flash[:notice] = "レビューを作成しました。"
+      # flash[:notice] = "レビューを作成しました。"
       # 非同期通信のためコメントアウト
       # redirect_to reviews_new_path(@items.first["itemCode"])
     else
