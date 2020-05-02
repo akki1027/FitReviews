@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
     # アイテムの保存
     # transactionを使うことで、itemが保存され、尚且つreviewも保存されないと処理が完了しない
     result = ActiveRecord::Base.transaction do
-      @item = Item.find_or_create_by(item_params)
+      @item = Item.find_by(item_params)
       @review = current_user.reviews.create(review_params(@item))
       true
     end
@@ -26,6 +26,7 @@ class ReviewsController < ApplicationController
     @review = Review.new
     # rakuten_item_idが楽天のitemCodeと一致するものを取得
     @saved_item = Item.find_by(rakuten_item_id: @item.first["itemCode"])
+    @reviews = Review.where(item_id: @saved_item.id)
   end
 
   def edit
@@ -55,6 +56,13 @@ class ReviewsController < ApplicationController
     if params[:keyword]
       @items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword])
     end
+  end
+
+  def save_item
+    # レビューを作成する画面に移動する時にその楽天商品をデータベースに保存する
+    @items = RakutenWebService::Ichiba::Item.search(itemCode: params[:itemCode])
+    save_item = Item.find_or_create_by(item_params)
+    redirect_to reviews_new_path(@items.first["itemCode"])
   end
 
   private

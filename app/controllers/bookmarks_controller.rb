@@ -2,7 +2,7 @@ class BookmarksController < ApplicationController
 	def create
 		@items = RakutenWebService::Ichiba::Item.search(itemCode: params[:itemCode])
 		result = ActiveRecord::Base.transaction do
-			@item = Item.find_or_create_by(item_params)
+			@item = Item.find_by(item_params)
 			@bookmark = current_user.bookmarks.create(item_id: @item.id)
 			true
 		end

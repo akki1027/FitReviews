@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 	get 'users/:id/my_bookmarks' => 'users#my_bookmarks', as: 'users_my_bookmarks'
 
 	get 'reviews/search' => 'reviews#search', as: 'reviews_search'
+	get 'reviews/save_item/:itemCode' => 'reviews#save_item', as: 'save_item'
 	get 'reviews/new/:itemCode' => 'reviews#new', as: 'reviews_new'
 	resources :reviews, except: :new do
 		resource :likes, only: [:create, :destroy]

@@ -54,13 +54,13 @@
 	<!-- レビューがない場合エラーになる -->
 	<!-- 今回はレビューを投稿した際に初めてその商品情報を保存するので、present?をつけることでまだ商品が保存されていないものを表示してもエラーにならない -->
 </div>
-<% if @saved_item.present? %>
+
 <div class="container" id="review_<%= @saved_item.id %>">
 	<% @saved_item.reviews.each do |review| %>
 		<%= render 'review_each', review: review %>
 	<% end %>
 </div>
-<% end %>
+
 <!-- 評価に必要なjavascriptとcssを読み込む -->
 <link rel="stylesheet" href="/assets/jquery.raty.css">
 <script src="/assets/jquery.raty.js"></script>
