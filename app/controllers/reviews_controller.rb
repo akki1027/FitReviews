@@ -26,7 +26,7 @@ class ReviewsController < ApplicationController
     @review = Review.new
     # rakuten_item_idが楽天のitemCodeと一致するものを取得
     @saved_item = Item.find_by(rakuten_item_id: @item.first["itemCode"])
-    @reviews = Review.where(item_id: @saved_item.id)
+    @reviews = Review.where(item_id: @saved_item.id).page(params[:page]).reverse_order
   end
 
   def edit

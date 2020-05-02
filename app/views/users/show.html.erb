@@ -40,7 +40,7 @@
 	<div class="row">
 		<div class="my_reviews">
 			<h4><%= link_to 'レビューした商品', users_my_reviews_path(@user) %></h4>
-			<% @user.reviews.each do |review| %>
+			<% @reviews.each do |review| %>
 			<div class="row">
 				<div class="col-xs-4">
 					<div class="table table-borderless">
@@ -88,6 +88,9 @@
 				</div>
 			</div>
 			<% end %>
+			<div style="text-align: center;">
+				<%= paginate @reviews %>
+			</div>
 		</div>
 	</div>
 </div>

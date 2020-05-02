@@ -49,10 +49,14 @@
 </div>
 
 <div class="container" id="review_<%= @saved_item.id %>">
-	<% @saved_item.reviews.each do |review| %>
+	<% @reviews.each do |review| %>
 		<%= render 'review_each', review: review %>
 	<% end %>
+	<div style="text-align: center;">
+		<%= paginate @reviews %>
+	</div>
 </div>
+
 
 <!-- 評価に必要なjavascriptとcssを読み込む -->
 <link rel="stylesheet" href="/assets/jquery.raty.css">
