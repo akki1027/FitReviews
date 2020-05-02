@@ -20,6 +20,9 @@ Rails.application.routes.draw do
 		resource :likes, only: [:create, :destroy]
 	end
 
+	post 'bookmarks/:itemCode' => 'bookmarks#create', as: 'bookmarks_create'
+	resources :bookmarks, only: :destroy
+
 	get 'items/search' => 'items#search', as: 'items_search'
   	get 'items/select_genre' => 'items#select_genre', as: 'select_genre'
   	get 'items/ranking' => 'items#ranking', as: 'items_ranking'

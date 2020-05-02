@@ -33,6 +33,17 @@
 				</table>
 			<%= link_to '楽天の購入ページへ', "#{item.url}", class:"btn btn-lg rakuten_btn" %>
 			</div>
+			<!-- ブックマーク -->
+			<!-- まだ商品がitemに保存されていない、尚且つブックマークされていたら -->
+			<% if @saved_item.present? and @saved_item.bookmarked_by?(current_user) %>
+				<%= link_to bookmark_path(@saved_item), method: :delete do %>
+					<i class="far fa-bookmark" style="color: blue; background-color: blue;"></i>
+				<% end %>
+			<% else %>
+				<%= link_to bookmarks_create_path(item["itemCode"]), method: :post do %>
+					<i class="far fa-bookmark"></i>
+				<% end %>
+			<% end %>
 		<% end %>
 	</div>
 
@@ -43,13 +54,13 @@
 	<!-- レビューがない場合エラーになる -->
 	<!-- 今回はレビューを投稿した際に初めてその商品情報を保存するので、present?をつけることでまだ商品が保存されていないものを表示してもエラーにならない -->
 </div>
+<% if @saved_item.present? %>
 <div class="container" id="review_<%= @saved_item.id %>">
-	<% if @saved_item.present? %>
 	<% @saved_item.reviews.each do |review| %>
 		<%= render 'review_each', review: review %>
 	<% end %>
-	<% end %>
 </div>
+<% end %>
 <!-- 評価に必要なjavascriptとcssを読み込む -->
 <link rel="stylesheet" href="/assets/jquery.raty.css">
 <script src="/assets/jquery.raty.js"></script>
@@ -76,6 +87,9 @@
 </script>
 
 <style>
+	.search_for_review {
+		display: block;
+	}
 	#rate_for_this_item {
 		color: #FF6928;
 	}
