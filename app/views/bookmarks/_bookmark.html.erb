@@ -1,0 +1,9 @@
+<% if saved_item.bookmarked_by?(current_user) %>
+	<%= link_to bookmark_path(saved_item.id), method: :delete, remote: true do %>
+		<i class="fas fa-bookmark" style="font-size: 30px; color: #008BBB;"></i>
+	<% end %>
+<% else %>
+	<%= link_to bookmarks_create_path(saved_item.id), method: :post, remote: true do %>
+		<i class="far fa-bookmark" style="font-size: 30px;"></i>
+	<% end %>
+<% end %>

@@ -21,7 +21,8 @@ Rails.application.routes.draw do
 		resource :likes, only: [:create, :destroy]
 	end
 
-	post 'bookmarks/:itemCode' => 'bookmarks#create', as: 'bookmarks_create'
+	# wants to include item_id in url
+	post 'bookmarks/:item_id' => 'bookmarks#create', as: 'bookmarks_create'
 	resources :bookmarks, only: :destroy
 
 	get 'items/search' => 'items#search', as: 'items_search'
