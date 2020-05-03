@@ -50,7 +50,7 @@
 
 <div class="container" id="review_<%= @saved_item.id %>">
 	<% @reviews.each do |review| %>
-		<%= render 'review_each', review: review %>
+		<%= render 'review_each', review: review, item: @item %>
 	<% end %>
 	<div style="text-align: center;">
 		<%= paginate @reviews %>

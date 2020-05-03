@@ -1,5 +1,6 @@
 <div class="row all-review" id="reviews-<%= review.id %>">
 	<div class="col-xs-3">
+		<%= image_tag item.first["mediumImageUrls"][0], style:"height: 180px; width: 180px" %>
 		<h6 style="font-weight: normal;"><%= review.item.name %></h6>
 	</div>
 	<div class="col-xs-2">
