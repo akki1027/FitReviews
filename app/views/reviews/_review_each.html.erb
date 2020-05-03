@@ -1,9 +1,12 @@
 <div class="row all-review" id="reviews-<%= review.id %>">
 	<div class="col-xs-3">
+		<h6 style="font-weight: normal;"><%= review.item.name %></h6>
+	</div>
+	<div class="col-xs-2">
 		<%= attachment_image_tag review.user, :profile_photo, size: "60x60", style:"border-radius: 10px;" %>
 		<%= review.user.name %>
 	</div>
-	<div class="col-xs-8">
+	<div class="col-xs-7">
 		<table class="table-borderless" style="width: 100%; table-layout: fixed;">
 			<tbody>
 				<tr>
