@@ -40,8 +40,8 @@
 	<div class="row">
 		<div class="my_reviews">
 			<h4><%= link_to 'レビューした商品', users_my_reviews_path(@user) %></h4>
-			<% @reviews.each do |review| %>
-				<%= render 'reviews/review_each', review: review %>
+			<% @reviews.each_with_index do |review,i| %>
+				<%= render 'reviews/review_each', review: review, item: @items[i] %>
 			<% end %>
 			<div style="text-align: center;">
 				<%= paginate @reviews %>
@@ -63,6 +63,8 @@
 	}
 	th, td {
 		padding-bottom: 20px;
+		width: 80%;
+		word-break: break-all;
 	}
 	h4 {
 		padding-left: 50px;

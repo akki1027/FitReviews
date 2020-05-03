@@ -7,6 +7,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @reviews = Review.where(user_id: current_user.id).page(params[:page]).reverse_order
+    @items = []
+    @reviews.each do |review|
+      @items << RakutenWebService::Ichiba::Item.search(itemCode: review.item.rakuten_item_id)
+    end
   end
 
   def update
