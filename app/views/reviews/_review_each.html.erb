@@ -11,11 +11,11 @@
 		<table class="table-borderless" style="width: 100%; table-layout: fixed;">
 			<tbody>
 				<tr>
-					<td class="rated"></td>
+					<td class="rated" id="rated_<%= review.id %>"></td>
 					<link rel="stylesheet" href="/assets/jquery.raty.css">
 					<script src="/assets/jquery.raty.js"></script>
 					<script>
-						$('.rated').raty({
+						$('#rated_<%= review.id %>').raty({
 							// デフォルトで、星5個に設定されている
 							starOff:  '<%= asset_path('star-off.png') %>',
 				            starOn : '<%= asset_path('star-on.png') %>',
