@@ -29,6 +29,20 @@
 						</tr>
 						<tr>
 							<td class="form-group row" id="rate_for_this_item"></td>
+							<link rel="stylesheet" href="/assets/jquery.raty.css">
+							<script src="/assets/jquery.raty.js"></script>
+							<script>
+								$(function() {
+								$('#rate_for_this_item').raty({
+									starType: 'i',
+									// halfをtrueにすることで、星半分刻みで評価できる
+									half: true,
+									// readOnlyにすることで、変更することができなくなる
+									readOnly: true,
+									score: '<%= @average_rate %>',
+								});
+								});
+							</script>
 						</tr>
 						<tr>
 							<td><h5>価格: <%= item["itemPrice"] %>円</h5></td>
@@ -62,15 +76,7 @@
 <link rel="stylesheet" href="/assets/jquery.raty.css">
 <script src="/assets/jquery.raty.js"></script>
 <script>
-	// turbolinksをloadにすることで、読み込みのエラーを起きないようにする
-	$(document).on('turbolinks:load', function() {
-	$('#rate_for_this_item').raty({
-		starType: 'i',
-		// halfをtrueにすることで、星半分刻みで評価できる
-		half: true,
-		// readOnlyにすることで、変更することができなくなる
-		readOnly: true,
-	});
+	$(function() {
 	$('#rate_by_star').raty({
 		starOff:  '<%= asset_path('star-off.png') %>',
 	    starOn : '<%= asset_path('star-on.png') %>',
@@ -88,7 +94,7 @@
 		display: block;
 	}
 	#rate_for_this_item {
-		color: #FF6928;
+		color: #FFCC00;
 	}
 	.item-area {
 		margin-top: 30px;

@@ -27,6 +27,7 @@ class ReviewsController < ApplicationController
     # rakuten_item_idが楽天のitemCodeと一致するものを取得
     @saved_item = Item.find_by(rakuten_item_id: @item.first["itemCode"])
     @reviews = Review.where(item_id: @saved_item.id).page(params[:page]).reverse_order
+    @average_rate = Review.where(item_id: @saved_item.id).average(:rate)
   end
 
   def edit
