@@ -40,7 +40,8 @@ class ReviewsController < ApplicationController
     review = Review.find(params[:id])
     item = Item.find_by(id: review.item_id)
     review.update(review_update_params)
-    redirect_to reviews_new_path(item.rakuten_item_id)
+    # redirect to the page previously visited
+    redirect_to params[:referrer]
   end
 
   def destroy

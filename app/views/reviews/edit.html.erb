@@ -4,6 +4,10 @@
 	<div class="row">
 		<%= form_for @review do |f| %>
 			<div class="col-xs-4 left-area">
+				<span id="referrer"></span>
+				<script>
+					document.getElementById("referrer").innerHTML='<input type="hidden" value="' +document.referrer +'" name="referrer">';
+				</script>
 				<%= attachment_image_tag @review.user, :profile_photo, size: "60x60", style:"border-radius: 10px;" %>
 				<%= @review.user.name %><br>
 				<div class="item-image-area">
@@ -21,7 +25,7 @@
 							<script src="/assets/jquery.raty.js"></script>
 							<script>
 								// turbolinksをloadにすることで、読み込みのエラーを起きないようにする
-								$(document).on('turbolinks:load', function() {
+								$(function() {
 								$('#edit_rated_star').raty({
 									size: 100,
 									starOff:  '<%= asset_path('star-off.png') %>',
