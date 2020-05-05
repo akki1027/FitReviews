@@ -11,13 +11,14 @@
 							<td><%= image_tag item["mediumImageUrls"][0] %></td>
 						</tr>
 						<tr>
-							<td><%= link_to item.name, "#{item.url}" %></td>
+							<td><%= item.name %></td>
 						</tr>
 						<tr>
-							<td align="right"><%= number_with_delimiter(item.price) %>円</td>
+							<td style="text-align: right;"><%= number_with_delimiter(item.price) %>円</td>
 						</tr>
 						<tr>
-							<td><%= link_to 'レビューする', new_review_path, class:"btn review_btn" %></td>
+							<td><%= link_to '楽天で購入', "#{item.url}", class:"btn rakuten_btn" %>
+								<%= link_to 'レビューを見る', save_item_path(item["itemCode"]), class:"btn review_btn" %></td>
 						</tr>
 					</tbody>
 				</table>
@@ -32,11 +33,20 @@
 	.search_for_purchase {
 		display: block;
 	}
+	.rakuten_btn {
+		color: black;
+		background-color: #FFFF99;
+		border: 1px solid #CCCCCC;
+		width: 45%;
+	}
+	.rakuten_btn:hover {
+		background-color: #FFFF00;
+	}
 	.review_btn {
     	color: white;
     	border-radius: 5px;
     	background-color: #FF773E;;
-    	width: 100%;
+    	width: 50%;
     }
     .review_btn:hover {
     	color: white;
