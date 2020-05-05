@@ -16,7 +16,7 @@
 			<div class="search_for_review">
 				<!-- レビューする商品を検索する -->
 				<%= form_tag :reviews_search, method: :get do  %>
-					<%= text_field_tag 'keyword', params[:keyword], placeholder:"レビューする商品を検索する" %>
+					<%= text_field_tag 'keyword', params[:keyword], placeholder:"レビューを書く商品を検索する" %>
 					<%= submit_tag "検索" %>
 				<% end %>
 			</div>
@@ -68,13 +68,13 @@
 	}
 	/*ranking-btn*/
 	.ranking {
-    	color: #FF4F02;
+    	color: #FFCC00;
 		background-color: transparent;
 	}
 	.ranking:hover {
-		color: #FF4F02;
+		color: #FFCC00;
 		background-color: transparent;
-		border: 1px solid #FF4F02;
+		border: 1px solid #FFCC00;
 	}
 	/*search bar*/
 	input[type="text"] {
