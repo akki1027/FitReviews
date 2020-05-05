@@ -1,11 +1,24 @@
 <% if review.liked_by?(current_user) %>
 	<%= link_to review_likes_path(review), method: :delete, remote: true do %>
+		<i class="far fa-grin-beam" style="color: #FF4F02;"></i>
 		<%= review.likes.count %> 役に立った
-		<i class="far fa-thumbs-up" aria-hidden="true" style="color: red;"></i>
 	<% end %>
 <% else %>
 	<%= link_to review_likes_path(review), method: :post, remote: true do%>
+		<i class="far fa-smile-beam" style="color: #555555"></i>
 		<%= review.likes.count %> 役に立った
-		<i class="far fa-thumbs-up" aria-hidden="true"></i>
 	<% end %>
 <% end %>
+
+<style>
+	.fa-smile-beam, .fa-grin-beam {
+		font-size: 25px;
+		padding: 10px;
+		border-radius: 50%;
+	}
+	.fa-smile-beam:hover, .fa-grin-beam:hover {
+		border-radius: 50%;
+		background-color: #FFC7AF;
+		transition: 0.5s;
+	}
+</style>
