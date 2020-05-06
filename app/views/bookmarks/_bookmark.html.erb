@@ -1,9 +1,31 @@
 <% if saved_item.bookmarked_by?(current_user) %>
 	<%= link_to bookmark_path(saved_item.id), method: :delete, remote: true do %>
-		<i class="fas fa-bookmark" style="font-size: 30px; color: #008BBB;"></i>
+		<i class="fas fa-bookmark bookmarked"></i><br>
 	<% end %>
+		<h6>ブックマークを外す</h6>
 <% else %>
 	<%= link_to bookmarks_create_path(saved_item.id), method: :post, remote: true do %>
-		<i class="far fa-bookmark" style="font-size: 30px;"></i>
+		<i class="far fa-bookmark bookmark"></i><br>
 	<% end %>
+		<h6>ブックマークをする</h6>
 <% end %>
+
+<style>
+	.bookmarked {
+		font-size: 25px;
+		border-radius: 50%;
+		padding: 10px;
+		color: #2C7CFF;
+	}
+	.bookmarked:hover {
+		background-color: #D9E5FF;
+	}
+	.bookmark {
+		font-size: 25px;
+		border-radius: 50%;
+		padding: 10px;
+	}
+	.bookmark:hover {
+		background-color: #D9E5FF;
+	}
+</style>

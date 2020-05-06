@@ -22,10 +22,7 @@
 					<tbody>
 						<tr>
 							<td><h4><%= item.name %></h4></td>
-							<td style="text-align: center;" id="bookmark_<%= @saved_item.id %>">
-								<!-- ブックマーク -->
-								<%= render 'bookmarks/bookmark', saved_item: @saved_item %>
-							</td>
+							
 						</tr>
 						<tr>
 							<td class="form-group row" id="rate_for_this_item"></td>
@@ -45,11 +42,24 @@
 							</script>
 						</tr>
 						<tr>
-							<td><h5>価格: <%= item["itemPrice"] %>円</h5></td>
+							<td><h5 style="color: #777777; text-align: right;">価格: <%= item["itemPrice"] %>円</h5></td>
 						</tr>
 					</tbody>
 				</table>
-			<%= link_to '楽天の購入ページへ', "#{item.url}", class:"btn btn-lg rakuten_btn" %>
+
+				<div class="flex">
+					<div><i class="far fa-comment-alt" id="show_form"></i><br>
+						<h6>レビューを書く</h6>
+					</div>
+					<div id="bookmark_<%= @saved_item.id %>">
+						<!-- ブックマーク -->
+						<%= render 'bookmarks/bookmark', saved_item: @saved_item %>
+					</div>
+					<div>
+						<!-- 楽天購入ページボタン -->
+						<%= link_to '楽天の購入ページへ', "#{item.url}", class:"btn btn-lg rakuten_btn" %>
+					</div>
+				</div>
 			</div>
 		<% end %>
 	</div>
@@ -93,23 +103,35 @@
 	.search_for_review {
 		display: block;
 	}
-	#rate_for_this_item {
-		color: #FFCC00;
-	}
 	.item-area {
 		margin-top: 30px;
 		margin-bottom: 30px;
 	}
-	.review-field {
-		border-top: 1px solid #CCCCCC;
-		border-bottom: 1px solid #CCCCCC;
-		padding: 30px;
+	#rate_for_this_item {
+		color: #FFCC00;
 	}
 	td {
-		padding-bottom: 15px;
 		/*レビューの文字が多いと、無限に横に延びるのを防ぐため*/
 		word-break: break-all;
-		width: 80%;
+		padding-bottom: 15px;
+	}
+	.flex {
+		display: flex;
+		text-align: center;
+		justify-content: flex-end;
+	}
+	.flex > div {
+		margin-left: 20px;
+	}
+	.fa-comment-alt {
+		font-size: 25px;
+		color: #FF3300;
+		border-radius: 50%;
+		padding: 10px;
+	}
+	.fa-comment-alt:hover {
+		background-color: #FFD5EC;
+		cursor: pointer;
 	}
 	.rakuten_btn {
 		color: black;
@@ -117,13 +139,8 @@
 		padding: 8px;
 		background-color: #FFFF99;
 		border: 1px solid #CCCCCC;
-		float: right;
 	}
 	.rakuten_btn:hover {
 		background-color: #FFFF00;
-	}
-	.review_submit_btn {
-		color: white;
-		background-color: #FF3333;
 	}
 </style>

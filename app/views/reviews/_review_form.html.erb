@@ -26,3 +26,23 @@
 		<%= hidden_field_tag :item_code, item.first["itemCode"] %>
 	<% end %>
 </div>
+
+<script>
+	$(function () {
+		$('#show_form').on('click', () => {
+			$('.review-field').toggle();
+		});
+	});
+</script>
+<style>
+	.review-field {
+		display: none;
+		border-top: 1px solid #CCCCCC;
+		border-bottom: 1px solid #CCCCCC;
+		padding: 30px;
+	}
+	.review_submit_btn {
+		color: white;
+		background-color: #FF3333;
+	}
+</style>
