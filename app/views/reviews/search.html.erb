@@ -14,11 +14,11 @@
 							<td><%= item.name %></td>
 						</tr>
 						<tr>
-							<td>価格: <%= (item.price) %>円</td>
+							<td style="color: #777777; text-align: right;">価格: <%= (item.price) %>円</td>
 						</tr>
 						<tr>
 							<td>
-								<%= link_to 'レビューする', save_item_path(item["itemCode"]), class:"btn review_btn" %>
+								<%= link_to 'この商品のレビューを書く', save_item_path(item["itemCode"]), class:"btn review_btn" %>
 							</td>
 						</tr>
 					</tbody>

@@ -5,8 +5,8 @@
 			<%= flash[:notice] %>
 	    </div>
 		<div>
-			<%= attachment_image_tag @user, :background_photo, format: 'jpg', fallback: "no_image.jpg", style:"width: 100%; height: 400px" %>
-			<%= attachment_image_tag @user, :profile_photo, format: 'jpg', fallback: "no_image.jpg", size: "200x200", style:"border-radius: 50%; position: absolute; top: 300px; left: 250px; border: 5px solid white;" %>
+			<%= attachment_image_tag @user, :background_photo, format: 'jpg', fallback: "no_image.jpg", style:"width: 100%; height: 500px" %>
+			<%= attachment_image_tag @user, :profile_photo, format: 'jpg', fallback: "no_image.jpg", size: "200x200", style:"border-radius: 50%; position: absolute; top: 450px; left: 250px; border: 5px solid white;" %>
 		</div>
 	</div>
 	<div class="row">
@@ -36,10 +36,15 @@
 		<% @bookmarks.each_with_index do |bookmark,i| %>
 		<% if @bookmarked_items[i].first.present? %>
 		<div class="col-xs-3">
-			<table class="table-borderless bookmarked_items_table">
+			<table class="table-borderless bookmarked_items_table" style="height: 450px;">
 				<tbody>
 					<tr>
-						<td><%= image_tag @bookmarked_items[i].first["mediumImageUrls"][0] %>
+						<td>
+							<div class="flex">
+								<div><%= image_tag @bookmarked_items[i].first["mediumImageUrls"][0] %></div>
+								<div style="text-align: center"><span id="bookmark_<%= bookmark.item.id %>">
+								<%= render 'bookmarks/bookmark', saved_item: bookmark.item %></span></div>
+							</div>
 						</td>
 					</tr>
 					<tr>
@@ -49,16 +54,16 @@
 						</td>
 					</tr>
 					<tr>
-						<td>価格: <%= @bookmarked_items[i].first["itemPrice"] %>円</td>
+						<td style="color: #777777; text-align: right;">価格: <%= @bookmarked_items[i].first["itemPrice"] %>円</td>
 					</tr>
 					<tr>
-						<td id="bookmark_<%= bookmark.item.id %>">
-						<%= render 'bookmarks/bookmark', saved_item: bookmark.item %>
+						<td>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<%= link_to '楽天の購入ページへ', "#{@bookmarked_items[i].first.url}", class:"btn btn-lg rakuten_btn" %>
+							<%= link_to 'レビューを見る', save_item_path(@bookmarked_items[i].first["itemCode"]), class:"btn review_btn" %>
+							<%= link_to '楽天で購入', "#{@bookmarked_items[i].first.url}", class:"btn rakuten_btn" %>
 						</td>
 					</tr>
 				</tbody>
@@ -86,6 +91,9 @@
 </div>
 
 <style>
+	.search_for_purchase {
+		display: block;
+	}
 	.row:nth-child(n+2) {
 		margin-top: 60px;
 	}
@@ -104,13 +112,23 @@
     }
     .rakuten_btn {
 		color: black;
-		font-size: 15px;
 		background-color: #FFFF99;
 		border: 1px solid #CCCCCC;
+		width: 45%;
 	}
 	.rakuten_btn:hover {
 		background-color: #FFFF00;
 	}
+	.review_btn {
+    	color: white;
+    	border-radius: 5px;
+    	background-color: #FF773E;;
+    	width: 50%;
+    }
+    .review_btn:hover {
+    	color: white;
+    	background-color: #FF4F02;
+    }
 	th, td {
 		padding-bottom: 20px;
 		width: 80%;
@@ -118,5 +136,9 @@
 	}
 	h4 {
 		padding-left: 50px;
+	}
+	.flex {
+		display: flex;
+		justify-content: space-between;
 	}
 </style>
