@@ -3,11 +3,13 @@
 		<% if item.first.present? %>
 			<%= image_tag item.first["mediumImageUrls"][0], style:"height: 180px; width: 180px" %>
 		<% end %>
-		<h6 style="font-weight: normal;"><%= review.item.name %></h6>
+		<%= link_to reviews_new_path(review.item.rakuten_item_id) do %>
+			<h6 style="font-weight: normal;"><%= review.item.name %></h6>
+		<% end %>
 	</div>
 	<div class="col-xs-2">
 		<%= attachment_image_tag review.user, :profile_photo, size: "60x60", style:"border-radius: 50%;" %><br>
-		<i class="fas fa-user"> <span style="font-weight: normal; color: #0099CC;"><%= review.user.name %></span></i>
+		<i class="fas fa-user"> <span style="font-weight: normal; color: #444444;"><%= review.user.name %></span></i>
 	</div>
 	<div class="col-xs-7">
 		<table class="table-borderless" style="width: 100%; table-layout: fixed;">
