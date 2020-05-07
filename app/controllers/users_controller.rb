@@ -46,6 +46,12 @@ class UsersController < ApplicationController
   end
 
   def my_bookmarks
+    @user = User.find(params[:id])
+    @bookmarks = Bookmark.where(user_id: current_user.id).page(params[:page]).per(12).reverse_order
+    @bookmarked_items = []
+    @bookmarks.each do |bookmark|
+      @bookmarked_items << RakutenWebService::Ichiba::Item.search(itemCode: bookmark.item.rakuten_item_id)
+    end
   end
 
   protected

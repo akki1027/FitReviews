@@ -1,2 +1,93 @@
-<h1>Users#my_bookmarks</h1>
-<p>Find me in app/views/users/my_bookmarks.html.erb</p>
+<%= render 'homes/header' %>
+
+<div class="container">
+	<div class="row">
+		<h3 align="center"><strong>ブックマークした商品</strong></h3>
+		<div class="row my_bookmarks">
+			<% @bookmarks.each_with_index do |bookmark,i| %>
+			<% if @bookmarked_items[i].first.present? %>
+			<div class="col-xs-3">
+				<table class="table-borderless bookmarked_items_table" style="height: 450px;">
+					<tbody>
+						<tr>
+							<td>
+								<div class="flex">
+									<div><%= image_tag @bookmarked_items[i].first["mediumImageUrls"][0] %></div>
+									<div style="text-align: center"><span id="bookmark_<%= bookmark.item.id %>">
+									<%= render 'bookmarks/bookmark', saved_item: bookmark.item %></span></div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td><%= bookmark.item.name %>
+							</td>
+						</tr>
+						<tr>
+							<td style="color: #777777; text-align: right;">価格: <%= @bookmarked_items[i].first["itemPrice"] %>円</td>
+						</tr>
+						<tr>
+							<td>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<%= link_to 'レビューを見る', save_item_path(@bookmarked_items[i].first["itemCode"]), class:"btn review_btn" %>
+								<%= link_to '楽天で購入', "#{@bookmarked_items[i].first.url}", class:"btn rakuten_btn" %>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<% end %>
+			<% end %>
+		</div>
+		<div style="text-align: center;">
+			<%= paginate @bookmarks %>
+		</div>
+	</div>
+</div>
+ 
+ <style>
+	.search_for_purchase {
+		display: block;
+	}
+	.my_bookmarks {
+		margin-top: 60px;
+	}
+	.bookmarked_items_table {
+    	height: 450px;
+    	margin: 10px;
+    	border-top: 1px solid #CCCCCC;
+    }
+    .rakuten_btn {
+		color: black;
+		background-color: #FFFF99;
+		border: 1px solid #CCCCCC;
+		width: 45%;
+	}
+	.rakuten_btn:hover {
+		background-color: #FFFF00;
+	}
+	.review_btn {
+    	color: white;
+    	border-radius: 5px;
+    	background-color: #FF773E;;
+    	width: 50%;
+    }
+    .review_btn:hover {
+    	color: white;
+    	background-color: #FF4F02;
+    }
+	th, td {
+		padding-bottom: 20px;
+		width: 80%;
+		word-break: break-all;
+	}
+	h4 {
+		padding-left: 50px;
+	}
+	.flex {
+		display: flex;
+		justify-content: space-between;
+	}
+</style>
