@@ -9,15 +9,17 @@
 			<div class="search_for_purchase">
 				<!-- 購入したい商品を検索する -->
 				<%= form_tag :items_search, method: :get do  %>
+					<%= select_tag 'genreId', options_for_select({プロテイン: 567619, プロテインバー: 566807, その他のサプリ: 563727, 筋トレ器具: 200181}, 567619), include_blank: false %>
 					<%= text_field_tag 'keyword', params[:keyword], placeholder:"プロテイン、プロテインバー、シェイカー..." %>
-					<%= submit_tag "検索" %>
+					<%= submit_tag "検索", :name => nil %>
 				<% end %>
 			</div>
 			<div class="search_for_review">
 				<!-- レビューする商品を検索する -->
 				<%= form_tag :reviews_search, method: :get do  %>
+					<%= select_tag 'genreId', options_for_select({プロテイン: 567619, プロテインバー: 566807, その他のサプリ: 563727, 筋トレ器具: 200181}, 567619), include_blank: false %>
 					<%= text_field_tag 'keyword', params[:keyword], placeholder:"レビューを書く商品を検索する" %>
-					<%= submit_tag "検索" %>
+					<%= submit_tag "検索", :name => nil %>
 				<% end %>
 			</div>
 		</div>
@@ -77,15 +79,24 @@
 		border: 1px solid #FFCC00;
 	}
 	/*search bar*/
+	select {
+		width: 27%;
+		height: 35px;
+		border-color: transparent;
+		box-shadow: 0 0 10px #BBBBBB;
+		background-color: white;
+	}
 	input[type="text"] {
-        width: 85%;
+        width: 60%;
         height: 35px;
         border-radius: 5px;
         border-color: transparent;
         box-shadow: 0 0 10px #BBBBBB;
     }
     input[type="submit"] {
+    	width: 10%;
         height: 35px;
+        border-radius: 5px;
         border-color: transparent;
         box-shadow: 0 0 10px #BBBBBB;
     }
