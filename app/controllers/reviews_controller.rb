@@ -57,6 +57,8 @@ class ReviewsController < ApplicationController
   def search
     if params[:keyword]
       @items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword])
+    else
+      @items = RakutenWebService::Ichiba::Item.search(keyword: "筋トレ")
     end
   end
 
