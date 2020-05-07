@@ -1,2 +1,24 @@
-<h1>Users#my_reviews</h1>
-<p>Find me in app/views/users/my_reviews.html.erb</p>
+<%= render 'homes/header' %>
+
+<div class="container">
+	<div class="row">
+		<div class="my_reviews">
+			<h3 align="center"><strong>レビューを書いた商品</strong></h3>
+			<% @reviews.each_with_index do |review,i| %>
+				<%= render 'reviews/review_each', review: review, item: @items[i] %>
+			<% end %>
+			<div style="text-align: center;">
+				<%= paginate @reviews %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.search_for_purchase {
+		display: block;
+	}
+	.my_reviews {
+		margin-top: 60px;
+	}
+</style>
