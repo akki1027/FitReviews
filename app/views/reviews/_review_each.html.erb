@@ -1,7 +1,7 @@
 <div class="row all-review" id="reviews-<%= review.id %>">
 	<div class="col-xs-3">
 		<% if item.first.present? %>
-			<%= image_tag item.first["mediumImageUrls"][0], style:"height: 180px; width: 180px" %>
+			<%= image_tag item.first["mediumImageUrls"][0] %>
 		<% end %>
 		<%= link_to reviews_new_path(review.item.rakuten_item_id) do %>
 			<h6 style="font-weight: normal;"><%= review.item.name %></h6>
