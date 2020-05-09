@@ -10,7 +10,7 @@
 	    	<!-- 検索欄 -->
 	    <div class="row" style="margin-top: 180px; text-align: center;">
 	    	<%= form_tag :items_search, method: :get do  %>
-	    		<%= select_tag 'genreId', options_for_select({プロテイン: 567619, プロテインバー: 566807, その他のサプリ: 563727, 筋トレ器具: 200181}, 567619), include_blank: false %>
+	    		<%= select_tag 'genreId', options_for_select({プロテイン: 567603, 栄養補助スナック: 566807, その他のサプリ: 563727, 筋トレ器具: 201865}, 567603), include_blank: false %>
 				<%= text_field_tag 'keyword', params[:keyword], placeholder:"プロテイン、プロテインバー、シェイカー..." %>
 				<%= submit_tag "検索" %>
 			<% end %>

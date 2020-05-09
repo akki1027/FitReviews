@@ -9,7 +9,7 @@
 			<div class="search_for_purchase">
 				<!-- 購入したい商品を検索する -->
 				<%= form_tag :items_search, method: :get do  %>
-					<%= select_tag 'genreId', options_for_select({プロテイン: 567619, プロテインバー: 566807, その他のサプリ: 563727, 筋トレ器具: 200181}, 567619), include_blank: false %>
+					<%= select_tag 'genreId', options_for_select({プロテイン: 567603, 栄養補助スナック: 566807, その他のサプリ: 563727, 筋トレ器具: 201865}, 567603), include_blank: false %>
 					<%= text_field_tag 'keyword', params[:keyword], placeholder:"プロテイン、プロテインバー、シェイカー..." %>
 					<%= submit_tag "検索", :name => nil %>
 				<% end %>
@@ -17,7 +17,7 @@
 			<div class="search_for_review">
 				<!-- レビューする商品を検索する -->
 				<%= form_tag :reviews_search, method: :get do  %>
-					<%= select_tag 'genreId', options_for_select({プロテイン: 567619, プロテインバー: 566807, その他のサプリ: 563727, 筋トレ器具: 200181}, 567619), include_blank: false %>
+					<%= select_tag 'genreId', options_for_select({プロテイン: 567603, 栄養補助スナック: 566807, その他のサプリ: 563727, 筋トレ器具: 201865}, 567603), include_blank: false %>
 					<%= text_field_tag 'keyword', params[:keyword], placeholder:"レビューを書く商品を検索する" %>
 					<%= submit_tag "検索", :name => nil %>
 				<% end %>
