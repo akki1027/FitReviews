@@ -5,9 +5,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def select_genre
-  end
-
   def ranking
     if params[:genreId]
       @rankings = Review.joins(:item).where("items.rakuten_genre_id = ?", params[:genreId]).group(:item_id).limit(5).select("reviews_item_id, average_rate").order('average_rate desc').average(:rate)

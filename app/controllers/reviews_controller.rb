@@ -1,8 +1,5 @@
 class ReviewsController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
-  def index
-  end
-
   def create
     @items = RakutenWebService::Ichiba::Item.search(itemCode: params[:item_code])
     # transactionを使うことで、itemが保存され、尚且つreviewも保存されないと処理が完了しない
@@ -27,9 +24,6 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
-  end
-
-  def show
   end
 
   def update
