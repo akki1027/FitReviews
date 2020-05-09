@@ -5,12 +5,13 @@
 	
 	<div style="text-align: center; margin: 20px;">	
 		<%= form_tag :items_ranking, method: :get do  %>
-			<%= select_tag 'genreId', options_for_select({プロテイン: 567619, プロテインバー: 566807, その他のサプリ: 563727, 筋トレ器具: 200181}, 567619), include_blank: false %>
+			<%= select_tag 'genreId', options_for_select({プロテイン: 567603, 栄養補助スナック: 566807, その他のサプリ: 563727, 筋トレ器具: 201865}, 567603), include_blank: false %>
 			<%= submit_tag "検索", :name => nil %>
 		<% end %>
 	</div>
 
 	<div class="ranking_area">
+		<% if @rankings.present? %>
 		<% @rankings.each do |item_id,rate,i| %>
 		<% ranking = Item.find(item_id) %>
 		<% item = RakutenWebService::Ichiba::Item.search(itemCode: ranking.rakuten_item_id) %>
@@ -55,6 +56,7 @@
 				</table>
 			</div>
 		</div>
+		<% end %>
 		<% end %>
 	</div>
 </div>
