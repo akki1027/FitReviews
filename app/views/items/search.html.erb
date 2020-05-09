@@ -17,8 +17,9 @@
 							<td style="color: #777777; text-align: right;"><%= number_with_delimiter(item.price) %>円</td>
 						</tr>
 						<tr>
-							<td><%= link_to '楽天で購入', "#{item.url}", class:"btn rakuten_btn" %>
-								<%= link_to 'レビューを見る', save_item_path(item["itemCode"]), class:"btn review_btn" %></td>
+							<td><%= link_to 'レビューを見る', save_item_path(item["itemCode"]), class:"btn review_btn" %>
+								<%= link_to '楽天で購入', "#{item.url}", class:"btn rakuten_btn" %>
+							</td>
 						</tr>
 					</tbody>
 				</table>
