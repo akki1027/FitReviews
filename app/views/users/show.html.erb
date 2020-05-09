@@ -31,7 +31,9 @@
 		</div>
 	</div>
 	 	<!-- ブックマークした商品 -->
-	<h4><%= link_to 'ブックマークした商品', users_my_bookmarks_path(@user) %></h4>
+	<%= link_to users_my_bookmarks_path(@user) do %>	
+		<i class="fas fa-bookmark to_bookmark_list"><span style="color: black; font-size: 20px; font-weight: normal;"> ブックマークした商品</span></i>
+	<% end %>
 	<div class="row my_bookmarks">
 		<% @bookmarks.each_with_index do |bookmark,i| %>
 		<% if @bookmarked_items[i].first.present? %>
@@ -79,7 +81,9 @@
 	<!-- レビューした商品 -->
 	<div class="row">
 		<div class="my_reviews">
-			<h4><%= link_to 'レビューした商品', users_my_reviews_path(@user) %></h4>
+			<%= link_to users_my_reviews_path(@user) do %>
+				<i class="far fa-comment-alt to_reviews_list"><span style="color: black; font-size: 20px;"> レビューを書いた商品</span></i>
+			<% end %>
 			<% @reviews.each_with_index do |review,i| %>
 				<%= render 'reviews/review_each', review: review, item: @items[i] %>
 			<% end %>
@@ -101,8 +105,7 @@
 		display: inline-block;
 		width: 100%;
 		padding: 30px;
-		box-shadow: 5px 5px 10px -7px gray;
-		background-color: #FFFAFA;
+		box-shadow: 5px 5px 20px -7px gray;
 	}
 	.bookmarked_items_table {
     	height: 450px;
@@ -134,11 +137,26 @@
 		width: 80%;
 		word-break: break-all;
 	}
-	h4 {
-		padding-left: 50px;
-	}
 	.flex {
 		display: flex;
 		justify-content: space-between;
+	}
+	.to_bookmark_list {
+		font-size: 25px;
+		padding: 10px;
+		color: #2C7CFF;
+	}
+	.to_bookmark_list:hover {
+		background-color: #D9E5FF;
+		border-radius: 5px;
+	}
+	.to_reviews_list {
+		font-size: 25px;
+		padding: 10px;
+		color: #FF3300;
+	}
+	.to_reviews_list:hover {
+		background-color: #FFD5EC;
+		border-radius: 5px;
 	}
 </style>
