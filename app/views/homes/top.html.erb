@@ -14,7 +14,7 @@
 			<!-- /*要素を中心に寄せる*/ -->
 			<div class="flex" style="align-items: center;">
 				<div>
-					<img src="/assets/no_image.jpg" style="width: 250px; height: 250px; border-radius: 50%">
+					<img id="profile_pic" src="/assets/Akihito_Otsuka.png">
 				</div>
 				<div style="margin-left: 10px;">
 					<h4 style="text-align: left;">はじめまして。大塚章仁と申します。<br>
@@ -50,7 +50,10 @@
 		<div id="works">
 			<h1><i class="fas fa-briefcase"></i> Works</h1>
 			<!-- FitReviewsへのパス -->
-			<%= link_to 'FitReview', fr_top_path %>
+			<h3 id="fit_reviews">FitReviews</h3>
+			<%= link_to fr_top_path  do %>
+				<img class="portfolio_pic" src="/assets/fr_top.png">
+			<% end %>
 		</div>
 		<!-- お問い合わせ -->
 		<div id="contact">
@@ -91,6 +94,21 @@
 	#skills, #contact {
 		box-shadow: 5px 5px 17px -7px gray;
 		padding: 10px;
+	}
+	#fit_reviews {
+		margin-top: 60px;
+	}
+	#profile_pic {
+		height: 200px;
+		width: auto;
+		border-radius: 5%;
+	}
+	.portfolio_pic {
+		height: 300px;
+		width: auto;
+		padding: 10px;
+		border: 1px solid #AAAAAA;
+		border-radius: 5px;
 	}
 	footer {
 		display: none;
