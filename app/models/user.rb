@@ -6,7 +6,8 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
-  validates :name, presence: true
+  validates :name, presence: true, length: {minimum: 2, maximum: 20}
+  validates :introduction, length: {maximum: 150}
 	attachment :profile_photo
 	attachment :background_photo
 
