@@ -1,7 +1,15 @@
 class ItemsController < ApplicationController
   def search
-  	if params[:keyword]
-      @items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword])
+  	if params[:page]
+      @page = params[:page].to_i
+    else
+      @page = 1
+    end
+    if params[:keyword]
+      @items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword], genreId: params[:genreId]).page(params[:page])
+      @keyword = params[:keyword]
+      @genre_id = params[:genreId]
+      @has_next_page = @items.has_next_page?
     end
   end
 

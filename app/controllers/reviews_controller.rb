@@ -44,10 +44,21 @@ class ReviewsController < ApplicationController
   end
 
   def search
-    if params[:keyword]
-      @items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword], genreId: params[:genreId])
+    if params[:page]
+      @page = params[:page].to_i
     else
-      @items = RakutenWebService::Ichiba::Item.search(keyword: "プロテイン", genreId: 567603)
+      @page = 1
+    end
+    if params[:keyword]
+      @items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword], genreId: params[:genreId]).page(params[:page])
+      @keyword = params[:keyword]
+      @genre_id = params[:genreId]
+      @has_next_page = @items.has_next_page?
+    else
+      @items = RakutenWebService::Ichiba::Item.search(keyword: "プロテイン", genreId: 567603).page(params[:page])
+      @keyword = "プロテイン"
+      @genre_id = 567603
+      @has_next_page = @items.has_next_page?
     end
   end
 
