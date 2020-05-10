@@ -24,6 +24,8 @@
 		<% @rankings.each do |item_id,rate,i| %>
 		<% ranking = Item.find(item_id) %>
 		<% item = RakutenWebService::Ichiba::Item.search(itemCode: ranking.rakuten_item_id) %>
+		<!-- 楽天の商品は無くなることがあるため、なくなった商品は表示しない -->
+		<% if item.first.present? %>
 		<div class="row">
 			<div class="col-xs-1">
 			</div>
@@ -31,7 +33,9 @@
 				<table class="table">
 					<tbody>
 						<tr>
-							<td><%= image_tag item.first["mediumImageUrls"][0] %></td>
+							<td>
+								<%= image_tag item.first["mediumImageUrls"][0] %>
+								</td>
 							<td>
 							<span class="rate" id="ranking_<%= ranking.id %>"></span>
 							<link rel="stylesheet" href="/assets/jquery.raty.css">
@@ -65,6 +69,7 @@
 				</table>
 			</div>
 		</div>
+		<% end %>
 		<% end %>
 	</div>
 </div>
