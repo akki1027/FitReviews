@@ -14,7 +14,7 @@
 			<!-- /*要素を中心に寄せる*/ -->
 			<div class="flex" style="align-items: center;">
 				<div>
-					<img id="profile_pic" src="/assets/Akihito_Otsuka.png">
+					<%= image_tag asset_path('Akihito_Otsuka.png'), id:"profile_pic" %>
 				</div>
 				<div style="margin-left: 10px;">
 					<h4 style="text-align: left;">はじめまして。大塚章仁と申します。<br>
@@ -33,7 +33,7 @@
 					<h4>CSS</h4>
 					<h4>Ruby</h4>
 					<h4>Ruby on Rails</h4>
-					<h4>Java Script</h4>
+					<h4>JavaScript</h4>
 					<h4>jQuery</h4>
 				</div>
 				<div>
@@ -52,7 +52,7 @@
 			<!-- FitReviewsへのパス -->
 			<h3 id="fit_reviews">FitReviews</h3>
 			<%= link_to fr_top_path  do %>
-				<img class="portfolio_pic" src="/assets/fr_top.png">
+				<%= image_tag asset_path('fr_top.png'), id:"portfolio_pic" %>
 			<% end %>
 		</div>
 		<!-- お問い合わせ -->
@@ -106,7 +106,7 @@
 		width: auto;
 		border-radius: 5%;
 	}
-	.portfolio_pic {
+	#portfolio_pic {
 		height: 300px;
 		width: auto;
 		padding: 10px;
