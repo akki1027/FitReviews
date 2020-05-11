@@ -15,3 +15,11 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.mv {
+		height: 600px;
+		width: 100%;
+		background-image: image-url("plates-and-protein.jpg");
+		background-position: center;
+		background-size: cover;
+	}
