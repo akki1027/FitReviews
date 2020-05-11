@@ -83,3 +83,7 @@ gem 'pry-rails'
 
 # pagination
 gem 'kaminari'
+
+group :production do
+  gem 'mysql2'
+end
