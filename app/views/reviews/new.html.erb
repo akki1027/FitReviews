@@ -15,15 +15,15 @@
 						</tr>
 						<tr>
 							<td class="form-group row" id="rate_for_this_item"></td>
-							<link rel="stylesheet" href="/assets/jquery.raty.css">
-							<script src="/assets/jquery.raty.js"></script>
 							<script>
 								$('#rate_for_this_item').raty({
-									starType: 'i',
-									half: true,
-									// readOnlyにすることで、表示のみになる
-									readOnly: true,
-									score: '<%= @average_rate %>',
+		starOff:  '<%= asset_path('star-off.png') %>',
+	        starOn : '<%= asset_path('star-on.png') %>',
+	        starHalf: '<%= asset_path('star-half.png') %>',
+		half: true,
+		size: 36,
+                readOnly: true,
+		score: '<%= @average_rate %>'
 								});
 							</script>
 						</tr>
@@ -66,7 +66,6 @@
 	</div>
 </div>
 
-<script src="/assets/jquery.raty.js"></script>
 <script>
 	$('#rate_by_star').raty({
 		starOff:  '<%= asset_path('star-off.png') %>',
