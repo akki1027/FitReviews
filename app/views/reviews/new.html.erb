@@ -1,18 +1,7 @@
 <%= render 'homes/header' %>
+
 <div class="container">
-	<div class="row">
-		<%= flash[:notice] %>
-		<% if @review.errors.any? %>
-		<div class="alert">
-			<ul>
-				<% @review.errors.full_messages.each do |message| %>
-				<li><%= message %></li>
-				<% end %>
-			</ul>
-		</div>
-		<% end %>
-	</div>
-	<div class="row item-area">
+	<div class="row" id="review_item_area">
 		<% @item.each do |item | %>
 			<div class="col-xs-3">
 				<%= image_tag item["mediumImageUrls"][0], style:"height: 250px; width: 250px" %>
@@ -32,7 +21,6 @@
 								$(function() {
 								$('#rate_for_this_item').raty({
 									starType: 'i',
-									// halfをtrueにすることで、星半分刻みで評価できる
 									half: true,
 									// readOnlyにすることで、変更することができなくなる
 									readOnly: true,
@@ -42,7 +30,7 @@
 							</script>
 						</tr>
 						<tr>
-							<td><h5 style="color: #777777; text-align: right;">価格: <%= item["itemPrice"] %>円</h5></td>
+							<td><h5 class="item-price">価格: <%= item["itemPrice"] %>円</h5></td>
 						</tr>
 					</tbody>
 				</table>
@@ -56,7 +44,6 @@
 						<%= render 'bookmarks/bookmark', saved_item: @saved_item %>
 					</div>
 					<div>
-						<!-- 楽天購入ページボタン -->
 						<%= link_to '楽天の購入ページへ', "#{item.url}", class:"btn btn-lg rakuten_btn" %>
 					</div>
 				</div>
@@ -76,11 +63,10 @@
 	<% @reviews.each do |review| %>
 		<%= render 'review_each', review: review, item: @item %>
 	<% end %>
-	<div style="text-align: center;">
+	<div align="center">
 		<%= paginate @reviews %>
 	</div>
 </div>
-
 
 <!-- 評価に必要なjavascriptとcssを読み込む -->
 <link rel="stylesheet" href="/assets/jquery.raty.css">
@@ -91,7 +77,6 @@
 		starOff:  '<%= asset_path('star-off.png') %>',
 	    starOn : '<%= asset_path('star-on.png') %>',
 	    starHalf: '<%= asset_path('star-half.png') %>',
-		// halfをtrueにすることで、星半分刻みで評価できる
 		half: true,
 		// Reviewモデルのrateカラムに評価の値を保存する
 		scoreName: 'review[rate]',
@@ -102,10 +87,6 @@
 <style>
 	.search_for_review {
 		display: block;
-	}
-	.item-area {
-		margin-top: 30px;
-		margin-bottom: 30px;
 	}
 	#rate_for_this_item {
 		color: #FFCC00;
@@ -132,15 +113,5 @@
 	.fa-comment-alt:hover {
 		background-color: #FFD5EC;
 		cursor: pointer;
-	}
-	.rakuten_btn {
-		color: black;
-		font-size: 15px;
-		padding: 8px;
-		background-color: #FFFF99;
-		border: 1px solid #CCCCCC;
-	}
-	.rakuten_btn:hover {
-		background-color: #FFFF00;
 	}
 </style>

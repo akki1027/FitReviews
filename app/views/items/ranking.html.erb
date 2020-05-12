@@ -23,33 +23,30 @@
 					<tbody>
 						<tr>
 							<td><%= image_tag item.first["mediumImageUrls"][0] %></td>
-							<td>
-							<span class="rate" id="ranking_<%= ranking.id %>"></span>
-							<link rel="stylesheet" href="/assets/jquery.raty.css">
-							<script src="/assets/jquery.raty.js"></script>
-							<script>
-								$(function() {
-								$('#ranking_<%= ranking.id %>').raty({
-									starType: 'i',
-									// halfをtrueにすることで、星半分刻みで評価できる
-									half: true,
-									// readOnlyにすることで、変更することができなくなる
-									readOnly: true,
-									score: '<%= rate.to_d.to_s %>',
-								});
-								});
-							</script>
-							<%= rate.to_d.to_s %><br>
-							<h5><%= ranking.name %></h5><br>
-							<div style="color: #777777; text-align: right;">価格: <%= item.first["itemPrice"] %>円</div>
-							<div class="flex">
-								<div>
-									<%= link_to 'レビューを見る', save_item_path(item.first["itemCode"]), class:"btn review_btn" %>
+							<td><span class="rate-star" id="ranking_<%= ranking.id %>"></span>
+								<link rel="stylesheet" href="/assets/jquery.raty.css">
+								<script src="/assets/jquery.raty.js"></script>
+								<script>
+									$(function() {
+									$('#ranking_<%= ranking.id %>').raty({
+										starType: 'i',
+										half: true,
+										readOnly: true,
+										score: '<%= rate.to_d.to_s %>',
+									});
+									});
+								</script>
+								<%= rate.to_d.to_s %><br>
+								<h5><%= ranking.name %></h5><br>
+								<div class="item-price">価格: <%= number_with_delimiter(item.first["itemPrice"]) %>円</div>
+								<div class="flex">
+									<div>
+										<%= link_to 'レビューを見る', save_item_path(item.first["itemCode"]), class:"btn review_btn" %>
+									</div>
+									<div>
+										<%= link_to '楽天の購入ページへ', "#{item.first.url}", class:"btn rakuten_btn" %>
+									</div>
 								</div>
-								<div>
-									<%= link_to '楽天の購入ページへ', "#{item.first.url}", class:"btn rakuten_btn" %>
-								</div>
-							</div>
 							</td>
 						</tr>
 					</tbody>
@@ -62,15 +59,6 @@
 </div>
 
 <style>
-	.ranking_area {
-		margin-top: 50px;
-	}
-	.fa-crown {
-		color: #FFCC00;
-	}
-	.rate {
-		color: #FFCC00;
-	}
 	.flex {
 		display: flex;
 		justify-content: flex-end;
@@ -78,23 +66,4 @@
 	.flex > div {
 		margin-left: 20px;
 	}
-	.rakuten_btn {
-		color: black;
-		background-color: #FFFF99;
-		border: 1px solid #CCCCCC;
-		padding: 10px;
-	}
-	.rakuten_btn:hover {
-		background-color: #FFFF00;
-	}
-	.review_btn {
-    	color: white;
-    	border-radius: 5px;
-    	background-color: #FF773E;;
-    	padding: 10px;
-    }
-    .review_btn:hover {
-    	color: white;
-    	background-color: #FF4F02;
-    }
 </style>

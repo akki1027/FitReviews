@@ -1,4 +1,4 @@
-<div class="row review-field">
+<div class="row" id="review-field">
 	<!-- この商品のレビューを書く -->
 	<%= form_with(model: review, remote: true) do |f| %>
 		<div class="col-xs-4">
@@ -28,14 +28,13 @@
 </div>
 
 <script>
-	$(function () {
-		$('#show_form').on('click', () => {
-			$('.review-field').toggle();
-		});
+	$('#show_form').click(function() {
+	    $("#review-field").toggle();
 	});
 </script>
+
 <style>
-	.review-field {
+	#review-field {
 		display: none;
 		border-top: 1px solid #CCCCCC;
 		border-bottom: 1px solid #CCCCCC;

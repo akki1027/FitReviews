@@ -5,7 +5,7 @@
 		<% @items.each do |item| %>
 		<div class="col-xs-3">
 			<!-- <div class="flex"> -->
-				<table class="table-borderless">
+				<table class="table-borderless item-search-results-table">
 					<tbody>
 						<tr>
 							<td><%= image_tag item["mediumImageUrls"][0] %></td>
@@ -14,11 +14,11 @@
 							<td><%= item.name %></td>
 						</tr>
 						<tr>
-							<td style="color: #777777; text-align: right;"><%= number_with_delimiter(item.price) %>円</td>
+							<td class="item-price"><%= number_with_delimiter(item.price) %>円</td>
 						</tr>
 						<tr>
-							<td><%= link_to 'レビューを見る', save_item_path(item["itemCode"]), class:"btn review_btn" %>
-								<%= link_to '楽天で購入', "#{item.url}", class:"btn rakuten_btn" %>
+							<td><%= link_to 'レビューを見る', save_item_path(item["itemCode"]), class:"btn half-review_btn" %>
+								<%= link_to '楽天で購入', "#{item.url}", class:"btn half-rakuten_btn" %>
 							</td>
 						</tr>
 					</tbody>
@@ -28,7 +28,7 @@
 		<% end %>
 		<% end %>
 	</div>
-	<div style="text-align: center;">
+	<div align="center">
 		<ul class="pagination">
 			<% unless @page == 1 %>
 		    <li class="page-item"><%= link_to "前へ", controller: "items", action: "search", keyword: @keyword, page: @page - 1, genreId: @genre_id %></li>
@@ -45,31 +45,4 @@
 	.search_for_purchase {
 		display: block;
 	}
-	.rakuten_btn {
-		color: black;
-		background-color: #FFFF99;
-		border: 1px solid #CCCCCC;
-		width: 45%;
-	}
-	.rakuten_btn:hover {
-		background-color: #FFFF00;
-	}
-	.review_btn {
-    	color: white;
-    	border-radius: 5px;
-    	background-color: #FF773E;;
-    	width: 50%;
-    }
-    .review_btn:hover {
-    	color: white;
-    	background-color: #FF4F02;
-    }
-/*    .flex {
-    	display: flex;
-    }*/
-    table {
-    	height: 350px;
-    	margin: 10px;
-    	border-top: 1px solid #CCCCCC;
-    }
 </style>

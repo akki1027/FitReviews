@@ -16,19 +16,81 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.mv {
-		height: 600px;
-		width: 100%;
-		background-image: image-url("plates-and-protein.jpg");
-		background-position: center;
-		background-size: cover;
-	}
+.flash-notice {
+	margin-top: 5px;
+	color: #0099CC;
+	text-align: left;
+}
 
-#about_background {
-		height: 640px;
-		width: 100%;
-		background-image: image-url("supplement.jpg");
-		background-position: center;
-		background-size: cover;
-		text-align: center;
-	}
+.rakuten_btn {
+	color: black;
+	background-color: #FFFF99;
+	border: 1px solid #CCCCCC;
+	padding: 10px;
+}
+
+.rakuten_btn:hover {
+	background-color: #FFFF00;
+}
+
+.half-rakuten_btn {
+	color: black;
+	background-color: #FFFF99;
+	border: 1px solid #CCCCCC;
+	width: 45%;
+}
+
+.half-rakuten_btn:hover {
+	background-color: #FFFF00;
+}
+
+.review_btn {
+	color: white;
+	border-radius: 5px;
+	background-color: #FF773E;;
+	padding: 10px;
+}
+
+.review_btn:hover {
+	color: white;
+	background-color: #FF4F02;
+}
+
+.half-review_btn {
+	color: white;
+	border-radius: 5px;
+	background-color: #FF773E;;
+	width: 50%;
+}
+
+.half-review_btn:hover {
+	color: white;
+	background-color: #FF4F02;
+}
+
+.wider-review_btn {
+	color: white;
+	border-radius: 5px;
+	background-color: #FF773E;
+	width: 100%;
+}
+
+.wider-review_btn:hover {
+	color: white;
+	background-color: #FF4F02;
+}
+
+.item-search-results-table {
+	height: 400px;
+	margin: 10px;
+	border-top: 1px solid #CCCCCC;
+}
+
+.item-price {
+	color: #777777;
+	text-align: right;	
+}
+
+.rate-star {
+	color: #FFCC00;
+}

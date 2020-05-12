@@ -1,3 +1,34 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.mv {
+	height: 600px;
+	width: 100%;
+	background-image: image-url("plates-and-protein.jpg");
+	background-position: center;
+	background-size: cover;
+}
+
+#about_background {
+	height: 640px;
+	width: 100%;
+	background-image: image-url("supplement.jpg");
+	background-position: center;
+	background-size: cover;
+	text-align: center;
+}
+
+#about_headline {
+	color: white;
+	position: relative;
+	top: 200px;
+	padding-bottom: 10px;
+}
+
+.about_text {
+	color: white;
+	position: relative;
+	top: 200px;
+	padding-bottom: 3px;
+}
