@@ -17,13 +17,13 @@
 							<td class="form-group row" id="rate_for_this_item"></td>
 							<script>
 								$('#rate_for_this_item').raty({
-		starOff:  '<%= asset_path('star-off.png') %>',
-	        starOn : '<%= asset_path('star-on.png') %>',
-	        starHalf: '<%= asset_path('star-half.png') %>',
-		half: true,
-		size: 36,
-                readOnly: true,
-		score: '<%= @average_rate %>'
+									starOff:  '<%= asset_path('star-off.png') %>',
+							        starOn : '<%= asset_path('star-on.png') %>',
+							        starHalf: '<%= asset_path('star-half.png') %>',
+									half: true,
+									size: 36,
+									readOnly: true,
+									score: '<%= @average_rate %>',
 								});
 							</script>
 						</tr>

@@ -24,16 +24,14 @@
 						<tr>
 							<td><%= image_tag item.first["mediumImageUrls"][0] %></td>
 							<td><span class="rate-star" id="ranking_<%= ranking.id %>"></span>
-								<link rel="stylesheet" href="/assets/jquery.raty.css">
-								<script src="/assets/jquery.raty.js"></script>
 								<script>
-									$(function() {
 									$('#ranking_<%= ranking.id %>').raty({
-										starType: 'i',
+										starOff:  '<%= asset_path('star-off.png') %>',
+							            starOn : '<%= asset_path('star-on.png') %>',
+							            starHalf: '<%= asset_path('star-half.png') %>',
 										half: true,
 										readOnly: true,
 										score: '<%= rate.to_d.to_s %>',
-									});
 									});
 								</script>
 								<%= rate.to_d.to_s %><br>
