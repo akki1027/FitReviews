@@ -16,21 +16,16 @@
 			<tbody>
 				<tr>
 					<td id="rated_<%= review.id %>"></td>
-					<link rel="stylesheet" href="/assets/jquery.raty.css">
 					<script src="/assets/jquery.raty.js"></script>
 					<script>
-						$(function() {
 						$('#rated_<%= review.id %>').raty({
 							// デフォルトで、星5個に設定されている
 							starOff:  '<%= asset_path('star-off.png') %>',
 				            starOn : '<%= asset_path('star-on.png') %>',
 				            starHalf: '<%= asset_path('star-half.png') %>',
-							// halfをtrueにすることで、星半分刻みで評価できる
 							half: true,
-							// readOnlyにすることで、変更することができなくなる
 							readOnly: true,
 							score: <%= review.rate %>,
-						});
 						});
 					</script>
 					<td style="width: 20%;">

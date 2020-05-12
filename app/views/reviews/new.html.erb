@@ -18,14 +18,12 @@
 							<link rel="stylesheet" href="/assets/jquery.raty.css">
 							<script src="/assets/jquery.raty.js"></script>
 							<script>
-								$(function() {
 								$('#rate_for_this_item').raty({
 									starType: 'i',
 									half: true,
-									// readOnlyにすることで、変更することができなくなる
+									// readOnlyにすることで、表示のみになる
 									readOnly: true,
 									score: '<%= @average_rate %>',
-								});
 								});
 							</script>
 						</tr>
@@ -68,11 +66,8 @@
 	</div>
 </div>
 
-<!-- 評価に必要なjavascriptとcssを読み込む -->
-<link rel="stylesheet" href="/assets/jquery.raty.css">
 <script src="/assets/jquery.raty.js"></script>
 <script>
-	$(function() {
 	$('#rate_by_star').raty({
 		starOff:  '<%= asset_path('star-off.png') %>',
 	    starOn : '<%= asset_path('star-on.png') %>',
@@ -80,7 +75,6 @@
 		half: true,
 		// Reviewモデルのrateカラムに評価の値を保存する
 		scoreName: 'review[rate]',
-	});
 	});
 </script>
 
