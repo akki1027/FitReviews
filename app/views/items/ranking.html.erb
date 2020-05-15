@@ -15,6 +15,7 @@
 		<% @rankings.each do |item_id,rate,i| %>
 		<% ranking = Item.find(item_id) %>
 		<% item = RakutenWebService::Ichiba::Item.search(itemCode: ranking.rakuten_item_id) %>
+		<% if item.first.present? %>
 			<div class="row">
 			<div class="col-xs-1">
 			</div>
@@ -51,6 +52,7 @@
 				</table>
 			</div>
 		</div>
+		<% end %>
 		<% end %>
 		<% end %>
 	</div>
