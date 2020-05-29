@@ -2,30 +2,30 @@
 <div class="container">
 	<div class="row" style="margin-top: 50px; margin-bottom: 70px;">
 		<% if @items.present? %>
-		<% @items.each do |item| %>
-		<div class="col-xs-3">
-			<!-- <div class="flex"> -->
-				<table class="table-borderless item-search-results-table">
-					<tbody>
-						<tr>
-							<td><%= image_tag item["mediumImageUrls"][0] %></td>
-						</tr>
-						<tr>
-							<td><%= item.name %></td>
-						</tr>
-						<tr>
-							<td class="item-price"><%= number_with_delimiter(item.price) %>円</td>
-						</tr>
-						<tr>
-							<td><%= link_to 'レビューを見る', save_item_path(item["itemCode"]), class:"btn half-review_btn" %>
-								<%= link_to '楽天で購入', "#{item.url}", class:"btn half-rakuten_btn" %>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			<!-- </div> -->
-		</div>
-		<% end %>
+			<% @items.each do |item| %>
+				<div class="col-xs-3">
+					<!-- <div class="flex"> -->
+						<table class="table-borderless item-search-results-table">
+							<tbody>
+								<tr>
+									<td><%= image_tag item["mediumImageUrls"][0] %></td>
+								</tr>
+								<tr>
+									<td><%= item.name %></td>
+								</tr>
+								<tr>
+									<td class="item-price"><%= number_with_delimiter(item.price) %>円</td>
+								</tr>
+								<tr>
+									<td><%= link_to 'レビューを見る', save_item_path(item["itemCode"]), class:"btn half-review_btn" %>
+										<%= link_to '楽天で購入', "#{item.url}", class:"btn half-rakuten_btn" %>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					<!-- </div> -->
+				</div>
+			<% end %>
 		<% end %>
 	</div>
 	<div align="center">
