@@ -6,12 +6,14 @@
 			<%= flash[:notice] %>
 	    </div>
 	    <div class="flex-introduction">
-			<%= attachment_image_tag @user, :profile_photo, format: 'jpg', fallback: "no_image.jpg", size: "150x150", class:"profile-photo" %>
-			<p><strong><%= @user.name %></strong></p>
-			<p><%= @user.introduction %><p>
-			<% if @user.id == current_user.id %>
-				<%= link_to 'プロフィールを編集する', edit_user_path(@user) %>
-			<% end %>
+			<%= attachment_image_tag @user, :profile_photo, format: 'jpg', fallback: "user_no_image.png", size: "60x60", class:"profile-photo" %>
+			<div class="username-intro">
+				<div><strong><%= @user.name %></strong></div>
+				<p><%= @user.introduction %></p>
+				<% if @user.id == current_user.id %>
+					<%= link_to 'プロフィールを編集する', edit_user_path(@user) %>
+				<% end %>
+			</div>
 			<ul class="list-group">
 				<li class="list-group-item"><i class="fas fa-pen"></i> レビューを書いた数: <%= @user.reviews.count %></li>
 				<li class="list-group-item"><i class="far fa-bookmark"></i> ブックマークした数: <%= @user.bookmarks.count %></li>
