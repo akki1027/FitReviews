@@ -1,50 +1,41 @@
 <div class="container">
   <div class="row">
-    <div class="nav navbar-nav navbar-left" style="margin-top: 10px;">
-      <%= link_to 'FitReviews', fr_top_path, class:"FitReviews_logo" %>
+    <div class="nav navbar navbar-left">
+      <%= link_to 'FitReviews', fr_top_path, class:"FitReviews-logo-black" %>
     </div>
-    <div class="nav navbar-nav navbar-right" style="margin-top: 10px;">
-      <%= link_to '既にアカウントをお持ちの方',new_user_session_path, class:"to_sign_up_page" %>
+    <div class="nav navbar navbar-right">
+      <%= link_to '既にアカウントをお持ちの方',new_user_session_path %>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-4"></div>
-    <div class="col-xs-4">
-      <div class="sign_up_info">
-        <h1>FitReviews</h1>
-
+    <div class="sign-up-info">
+      <div>
+        <h1 class="FitReviews-logo-black">FitReviews</h1>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
-
-          <table class="table-borderless" style="margin-top:50px; margin-bottom:15px; border-collapse: separate;">
+          <table class="table-borderless sign-up-table">
             <tbody>
-              <!-- ユーザーネーム記入欄 -->
-              <tr class="field">
-                <td><%= f.text_field :name, autofocus: true, placeholder: "ユーザーネーム" %></td>
+              <tr>
+                <td class="sign-up-field"><%= f.text_field :name, autofocus: true, placeholder: "ユーザーネーム", class:"form-control" %></td>
               </tr>
-              <!-- メールアドレス記入欄 -->
-              <tr class="field">
-                <td><%= f.email_field :email, autocomplete: "email", placeholder: "メールアドレス" %></td>
+              <tr>
+                <td class="sign-up-field"><%= f.email_field :email, autocomplete: "email", placeholder: "メールアドレス", class:"form-control" %></td>
               </tr>
-              <!-- パスワード記入欄 -->
-              <tr class="field">
-                <td><%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード" %><br>
-                  <div style="text-align: right">
+              <tr>
+                <td class="sign-up-field"><%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード", class:"form-control" %>
+                  <div align="right">
                     <% if @minimum_password_length %>
                     <em>(<%= @minimum_password_length %> 文字以上)</em>
                     <% end %>
                   </div>
                 </td>
               </tr>
-              <!-- パスワード確認欄 -->
-              <tr class="field">
-                <td><%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード(確認用)" %></td>
+              <tr>
+                <td class="sign-up-field"><%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード(確認用)", class:"form-control" %></td>
               </tr>
               <tr>
-                <td>
-                  <div class="actions">
-                    <%= f.submit "新規登録", class:"btn btn-primary", style:"background-color: #0099CC; width: 100%;" %>
-                  </div>
+                <td class="sign-up-field">
+                    <%= f.submit "新規登録", class:"btn btn-primary submit1"%>
                 </td>
               </tr>
             </tbody>
@@ -55,42 +46,3 @@
   </div>
 </div>
 <!-- <%= render "devise/shared/links" %> -->
-
-<style>
-  .FitReviews_logo {
-    color: black;
-    font-size: 24px;
-    font-family: Helvetica;
-    font-weight: bold;
-  }
-  .FitReviews_logo:hover {
-    color: black;
-    text-decoration: none;
-  }
-  .container {
-    text-align: center;
-  }
-  .sign_up_info {
-    margin-top: 50px;
-    margin-bottom: 200px;
-    box-shadow: 0 0 10px gray;
-    padding: 10px 10px 50px 10px;
-  }
-  table {
-    margin: 50px auto 15px;
-    border-collapse: separate;
-  }
-  td {
-    padding-top: 10px;
-    padding-bottom: 4px;
-  }
-  input[type="text"], input[type="email"], input[type="password"] {
-    height: 30px;
-    width: 250px;
-    border-radius: 3px;
-    border: 1px solid #222222;
-  }
-  .to_sign_up_page:active {
-    color: black;
-  }
-</style>

@@ -1,51 +1,48 @@
 <div class="container">
 	<div class="row">
-		<%= link_to user_path(@user) do %>
-			<h4><i class="fas fa-chevron-left"></i> 戻る</h4>
-		<% end %>
-	</div>
-	<div class="row">
-		<% if @user.errors.any? %>
-		<div class="alert">
-			<ul>
-				<% @user.errors.full_messages.each do |message| %>
-				<li><%= message %></li>
+		<%= form_for @user do |f| %>
+			<div class="user-form">
+				<%= link_to user_path(@user) do %>
+					<p><i class="fas fa-chevron-left"></i> 保存せずに戻る</p>
 				<% end %>
-			</ul>
-		</div>
-		<% end %>
-	</div>
-
-	<%= form_for @user do |f| %>
-		<div class="row">
-			<div class="col-xs-7">
-				<%= image_tag 'no_image.jpg', style:"height: 300px; width: 100%;" %>
-				<%= f.attachment_field :background_photo, placeholder: "背景画像" %>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-6">
-				<%= image_tag 'no_image.jpg', size: '200x200', style:"border-radius: 50%;" %>
-				<%= f.attachment_field :profile_photo, placeholder: "プロファイル画像" %>
-			</div>
-			<div class="col-xs-6">
-				<table class="table-borderless">
+				<% if @user.errors.any? %>
+					<div class="alert">
+						<ul>
+							<% @user.errors.full_messages.each do |message| %>
+							<li><%= message %></li>
+							<% end %>
+						</ul>
+					</div>
+				<% end %>
+				<div class="form">
+					<%=f.label :profile_photo, 'プロフィール画像を追加する' %>
+					<div class="preview preview-profile-photo"></div>
+					<%= f.attachment_field :profile_photo, class:"file" %>
+				</div>
+				<table>
 					<tbody>
 						<tr>
 							<td><%= f.label :name, 'ユーザーネーム' %></td>
-							<td><%= f.text_field :name %></td>
+							<td><%= f.text_field :name, class:"user-input-field form-control" %></td>
 						</tr>
 						<tr>
-							<td><%= f.label :introduction, '自己紹介' %>
-							<td><%= f.text_area :introduction, style:"border-radisu: 10px;" %></td>
+							<td><%= f.label :introduction, '自己紹介' %></td>
+							<td><%= f.text_area :introduction, class:"form-control", rows: "7", class:"user-input-field form-control" %></td>
 						</tr>
 						<tr>
 							<td><%= f.label :email, "メールアドレス" %></td>
-							<td><%= f.email_field :email %></td>
+							<td><%= f.email_field :email, class:"user-input-field form-control" %></td>
 						</tr>
 						<tr>
-							<td><%= f.submit "更新する", class:"btn btn-primary", style:"background-color: #0099CC; width: 100%;" %></td>
-							<td><%= link_to '退会する', users_leave_path(@user), class:"btn btn-danger", style:"background-color: #DC143C;" %></td>
+							<td></td>
+							<td class="user-form-submit">
+								<div>
+									<%= f.submit "変更を保存する", class:"btn btn-sm btn-blue" %>
+								</div>
+								<div>
+									<%= link_to '退会手続きに進む', users_leave_path(@user), class:"btn btn-sm btn-red" %>
+								</div>
+							</td>
 						</tr>
 					</tbody>
 				</table>
@@ -53,25 +50,3 @@
 		<% end %>
 	</div>
 </div>
-
-<style>
-	h4 {
-		color: black;
-	}
-	table {
-	    margin: 0 auto;
-	    border-collapse: separate;
-	}
-	td {
-		height: 40px;
-		padding: 10px;
-	    padding-top: 10px;
-	    padding-bottom: 4px;
-	}
-	input[type="text"], input[type="email"] {
-	    height: 30px;
-	    width: 250px;
-	    border-radius: 3px;
-	    border: 1px solid #222222;
-	}
-</style>

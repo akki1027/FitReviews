@@ -1,29 +1,25 @@
 <%= render 'homes/header' %>
 
-<div class="container">
-	<div class="row" style="margin-top: 50px; margin-bottom: 70px;">
+<div class="search-results">
+	<div class="flex-item-tables">
 		<% if @items.present? %>
 			<% @items.each do |item| %>
-				<div class="col-xs-3">
-					<table class="table-borderless item-search-results-table">
-						<tbody>
-							<tr>
-								<td><%= image_tag item["mediumImageUrls"][0] %></td>
-							</tr>
-							<tr>
-								<td><%= item.name %></td>
-							</tr>
-							<tr>
-								<td class="item-price">価格: <%= number_with_delimiter(item.price) %>円</td>
-							</tr>
-							<tr>
-								<td>
-									<%= link_to 'この商品のレビューを書く', save_item_path(item["itemCode"]), class:"btn wider-review_btn" %>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+				<table class="table-borderless item-table">
+					<tbody>
+						<tr>
+							<td><%= image_tag item["mediumImageUrls"][0] %></td>
+						</tr>
+						<tr>
+							<td><%= item.name %></td>
+						</tr>
+						<tr>
+							<td class="item-price">価格: <%= number_with_delimiter(item.price) %>円</td>
+						</tr>
+						<tr>
+							<td><%= link_to 'この商品のレビューを書く', save_item_path(item["itemCode"]), class:"btn wide-review-btn" %></td>
+						</tr>
+					</tbody>
+				</table>
 			<% end %>
 		<% end %>
 	</div>

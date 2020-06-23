@@ -2,6 +2,71 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+//---top-----------------------------------------------------
+.top-container {
+	margin: 0 auto;
+	text-align: center;
+}
+.top-btn {
+	font-size: 20px;
+	color: black;
+	border-radius: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.top-btn:hover {
+	background-color: #F8F8FF;
+}
+.top-btn:active {
+	-webkit-transform: translateY(4px);
+	transform: translateY(4px);/*下に動く*/
+}
+.top-flex {
+	display: flex;
+	justify-content: center;
+}
+#my-profile-pic {
+	height: 200px;
+	width: auto;
+	border-radius: 5%;
+}
+.my-introduction {
+	margin-left: 10px;
+	text-align: left;
+}
+.skills-flex {
+	display: flex;
+	justify-content: space-around;
+}
+.skills-list {
+	text-align: left;
+}
+.top-row:nth-child(n+3) {
+	margin-top: 100px;
+}
+#skills {
+	box-shadow: 0 5px 17px -7px gray;
+	padding: 10px;
+}
+.portfolio-list {
+	margin-top: 60px;
+}
+.portfolio-pic {
+	height: 300px;
+	width: auto;
+	padding: 10px;
+	margin: 10px;
+	border: 1px solid #AAAAAA;
+	border-radius: 5px;
+}
+#contact {
+	margin-bottom: 50px;
+	box-shadow: 0 5px 17px -7px gray;
+	padding: 10px;
+}
+//---end-----------------------------------------------------
+
+//---fr_top--------------------------------------------------
 .mv {
 	height: 600px;
 	width: 100%;
@@ -9,7 +74,13 @@
 	background-position: center;
 	background-size: cover;
 }
+.fr-top-search-bar {
+	margin-top: 180px;
+	text-align: center;
+}
+//---end-----------------------------------------------------
 
+//---about---------------------------------------------------
 #about_background {
 	height: 640px;
 	width: 100%;
@@ -31,4 +102,40 @@
 	position: relative;
 	top: 200px;
 	padding-bottom: 3px;
+}
+//---end-----------------------------------------------------
+
+@media screen and (max-width:768px) {
+	.top-row:nth-child(1) {
+		margin-right: 0;
+	}
+	.fa-plus-square, .fa-minus-square {
+		font-size: 25px;
+	}
+	#top-nav-list {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 60%;
+		min-height: 100%;
+		z-index: 1;
+		background-color: white;
+		padding: 0;
+	}
+	#top-nav-list > li {
+		margin-bottom: 5px;
+	}
+	.top-flex {
+		flex-direction: column;
+	}
+	.skills-flex {
+		flex-direction: column;
+	}
+	.skills-list {
+		text-align: center;
+	}
+	.portfolio-pic {
+	    height: 175px;
+	}
 }

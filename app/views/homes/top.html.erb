@@ -1,43 +1,49 @@
-<div class="container">
-	<div class="row">
-		<header class="nav navbar-nav navbar-right">
-			<a class="btn btn-sm" href="#profile"><h4>Portfolio</h4></a>
-			<a class="btn btn-sm" href="#skills"><h4>Skills</h4></a>
-			<a class="btn btn-sm" href="#works"><h4>Works</h4></a>
-			<a class="btn btn-sm" href="#contact"><h4>Contact</h4></a>
-		</header>
+<div class="container top-container">
+	<div class="row top-row">
+		<nav class="nav navbar-nav navbar-right">
+			<button id="show-nav"><i class="fas fa-plus-square"></i></button>
+			<ul id="top-nav-list">
+				<li id="hide-nav"><i class="fas fa-minus-square"></i></li>
+				<li><a class="btn btn-sm top-btn" href="#profile"><h4>Profile</h4></a></li>
+				<li><a class="btn btn-sm top-btn" href="#skills"><h4>Skills</h4></a></li>
+				<li><a class="btn btn-sm top-btn" href="#portfolio"><h4>Portfolio</h4></a></li>
+				<li><a class="btn btn-sm top-btn" href="#contact"><h4>Contact</h4></a></li>
+			</ul>
+		</nav>
 	</div>
-	<div class="row">
-		<!-- プロフィール -->
+	<!-- プロフィール -->
+	<div class="row top-row">
 		<div id="profile">
-			<h1><i class="fas fa-user"></i></i> Profile</h1><br>
-			<!-- /*要素を中心に寄せる*/ -->
-			<div class="flex" style="align-items: center;">
+			<h1><i class="fas fa-user"> Profile</i></h1><br>
+			<div class="top-flex">
 				<div>
-					<%= image_tag asset_path('Akihito_Otsuka.png'), id:"profile_pic" %>
+					<%= image_tag asset_path('Akihito_Otsuka.png'), id:"my-profile-pic" %>
 				</div>
-				<div style="margin-left: 10px;">
-					<h4 style="text-align: left;">はじめまして。大塚章仁と申します。<br>
+				<div class="my-introduction">
+					<h4>はじめまして。大塚章仁と申します。<br>
 						現在、DMM WEBCAMPに通いプログラミングの勉強をしております。<br>
 						よろしくお願いいたします。</h4>
 				</div>
 			</div>
 		</div>
-		<!-- スキル -->
+	</div>
+	<!-- スキル -->
+	<div class="row top-row">
 		<div id="skills">
-			<h1><i class="fas fa-lightbulb"></i> Skills</h1>
-			<div class="flex" style="text-align: left">
-				<div style="margin-right: 230px;">
-					<h3><i class="fas fa-desktop"></i>　プログラミング言語</h3>
+			<h1><i class="fas fa-lightbulb"> Skills</i></h1>
+			<div class="skills-flex skills-list">
+				<div>
+					<h3><i class="fas fa-desktop"> プログラミング言語</i></h3>
 					<h4>HTML</h4>
 					<h4>CSS</h4>
 					<h4>Ruby</h4>
-					<h4>Ruby on Rails</h4>
 					<h4>JavaScript</h4>
 					<h4>jQuery</h4>
+					<h3><i class="far fa-window-maximize"> フレームワーク</i></h3>
+					<h4>Ruby on Rails</h4>
 				</div>
 				<div>
-					<h3><i class="fas fa-box-open"></i> その他</h3>
+					<h3><i class="fas fa-box-open"> その他</i></h3>
 					<h4>Git/GitHub</h4>
 					<h4>Slack</h4>
 					<h4>ZOOM</h4>
@@ -46,16 +52,23 @@
 				</div>
 			</div>
 		</div>
-		<!-- ワーク -->
-		<div id="works">
-			<h1><i class="fas fa-briefcase"></i> Works</h1>
-			<!-- FitReviewsへのパス -->
-			<h3 id="fit_reviews">FitReviews</h3>
-			<%= link_to fr_top_path  do %>
-				<%= image_tag asset_path('fr_top.png'), id:"portfolio_pic" %>
-			<% end %>
+	</div>
+	<!-- ワーク -->
+	<div class="row top-row">
+		<div id="portfolio">
+			<h1><i class="fas fa-briefcase"> Portfolio</i></h1>
+			<div class="portfolio-list">
+				<!-- FitReviewsへ -->
+				<h3>ポートフォリオ名: FitReviews</h3>
+				<small>(下の画像をクリック)</small><br>
+				<%= link_to fr_top_path do %>
+					<%= image_tag asset_path('fr_top.png'), class:"portfolio-pic" %>
+				<% end %>
+			</div>
 		</div>
-		<!-- お問い合わせ -->
+	</div>
+	<!-- お問い合わせ -->
+	<div class="row top-row">
 		<div id="contact">
 			<h1><i class="fas fa-envelope"></i> Contact</h1>
 			<h4>お問い合わせはこちらからよろしくお願いいたします。</h4>
@@ -65,56 +78,7 @@
 </div>
 
 <style>
-	body {
-		margin: 0 auto;
-		text-align: center;
-	}
-	#skills, #works, #contact {
-		margin-top: 100px;
-	}
-	#contact {
-		margin-bottom: 50px;
-	}
-	.flex {
-		display: flex;
-		/*要素の中央よせ*/
-		justify-content: center;
-	}
-	.btn {
-		font-size: 20px;
-		color: black;
-		border-radius: 10px;
-		margin-top: 5px;
-		margin-bottom: 5px;
-	}
-	.btn:hover {
-		background-color: #F8F8FF;
-	}
-	.btn:active {
-		-webkit-transform: translateY(4px);
-		transform: translateY(4px);/*下に動く*/
-		box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
-	}
-	#skills, #contact {
-		box-shadow: 5px 5px 17px -7px gray;
-		padding: 10px;
-	}
-	#fit_reviews {
-		margin-top: 60px;
-	}
-	#profile_pic {
-		height: 200px;
-		width: auto;
-		border-radius: 5%;
-	}
-	#portfolio_pic {
-		height: 300px;
-		width: auto;
-		padding: 10px;
-		border: 1px solid #AAAAAA;
-		border-radius: 5px;
-	}
-	footer {
-		display: none;
-	}
+footer {
+	display: none;
+}
 </style>

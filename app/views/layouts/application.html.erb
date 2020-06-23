@@ -4,7 +4,7 @@
     <title>FitReviews</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <!-- Font Awesome -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <script src="https://kit.fontawesome.com/ef1a52193c.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -13,26 +13,20 @@
   <body>
     <%= yield %>
     <!-- フッター -->
-    <footer style="margin-top: 50px; background-color: #EEEEEE">
+    <footer class="footer-background">
       <div class="container">
-        <div class="row" style="text-align: left; padding-top: 20px">
-          <h5 style="color: #DD0000; padding-left: 10px;">About</h5>
-          <%= link_to 'FitReviewsとは', about_path, class:"btn btn-sm about-btn" %>
-          <style>
-            .about-btn {
-              color: black;
-            }
-            .about-btn:hover {
-              color: black;
-              background-color: transparent;
-            }
-          </style>
-        </div>
         <div class="row">
-          <h6 style="text-align: center;">Copyright ©︎ 2020 FitReviews, All Rights Reserved.</h6>
-          <p align="center"><a href="https://webservice.rakuten.co.jp/" target="_blank">Supported by Rakuten Developers</a></p>
+          <div align="left">
+            <h5 class="about-headline">About</h5>
+            <%= link_to 'FitReviewsとは', about_path, class:"btn btn-sm about-btn" %>
+          </div>
+          <div class="credit" align="center">
+            <h6>Copyright ©︎ 2020 by FitReviews</h6>
+            <p><a href="https://webservice.rakuten.co.jp/" target="_blank">Supported by Rakuten Developers</a></p>
+          </div>
         </div>
       </div>
     </footer>
+    <!-- end -->
   </body>
 </html>

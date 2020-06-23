@@ -2,51 +2,46 @@
 
 <div class="container">
 	<h3 align="center"><i class="fas fa-crown"></i><strong> ランキング</strong></h3>
-	<div style="text-align: center; margin: 20px;">
+	<div align="center">
 		<%= form_tag :items_ranking, method: :get do  %>
 			<%= select_tag 'genreId', options_for_select({プロテイン: 567603, 栄養補助スナック: 566807, その他のサプリ: 563727, 筋トレ器具: 201865}, 567603), include_blank: false %>
 			<%= submit_tag "検索", :name => nil %>
 		<% end %>
 	</div>
-	<div class="ranking_area">
+</div>
+
+<div class="container">
+	<div class="row">
 		<% if @rankings.present? %>
 			<% @rankings.each do |item_id,rate,i| %>
 				<% ranking = Item.find(item_id) %>
 				<% item = RakutenWebService::Ichiba::Item.search(itemCode: ranking.rakuten_item_id) %>
 				<% if item.first.present? %>
-					<div class="row">
-						<div class="col-xs-1"></div>
-						<div class="col-xs-10">
-							<table class="table">
-								<tbody>
-									<tr>
-										<td><%= image_tag item.first["mediumImageUrls"][0] %></td>
-										<td><span class="rate-star" id="ranking_<%= ranking.id %>"></span>
-											<script>
-												$('#ranking_<%= ranking.id %>').raty({
-													starOff:  '<%= asset_path('star-off.png') %>',
-										            starOn : '<%= asset_path('star-on.png') %>',
-										            starHalf: '<%= asset_path('star-half.png') %>',
-													half: true,
-													readOnly: true,
-													score: '<%= rate.to_d.to_s %>',
-												});
-											</script>
-											<%= rate.to_d.to_s %><br>
-											<h5><%= ranking.name %></h5><br>
-											<div class="item-price">価格: <%= number_with_delimiter(item.first["itemPrice"]) %>円</div>
-											<div class="flex">
-												<div>
-													<%= link_to 'レビューを見る', save_item_path(item.first["itemCode"]), class:"btn review_btn" %>
-												</div>
-												<div>
-													<%= link_to '楽天の購入ページへ', "#{item.first.url}", class:"btn rakuten_btn" %>
-												</div>
-											</div>
-										</td>
-									</tr>
-								</tbody>
-							</table>
+					<div class="item">
+						<div class="flex-parent-column">
+							<div class="first-child" align="center">
+								<%= image_tag item.first["mediumImageUrls"][0] %>
+							</div>
+							<div class="second-child">
+								<span class="rate-star" id="ranking_<%= ranking.id %>"></span>
+								<script>
+									$('#ranking_<%= ranking.id %>').raty({
+										starOff:  '<%= asset_path('star-off.png') %>',
+							            starOn : '<%= asset_path('star-on.png') %>',
+							            starHalf: '<%= asset_path('star-half.png') %>',
+										half: true,
+										readOnly: true,
+										score: '<%= rate.to_d.to_s %>',
+									});
+								</script>
+								<%= rate.to_d.to_s %><br>
+								<h4><%= ranking.name %></h4>
+								<h5 class="item-price">価格: <%= number_with_delimiter(item.first["itemPrice"]) %>円</h5>
+								<div class="flex-action">
+									<%= link_to 'レビューを見る', save_item_path(item.first["itemCode"]), class:"btn review-btn" %>
+									<%= link_to '楽天の購入ページへ', "#{item.first.url}", class:"btn rakuten-btn" %>
+								</div>
+							</div>
 						</div>
 					</div>
 				<% end %>
@@ -54,13 +49,3 @@
 		<% end %>
 	</div>
 </div>
-
-<style>
-	.flex {
-		display: flex;
-		justify-content: flex-end;
-	}
-	.flex > div {
-		margin-left: 20px;
-	}
-</style>

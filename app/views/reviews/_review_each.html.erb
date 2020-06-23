@@ -1,76 +1,58 @@
-<div class="row all-review" id="reviews-<%= review.id %>">
-	<div class="col-xs-3">
-		<% if item.first.present? %>
-			<%= image_tag item.first["mediumImageUrls"][0] %>
-		<% end %>
-		<%= link_to reviews_new_path(review.item.rakuten_item_id) do %>
-			<h6 style="font-weight: normal;"><%= review.item.name %></h6>
-		<% end %>
-	</div>
-	<div class="col-xs-2">
-		<%= attachment_image_tag review.user, :profile_photo, size: "60x60", style:"border-radius: 50%;" %><br>
-		<i class="fas fa-user"> <span style="font-weight: normal; color: #444444;"><%= review.user.name %></span></i>
-	</div>
-	<div class="col-xs-7">
-		<table class="table-borderless" style="width: 100%; table-layout: fixed;">
-			<tbody>
-				<tr>
-					<td id="rated_<%= review.id %>"></td>
-					<script>
-						$('#rated_<%= review.id %>').raty({
-							starOff:  '<%= asset_path('star-off.png') %>',
-				            starOn : '<%= asset_path('star-on.png') %>',
-				            starHalf: '<%= asset_path('star-half.png') %>',
-							half: true,
-							readOnly: true,
-							score: <%= review.rate %>,
-						});
-					</script>
-					<td style="width: 20%;">
+<% if item.first.present? %>
+	<div class="row each-review" id="reviews-<%= review.id %>">
+		<div class="flex-parent-column">
+			<div class="first-child">
+				<%= image_tag item.first["mediumImageUrls"][0] %>
+				<%= link_to reviews_new_path(review.item.rakuten_item_id) do %>
+					<h6><%= item.first['itemName'] %></h6>
+				<% end %>
+			</div>
+			<div class="second-child">
+				<%= attachment_image_tag review.user, :profile_photo, size: "60x60", class:"profile-photo" %>
+				<span class="user-name"><%= review.user.name %></span>
+				<div class="review-first-section">
+					<div>
+						<span id="rated_<%= review.id %>"></span>
+						<script>
+							$('#rated_<%= review.id %>').raty({
+								starOff:  '<%= asset_path('star-off.png') %>',
+					            starOn : '<%= asset_path('star-on.png') %>',
+					            starHalf: '<%= asset_path('star-half.png') %>',
+								half: true,
+								readOnly: true,
+								score: <%= review.rate %>,
+							});
+						</script>
+					</div>
+					<div>
 						<% if review.user == current_user %>
 							<div class="dropdown">
-								<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="fas fa-angle-down" style="font-size: 25px; color: #666666;"></i>
+								<button class="btn dropdown-toggle dropdown-angle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+									<i class="fas fa-angle-down"></i>
 								</button>
-								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="text-align: center;">
-									<%= link_to edit_review_path(review), class:"dropdown-item btn" do %>
-							  			<i class="far fa-edit" style="color: #00FF3B"> 編集</i>
-							  		<% end %><br>
-							  		<%= link_to review_path(review), method: :delete, remote: true, "data-confirm" => "本当に削除しますか？", class:"dropdown-item btn" do %>
-							  			<i class="far fa-trash-alt" style="color: red"> 削除</i>
-							  		<% end %>
-							  	</div>
+								<ul class="dropdown-menu">
+									<li><%= link_to edit_review_path(review), class:"btn" do %>
+											<i class="far fa-edit"> 編集</i>
+										<% end %>
+									</li>
+									<li><%= link_to review_path(review), method: :delete, remote: true, "data-confirm" => "本当に削除しますか？", class:"btn" do %>
+											<i class="far fa-trash-alt"> 削除</i>
+										<% end %>
+									</li>
+								</ul>
 							</div>
 						<% end %>
-					</td>
-				</tr>
-				<tr>
-					<td><%= review.body %></td>
-				</tr>
-				<tr>
-					<td><%= attachment_image_tag review, :item_image, :fill, 330, 300 %></td>
-				</tr>
-				<tr>
-					<td id="like_<%= review.id %>">
-						<%= render 'likes/like', review: review %>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+					</div>
+				</div>
+				<div>
+					<div class="word-break">
+						<%= review.body %><br>
+					</div>
+					<%= attachment_image_tag review, :item_image, :fill, 330, 300 %><br>
+					<span id="like_<%= review.id %>">
+					<%= render 'likes/like', review: review %></span>
+				</div>
+			</div>
+		</div>
 	</div>
-</div>
-
-<style>
-	.all-review {
-		padding: 10px;
-		border-bottom: 1px solid #CCCCCC;
-	}
-	.dropdown-toggle {
-		border-radius: 50%;
-	}
-	.dropdown-toggle:hover {
-		border-radius: 50%;
-		background-color: #DDDDDD;
-		transition: 0.5s;
-	}
-</style>
+<% end %>

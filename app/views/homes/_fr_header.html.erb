@@ -1,24 +1,6 @@
-<nav class="navbar navbar-color flex-nav">
+<nav class="navbar">
 	<div class="navbar-left">
 		<%= link_to 'FitReviews', fr_top_path, class:"FitReviews-logo" %>
-	</div>
-	<div class="nav-search">
-		<div class="search_for_purchase">
-			<!-- 購入したい商品を検索する -->
-			<%= form_tag :items_search, method: :get do  %>
-				<%= select_tag 'genreId', options_for_select({プロテイン: 567603, 栄養補助スナック: 566807, その他のサプリ: 563727, 筋トレ器具: 201865}, 567603), include_blank: false, class:"search-select" %>
-				<%= text_field_tag 'keyword', params[:keyword], required: true, class:"search-text-field" %>
-				<%= submit_tag "検索", :name => nil, class:"search-submit" %>
-			<% end %>
-		</div>
-		<div class="search_for_review">
-			<!-- レビューする商品を検索する -->
-			<%= form_tag :reviews_search, method: :get do  %>
-				<%= select_tag 'genreId', options_for_select({プロテイン: 567603, 栄養補助スナック: 566807, その他のサプリ: 563727, 筋トレ器具: 201865}, 567603), include_blank: false, class:"search-select" %>
-				<%= text_field_tag 'keyword', params[:keyword], required: true, class:"search-text-field" %>
-				<%= submit_tag "検索", :name => nil, class:"search-submit" %>
-			<% end %>
-		</div>
 	</div>
 	<div class="navbar-right">
 		<% if user_signed_in? %>
@@ -46,12 +28,3 @@
 		<% end %>
 	</div>
 </nav>
-
-<style>
-.search_for_purchase {
-	display: none;
-}
-.search_for_review {
-	display: none;
-}
-</style>

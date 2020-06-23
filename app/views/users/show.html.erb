@@ -5,80 +5,69 @@
 		<div class="flash-notice">
 			<%= flash[:notice] %>
 	    </div>
-		<div>
-			<%= attachment_image_tag @user, :background_photo, format: 'jpg', fallback: "no_image.jpg", style:"width: 100%; height: 500px" %>
-			<%= attachment_image_tag @user, :profile_photo, format: 'jpg', fallback: "no_image.jpg", size: "200x200", style:"border-radius: 50%; position: absolute; top: 450px; left: 250px; border: 5px solid white;" %>
+	    <div class="flex-introduction">
+			<%= attachment_image_tag @user, :profile_photo, format: 'jpg', fallback: "no_image.jpg", size: "150x150", class:"profile-photo" %>
+			<p><strong><%= @user.name %></strong></p>
+			<p><%= @user.introduction %><p>
+			<% if @user.id == current_user.id %>
+				<%= link_to 'プロフィールを編集する', edit_user_path(@user) %>
+			<% end %>
+			<ul class="list-group">
+				<li class="list-group-item"><i class="fas fa-pen"></i> レビューを書いた数: <%= @user.reviews.count %></li>
+				<li class="list-group-item"><i class="far fa-bookmark"></i> ブックマークした数: <%= @user.bookmarks.count %></li>
+				<li class="list-group-item"><i class="far fa-grin-beam"></i> いいねをした数: <%= @user.likes.count %></li>
+			</ul>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-xs-5"></div>
-		<div class="col-xs-6">
-			<table class="table-borderless" id="introduction_table" cellspacing="50">
-				<thead>
-					<tr>
-						<th><%= @user.name %></th>
-					</tr>
-				</thead>
-					<tr>
-						<td><%= @user.introduction %></td>
-					</tr>
-					<tr>
-						<td><% if @user.id == current_user.id %>
-								<%= link_to 'プロフィールを編集する', edit_user_path(@user) %>
-							<% end %>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-	 	<!-- ブックマークした商品 -->
+</div>
+
+<!-- ブックマークした商品 -->
+<div class="container">
 	<%= link_to users_my_bookmarks_path(@user) do %>
-		<i class="fas fa-bookmark" id="to-bookmark-list"><span class="user-span"> ブックマークした商品</span></i>
+		<button class="btn2"><i class="far fa-bookmark"></i> ブックマークした商品一覧</button>
 	<% end %>
-	<div class="row" id="my-bookmarks">
+</div>
+<div class="my-bookmarks">
+	<div class="flex-item-tables">
 		<% @bookmarks.each_with_index do |bookmark,i| %>
 			<% if @bookmarked_items[i].first.present? %>
-				<div class="col-xs-3">
-					<table class="table-borderless" id="show-bookmarked-items-table">
-						<tbody>
-							<tr>
-								<td>
-									<div class="flex">
-										<div><%= image_tag @bookmarked_items[i].first["mediumImageUrls"][0] %></div>
-										<div align="center"><span id="bookmark_<%= bookmark.item.id %>">
-										<%= render 'bookmarks/bookmark', saved_item: bookmark.item %></span></div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td><%= link_to reviews_new_path(bookmark.item.rakuten_item_id) do %>
-										<%= bookmark.item.name %>
-									<% end %>
-								</td>
-							</tr>
-							<tr>
-								<td class="item-price">価格: <%= number_with_delimiter(@bookmarked_items[i].first["itemPrice"]) %>円</td>
-							</tr>
-							<tr>
-								<td>
-									<%= link_to 'レビューを見る', save_item_path(@bookmarked_items[i].first["itemCode"]), class:"btn half-review_btn" %>
-									<%= link_to '楽天で購入', "#{@bookmarked_items[i].first.url}", class:"btn half-rakuten_btn" %>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+				<table class="table-borderless item-table">
+					<tbody>
+						<tr>
+							<td><%= image_tag @bookmarked_items[i].first["mediumImageUrls"][0] %>
+								<span class="flex-action" id="bookmark_<%= bookmark.item.id %>">
+									<%= render 'bookmarks/bookmark', saved_item: bookmark.item %></span>
+							</td>
+						</tr>
+						<tr>
+							<td><%= link_to reviews_new_path(bookmark.item.rakuten_item_id) do %>
+									<%= bookmark.item.name %>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<td class="item-price">価格: <%= number_with_delimiter(@bookmarked_items[i].first["itemPrice"]) %>円</td>
+						</tr>
+						<tr>
+							<td>
+								<%= link_to 'レビューを見る', save_item_path(@bookmarked_items[i].first["itemCode"]), class:"btn m-review-btn" %>
+								<%= link_to '楽天で購入', "#{@bookmarked_items[i].first.url}", class:"btn m-rakuten-btn" %>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			<% end %>
 		<% end %>
 	</div>
 	<div align="center">
 		<%= paginate @bookmarks %>
 	</div>
+</div>
 
-	<!-- レビューした商品 -->
+<!-- レビューした商品 -->
+<div class="container">
 	<%= link_to users_my_reviews_path(@user) do %>
-		<i class="far fa-comment-alt" id="to-reviews-list"><span class="user-span"> レビューを書いた商品</span></i>
+		<button class="btn2"><i class="fas fa-pen"></i> レビューを書いた商品一覧</button>
 	<% end %>
 	<div class="row" id="my-reviews">
 		<% @reviews.each_with_index do |review,i| %>
@@ -93,14 +82,5 @@
 <style>
 	.search_for_purchase {
 		display: block;
-	}
-	th, td {
-		padding-bottom: 20px;
-		width: 80%;
-		word-break: break-all;
-	}
-	.flex {
-		display: flex;
-		justify-content: space-between;
 	}
 </style>

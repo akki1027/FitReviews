@@ -1,21 +1,21 @@
 <div class="container">
 	<div class="row">
-		<%= link_to edit_user_path(@user) do %>
-			<h4 class="go-back"><i class="fas fa-chevron-left"></i> 戻る</h4>
-		<% end %>
-	</div>
-	<div class="row">
-		<div class="delete-account">
-			<h3 style="margin-top: 100px;">退会すると、ユーザー登録情報や<br>
-				ユーザーに関する全ての情報が閲覧できなくなります。</h3>
-			<h3 style="margin-top: 45px;"><strong>本当に退会しますか？</strong></h3>
-
-			<div style="margin-top: 50px; text-align: center">
-				<% if user_signed_in? && @user.id == current_user.id %>
-				    <%= link_to "退会する", users_hide_path(@user), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger", style:"width: 10%;" %>
-				<% end %>
-			</div>
+		<div class="deactive-account-form">
+			<%= link_to edit_user_path(@user) do %>
+				<p><i class="fas fa-chevron-left"></i> 戻る</p>
+			<% end %>
+			<ul class="list-group deactivate-account-form-list">
+				<li class="list-group-item list-group-item-danger">退会申請</li>
+				<li class="list-group-item">
+					退会をされますと、この会員に関する全ての情報が削除されます。<br>
+					本当に退会しますか？
+					<div class="deactivate-account-btn">
+						<% if user_signed_in? && @user.id == current_user.id %>
+						    <%= link_to "退会する", users_hide_path(@user), method: :put, "data-confirm" => "退会申請を確定する。", class:"btn btn-sm btn-red" %>
+						<% end %>
+					</div>
+				</li>
+			</ul>
 		</div>
 	</div>
 </div>
-

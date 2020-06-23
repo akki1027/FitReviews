@@ -17,81 +17,508 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.top-space {
+	margin-top: 50px;
+}
+.rakuten-btn {
+	color: #FFF;
+	background-color: rgb(191, 0, 0);
+	margin: 5px;
+	padding: 3px;
+}
+.rakuten-btn:hover {
+	color: #FFF;
+	background-color: #8F0502;
+}
+.review-btn {
+	color: white;
+	background-color: #FEA608;
+	margin: 5px;
+	padding: 3px;
+}
+.review-btn:hover {
+	color: white;
+	background-color: #E29407;
+}
+
+//---sign-in-log-in------------------------------------------
+.FitReviews-logo-black {
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: Helvetica;
+}
+.FitReviewslogo-black:hover {
+  color: black;
+  text-decoration: none;
+}
+.submit1 {
+  width: 100%;
+  color: white;
+  background-color: #0099CC;
+  padding: 3px;
+}
+.sign-up-info, .user-login-info {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  width: 270px;
+  padding: 20px;
+  margin: 50px auto 200px;
+  box-shadow: 0 0 5px gray;
+}
+.sign-up-table, .login-table {
+  width: 220px;
+}
+.sign-up-field, .login-field {
+  padding: 5px 0;
+}
+//---end-----------------------------------------------------
+
+//---header--------------------------------------------------
+#top-nav-list > li:not(:nth-child(1)) {
+	float: left;
+	list-style: none;
+	text-decoration: none;
+}
+.navbar-color {
+	background-color: #343434;
+}
+.navbar {
+	margin-bottom: 0;
+	padding: 7px 50px;
+}
+.nav-search {
+	display: inline-block;
+	margin-left: 30px;
+}
+.FitReviews-logo {
+	color: white;
+	font-size: 24px;
+	font-weight: bold;
+    font-family: Helvetica;
+}
+.FitReviews-logo:hover {
+	color: white;
+	text-decoration: none;
+}
+#nav-list {
+	display: flex;
+	flex-direction: row;
+	list-style: none;
+	text-decoration: none;
+}
+#nav-list > li {
+	margin-left: 5px;
+}
+.nav-ranking-btn {
+	color: #FFCC00;
+	border: 1px solid #FFCC00;
+}
+.nav-ranking-btn:hover {
+	color: #FFFFAA;
+	border: 1px solid #FFFFAA;
+}
+.nav-btn {
+	color: white;
+}
+.nav-btn:hover {
+	color: white;
+	border: 1px solid white;
+}
+#show-nav, #hide-nav, .nav-user-info {
+	display: none;
+}
+//---end-----------------------------------------------------
+
+//---footer--------------------------------------------------
+.footer-background {
+  margin-top: 50px;
+  background-color: #EEEEEE
+}
+.about-headline {
+  color: #DD0000; padding-left: 10px;
+}
+//---end-----------------------------------------------------
+
+//---search--------------------------------------------------
+.search-select {
+	height: 35px;
+	border-radius: 5px;
+	border-color: transparent;
+	background-color: white;
+	cursor: pointer;
+}
+.fr-search-text-field {
+	height: 35px;
+    width: 60%;
+    border-radius: 5px;
+    border-color: transparent;
+}
+.search-text-field {
+	height: 35px;
+    width: 16vw;
+    border-radius: 5px;
+    border-color: transparent;
+}
+.search-submit {
+    height: 35px;
+    border-radius: 5px;
+    border-color: transparent;
+}
+//---end-----------------------------------------------------
+
+//---flash-notice--------------------------------------------
 .flash-notice {
 	margin-top: 5px;
 	color: #0099CC;
 	text-align: left;
 }
+//---end-----------------------------------------------------
 
-.rakuten_btn {
+//---word-break----------------------------------------------
+.word-break {
+	word-break: break-all;
+	overflow-wrap: break-word;
+}
+//---end-----------------------------------------------------
+
+//---btn-----------------------------------------------------
+.btn2 {
 	color: black;
-	background-color: #FFFF99;
-	border: 1px solid #CCCCCC;
-	padding: 10px;
+	font-size:15px;
+	background-color: #E8E8E8;
+	border-radius:5px;
 }
+//---end-----------------------------------------------------
 
-.rakuten_btn:hover {
-	background-color: #FFFF00;
+//---user-name-----------------------------------------------
+.user-name {
+	font-weight: bold;
+	margin-left: 5px;
 }
-
-.half-rakuten_btn {
-	color: black;
-	background-color: #FFFF99;
-	border: 1px solid #CCCCCC;
-	width: 45%;
+.profile-photo {
+	border-radius: 50%;
+	object-fit: cover;
 }
+//---end-----------------------------------------------------
 
-.half-rakuten_btn:hover {
-	background-color: #FFFF00;
-}
-
-.review_btn {
-	color: white;
-	border-radius: 5px;
-	background-color: #FF773E;;
-	padding: 10px;
-}
-
-.review_btn:hover {
-	color: white;
-	background-color: #FF4F02;
-}
-
-.half-review_btn {
-	color: white;
-	border-radius: 5px;
-	background-color: #FF773E;;
-	width: 50%;
-}
-
-.half-review_btn:hover {
-	color: white;
-	background-color: #FF4F02;
-}
-
-.wider-review_btn {
-	color: white;
-	border-radius: 5px;
-	background-color: #FF773E;
-	width: 100%;
-}
-
-.wider-review_btn:hover {
-	color: white;
-	background-color: #FF4F02;
-}
-
-.item-search-results-table {
-	height: 400px;
-	margin: 10px;
-	border-top: 1px solid #CCCCCC;
-}
-
+//---item-price----------------------------------------------
 .item-price {
 	color: #777777;
-	text-align: right;	
+	text-align: right;
 }
+//---end-----------------------------------------------------
 
+//----rate-star----------------------------------------------
 .rate-star {
 	color: #FFCC00;
+}
+//---end-----------------------------------------------------
+
+//---fixed-sized-text-area-----------------------------------
+.fixed-size {
+	resize: none;
+}
+//---end-----------------------------------------------------
+
+//---like-icon-----------------------------------------------
+.liked {
+	font-size: 20px;
+	padding: 7px;
+	border-radius: 50%;
+	color: #FEA608;
+}
+.not-liked {
+	font-size: 20px;
+	padding: 7px;
+	border-radius: 50%;
+	color: black;
+}
+.liked:hover, .not-liked:hover {
+	background-color: #FFEDC1;
+	transition: 0.5s;
+}
+//---end-----------------------------------------------------
+
+//---bookmark-icon-------------------------------------------
+.bookmark {
+	font-size: 20px;
+	padding: 7px;
+}
+.bookmarked {
+	font-size: 20px;
+	padding: 7px;
+	color: #2C7CFF;
+}
+//---end-----------------------------------------------------
+
+//---item-table----------------------------------------------
+.search-results, .my-bookmarks, .my-reviews {
+	margin: 10px 0;
+}
+.flex-item-tables {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: space-around;
+}
+.item-table {
+	width: 20vw;
+	height: 400px;
+	margin: 20px;
+	border-bottom: 1px solid #CCCCCC;
+}
+.wide-review-btn {
+	color: white;
+	background-color: #FEA608;
+	width: 100%;
+	padding: 3px;
+}
+.wide-review-btn:hover {
+	color: white;
+	background-color: #E29407;
+	padding: 3px;
+}
+.m-rakuten-btn {
+	color: #FFF;
+	background-color: rgb(191, 0, 0);
+	width: 45%;
+	padding: 3px;
+}
+.m-rakuten-btn:hover {
+	color: #FFF;
+	background-color: #8F0502;
+	padding: 3px;
+}
+.m-review-btn {
+	color: white;
+	background-color: #FEA608;
+	width: 50%;
+	padding: 3px;
+}
+.m-review-btn:hover {
+	color: white;
+	background-color: #E29407;
+	padding: 3px;
+}
+//---end-----------------------------------------------------
+
+//---flex-column---------------------------------------------
+.flex-parent-column {
+	display: flex;
+	justify-content: space-around;
+}
+.first-child {
+	width: 20vw;
+}
+.second-child {
+	width: 50vw;
+}
+//---end-----------------------------------------------------
+
+//---item----------------------------------------------------
+.item {
+	margin-top: 30px;
+	padding: 10px 0;
+	border-bottom: 1px solid #CCCCCC;
+}
+.flex-action {
+	display: flex;
+	text-align: center;
+	justify-content: flex-end;
+	flex-wrap: wrap;
+}
+.flex-action > div {
+	margin-top: 5px;
+	margin-left: 10px;
+}
+//---end-----------------------------------------------------
+
+//---review-form---------------------------------------------
+.write-a-review-btn {
+	color: black;
+	background-color: #E8E8E8;
+	border: 1px solid black;
+	border-radius: 3px;
+	margin: 5px;
+	padding: 5px;
+}
+.form:nth-child(1) {
+	margin: 20px 0;
+	padding: 20px 0;
+}
+.form:nth-child(n+2) {
+	margin: 20px 0;
+	padding: 20px 0;
+	border-top: 1px solid #CCCCCC;
+}
+.form-submit-btn {
+	color: white;
+	background-color: #FEA608;
+	padding: 5px 10px;
+	float: right;
+}
+#review-form {
+	display: none;
+	border-bottom: 1px solid #CCCCCC;
+	padding: 30px;
+}
+//---end-----------------------------------------------------
+
+//---each-review---------------------------------------------
+.each-review {
+	border-bottom: 1px solid #CCCCCC;
+	margin: 20px 0;
+}
+.review-first-section {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 5px;
+}
+.review-first-section > :first-child {
+    margin-right: auto;
+}
+/*dropdown*/
+.fa-angle-down {
+	color: #8B8B8B;
+	font-size: 20px;
+}
+.dropdown-angle {
+	border-radius: 50%;
+}
+.dropdown-angle:hover {
+	border-radius: 50%;
+	background-color: #FFEDC1;
+	transition: 0.5s;
+}
+//---end-----------------------------------------------------
+
+@media screen and (max-width:1024px) {
+	.m-review-btn {
+		width: 100%;
+	}
+	.m-rakuten-btn {
+		width: 100%;
+		margin-top: 10px;
+	}
+	.flex-nav {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.flex-nav > div:nth-child(2) {
+		order: 3;
+	}
+	.flex-nav > div:nth-child(3) {
+		margin-left: auto;
+	}
+	.nav-search {
+		width: 100vw;
+		margin-left: 0;
+	}
+	.search-text-field {
+	    width: 40vw;
+	}
+}
+
+@media screen and (max-width:768px) {
+    .flex-item-tables {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.item-table {
+		width: 30vw;
+		height: 400px;
+		margin: 20px;
+		border-bottom: 1px solid #CCCCCC;
+	}
+	.m-review-btn {
+		width: 100%;
+	}
+	.m-rakuten-btn {
+		width: 100%;
+		margin-top: 10px;
+	}
+	.flex-parent-column {
+		display: flex;
+		justify-content: space-around;
+		flex-direction: column;
+		align-items: center;
+	}
+	.first-child {
+		width: 90vw;
+	}
+	.second-child {
+		width: 90vw;
+	}
+//---header--------------------------------------------------
+	#top-nav-list > li:not(:nth-child(1)){
+		clear: both;
+		margin-left: 20px;
+	}
+	.navbar {
+		padding: 7px 5px;
+	}
+	.navbar-left {
+		display: inline-block;
+	}
+	.navbar-right {
+		display: inline-block;
+		float: right;
+	}
+	#show-nav, .nav-user-info {
+		display: block;
+	}
+	.fa-bars {
+		color: white;
+	}
+	#hide-nav {
+		display: block;
+		text-align: right;
+    	padding: 5px 10px 0 0;
+	}
+	#nav-list {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 60%;
+		min-height: 100%;
+		z-index: 1;
+		background-color: white;
+		padding: 0;
+	}
+	#nav-list > li:nth-child(-n+2) {
+		margin-left: 0;
+		color: white;
+		background-color: #343434;
+	}
+	#nav-list > li:nth-child(n+2) {
+		margin-bottom: 5px;
+	}
+	.nav-btn  {
+		color: black;
+	}
+	.nav-btn:hover {
+		color: black;
+		border: 1px solid white;
+	}
+//---end-----------------------------------------------------
+}
+
+@media screen and (max-width:425px) {
+	.item-table {
+		width: 100%;
+		height: 400px;
+		margin: 20px;
+		border-bottom: 1px solid #CCCCCC;
+	}
+	.m-review-btn {
+		width: 50%;
+	}
+	.m-rakuten-btn {
+		width: 45%;
+		margin-top: 0;
+	}
 }

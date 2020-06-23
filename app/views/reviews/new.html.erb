@@ -1,46 +1,39 @@
 <%= render 'homes/header' %>
 
 <div class="container">
-	<div class="row" id="review_item_area">
-		<% @item.each do |item | %>
-			<div class="col-xs-3">
-				<%= image_tag item["mediumImageUrls"][0], style:"height: 250px; width: 250px" %>
-			</div>
-			<div class="col-xs-8">
-				<table class="table-borderless">
-					<tbody>
-						<tr>
-							<td><h4><%= item.name %></h4></td>
-						</tr>
-						<tr>
-							<td class="form-group row" id="rate_for_this_item"></td>
-							<script>
-								$('#rate_for_this_item').raty({
-									starOff:  '<%= asset_path('star-off.png') %>',
-							        starOn : '<%= asset_path('star-on.png') %>',
-							        starHalf: '<%= asset_path('star-half.png') %>',
-									half: true,
-									size: 36,
-									readOnly: true,
-									score: '<%= @average_rate %>',
-								});
-							</script>
-						</tr>
-						<tr>
-							<td><h5 class="item-price">価格: <%= item["itemPrice"] %>円</h5></td>
-						</tr>
-					</tbody>
-				</table>
-				<div class="flex">
-					<div><i class="far fa-comment-alt" id="show_form"></i><br>
-						<h6>レビューを書く</h6>
+	<div class="row item">
+		<% @item.each do |item| %>
+			<div class="flex-parent-column">
+				<div class="first-child" align="center">
+					<%= image_tag item["mediumImageUrls"][0], style:"height: 150px; height: 150px;" %>
+				</div>
+				<div class="second-child">
+					<div class="flex-action">
+						<div id="bookmark_<%= @saved_item.id %>">
+							<%= render 'bookmarks/bookmark', saved_item: @saved_item %>
+						</div>
 					</div>
-					<div id="bookmark_<%= @saved_item.id %>">
-						<!-- ブックマーク -->
-						<%= render 'bookmarks/bookmark', saved_item: @saved_item %>
-					</div>
-					<div>
-						<%= link_to '楽天の購入ページへ', "#{item.url}", class:"btn btn-lg rakuten_btn" %>
+					<h4><%= item.name %></h4>
+					<span class="form-group" id="rate_for_this_item"></span>
+					<script>
+						$('#rate_for_this_item').raty({
+							starOff:  '<%= asset_path('star-off.png') %>',
+					        starOn : '<%= asset_path('star-on.png') %>',
+					        starHalf: '<%= asset_path('star-half.png') %>',
+							half: true,
+							size: 36,
+							readOnly: true,
+							score: '<%= @average_rate %>',
+						});
+					</script>
+					<h5 class="item-price">価格: <%= number_with_delimiter(item["itemPrice"]) %>円</h5>
+					<div class="flex-action">
+						<div>
+							<a class="btn write-a-review-btn" id="show-form"><i class="fas fa-pen"></i> この商品のレビューを書く</a>
+						</div>
+						<div class="wrap-bottom">
+							<%= link_to '楽天の購入ページへ', "#{item.url}", class:"btn rakuten-btn" %>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -48,6 +41,7 @@
 	</div>
 	<%= render 'review_form', item: @item, review: @review %>
 </div>
+
 <div class="container" id="review_<%= @saved_item.id %>">
 	<% @reviews.each do |review| %>
 		<%= render 'review_each', review: review, item: @item %>
@@ -57,45 +51,8 @@
 	</div>
 </div>
 
-<script>
-	$('#rate_by_star').raty({
-		starOff:  '<%= asset_path('star-off.png') %>',
-	    starOn : '<%= asset_path('star-on.png') %>',
-	    starHalf: '<%= asset_path('star-half.png') %>',
-		half: true,
-		// Reviewモデルのrateカラムに評価の値を保存する
-		scoreName: 'review[rate]',
-	});
-</script>
-
 <style>
 	.search_for_review {
 		display: block;
-	}
-	#rate_for_this_item {
-		color: #FFCC00;
-	}
-	td {
-		/*レビューの文字が多いと、無限に横に延びるのを防ぐため*/
-		word-break: break-all;
-		padding-bottom: 15px;
-	}
-	.flex {
-		display: flex;
-		text-align: center;
-		justify-content: flex-end;
-	}
-	.flex > div {
-		margin-left: 20px;
-	}
-	.fa-comment-alt {
-		font-size: 25px;
-		color: #FF3300;
-		border-radius: 50%;
-		padding: 10px;
-	}
-	.fa-comment-alt:hover {
-		background-color: #FFD5EC;
-		cursor: pointer;
 	}
 </style>

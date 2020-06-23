@@ -3,66 +3,62 @@
 <div class="container">
 	<div class="row">
 		<%= form_for @review do |f| %>
-			<div class="col-xs-4 left-area">
-				<span id="referrer"></span>
-				<script>
-					document.getElementById("referrer").innerHTML='<input type="hidden" value="' +document.referrer +'" name="referrer">';
-				</script>
-				<%= attachment_image_tag @review.user, :profile_photo, size: "60x60", style:"border-radius: 10px;" %>
-				<%= @review.user.name %><br>
-				<div class="item-image-area">
-					<%= image_tag 'no_image.jpg', size: '150x150' %>
-					<%= f.attachment_field :item_image, placeholder: "商品画像を追加する" %>
+			<div class="col-xs-2"></div>
+			<div class="col-xs-8">
+				<div>
+					<div class="form">
+						<span id="referrer"></span>
+						<script>
+							document.getElementById("referrer").innerHTML='<input type="hidden" value="' +document.referrer +'" name="referrer">';
+						</script>
+						<%= attachment_image_tag @review.user, :profile_photo, size: "60x60", class:"profile-photo" %>
+						<%= @review.user.name %><br>
+					</div>
+					<div class="form">
+						<p><strong>レビュー対象商品</strong></p>
+						<% @item = RakutenWebService::Ichiba::Item.search(itemCode: @review.item.rakuten_item_id) %>
+						<div>
+							<%= image_tag @item.first["mediumImageUrls"][0] %>
+						</div>
+						<div>
+							<%= @item.first.name.truncate(100) %>
+						</div>
+					</div>
+					<div class="form">
+						<div class="add-photo">
+							<p><strong>写真を変更する</strong></p>
+							<div class="preview"></div>
+							<%= f.attachment_field :item_image, class:"file" %>
+						</div>
+					</div>
+					<div class="form">
+						<p><strong>総合評価</strong></p>
+						<span class="form-group" id="edit_rated_star"><%= f.hidden_field :rate %></span>
+						<script>
+							$(function() {
+							$('#edit_rated_star').raty({
+								size: 100,
+								starOff:  '<%= asset_path('star-off.png') %>',
+							    starOn : '<%= asset_path('star-on.png') %>',
+							    starHalf: '<%= asset_path('star-half.png') %>',
+								// halfをtrueにすることで、星半分刻みで評価できる
+								half: true,
+								// Reviewモデルのrateカラムに評価の値を保存する
+								scoreName: 'review[rate]',
+								score: <%= @review.rate %>,
+							});
+							});
+						</script>
+					</div>
+					<div class="form">
+						<p><strong>ここにレビューを記入してください</strong></p>
+						<%= f.text_area :body, class:"fixed-size form-control", rows: "15" %>
+					</div>
+					<div class="form">
+						<%= f.submit "投稿", class:"btn form-submit-btn" %>
+					</div>
 				</div>
-			</div>
-			<div class="col-xs-7 right-area">
-				<table class="table-borderless" style="width: 100%;">
-					<tbody>
-						<tr>
-							<td class="form-group row" id="edit_rated_star">
-				    			<%= f.hidden_field :rate %>
-							<link rel="stylesheet" href="/assets/jquery.raty.css">
-							<script src="/assets/jquery.raty.js"></script>
-							<script>
-								// turbolinksをloadにすることで、読み込みのエラーを起きないようにする
-								$(function() {
-								$('#edit_rated_star').raty({
-									size: 100,
-									starOff:  '<%= asset_path('star-off.png') %>',
-								    starOn : '<%= asset_path('star-on.png') %>',
-								    starHalf: '<%= asset_path('star-half.png') %>',
-									// halfをtrueにすることで、星半分刻みで評価できる
-									half: true,
-									// Reviewモデルのrateカラムに評価の値を保存する
-									scoreName: 'review[rate]',
-									score: <%= @review.rate %>,
-								});
-								});
-							</script>
-				    		</td>
-						</tr>
-						<tr>
-							<td><%= f.text_area :body, class:"form-control", rows: "15" %></td>
-						</tr>
-						<tr>
-							<td><%= f.submit "保存", class:"btn review_submit_btn" %></td>
-						</tr>
-					</tbody>
-				</table>
 			</div>
 		<% end %>
 	</div>
 </div>
-
-<style>
-	.left-area, .right-area, .item-image-area {
-		margin-top: 50px;
-	}
-	td {
-		padding-bottom: 15px;
-	}
-	.review_submit_btn {
-		color: white;
-		background-color: #FF3333;
-	}
-</style>

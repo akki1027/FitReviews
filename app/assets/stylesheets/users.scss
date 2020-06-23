@@ -2,65 +2,63 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-#introduction_table {
-	display: inline-block;
+.flex-introduction {
+	min-height: 300px;
 	width: 100%;
-	padding: 30px;
-	box-shadow: 5px 5px 20px -7px gray;
-}
-
-#introduction_table, #my-bookmarks, #my-reviews {
-	margin-top: 60px;
-}
-
-#show-bookmarked-items-table {
-	height: 450px;
-	margin: 10px;
-	border-top: 1px solid #CCCCCC;
+	margin-bottom: 20px;
+	padding: 10px;
 	border-bottom: 1px solid #CCCCCC;
 }
-
-.user-span {
-	color: black;
-	font-size: 20px;
-	font-weight: normal;
+.list-group {
+	display: inline-block;
 }
-
-#to-bookmark-list {
-	font-size: 25px;
-	padding: 10px;
-	color: #2C7CFF;
-	margin-top: 60px;
+//---user-form-----------------------------------------------
+.user-form {
+	margin-top: 10px;
+	margin-left: 10px;
 }
-
-#to-bookmark-list:hover {
-	background-color: #D9E5FF;
-	border-radius: 5px;
+.user-form > table > tbody > tr > td:nth-child(1) {
+	padding-right: 10px;
 }
-
-#to-reviews-list {
-	font-size: 25px;
-	padding: 10px;
-	color: #FF3300;
-	margin-top: 60px;
+.user-form > table > tbody > tr > td:nth-child(2) {
+	width: 50vw;
 }
-
-#to-reviews-list:hover {
-	background-color: #FFD5EC;
-	border-radius: 5px;
+.user-input-field {
+	margin-bottom: 10px;
+	resize: none;
 }
-
-#bookmarked-items-table {
-	height: 450px;
-	margin: 10px;
-	border-top: 1px solid #CCCCCC;
+.user-form-submit {
+	display: flex;
+    justify-content: flex-end;
 }
-
-.delete-account {
-	text-align: center;
-	margin-bottom: 330px;
+.user-form-submit > div:nth-child(2) {
+	margin-left: 5px;
 }
-
-.go-back {
-	color: black;
+.btn-blue {
+	color: white;
+	background-color: #0099CC;
 }
+.btn-red {
+	color: white;
+	background-color: #B6443D;
+}
+.preview-profile-photo > img {
+	border-radius: 50%;
+	width: 200px;
+	height: 200px;
+	object-fit: cover;
+}
+//---end-----------------------------------------------------
+
+//---deactivate-account--------------------------------------
+.deactive-account-form {
+	margin-top: 10px;
+	margin-left: 10px;
+}
+.deactivate-account-form-list > .list-group-item {
+	width: 50vw;
+}
+.deactivate-account-btn {
+	margin-top: 10px;
+}
+//---end-----------------------------------------------------

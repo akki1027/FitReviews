@@ -1,153 +1,75 @@
 <div class="mv">
-	<%= render 'homes/header' %>
+	<%= render 'homes/fr_header' %>
 	<div class="container">
-	    <!-- フラッシュノーティス -->
 	    <div class="row">
 		    <div class="flash-notice">
 				<%= flash[:notice] %>
 		    </div>
 		</div>
-	    <!-- 検索欄 -->
-	    <div class="row" style="margin-top: 180px; text-align: center;">
-	    	<%= form_tag :items_search, method: :get do  %>
-	    		<%= select_tag 'genreId', options_for_select({プロテイン: 567603, 栄養補助スナック: 566807, その他のサプリ: 563727, 筋トレ器具: 201865}, 567603), include_blank: false %>
-				<%= text_field_tag 'keyword', params[:keyword], placeholder:"プロテイン、プロテインバー、シェイカー...", required: true %>
-				<%= submit_tag "検索" %>
+	    <div class="row">
+			<div class="fr-top-search-bar">
+		    	<%= form_tag :items_search, method: :get do  %>
+		    		<%= select_tag 'genreId', options_for_select({プロテイン: 567603, 栄養補助スナック: 566807, その他のサプリ: 563727, 筋トレ器具: 201865}, 567603), include_blank: false, class:"search-select" %>
+					<%= text_field_tag 'keyword', params[:keyword], placeholder:"プロテイン、プロテインバー、シェイカー...", required: true, class:"fr-search-text-field" %>
+					<%= submit_tag "検索", class:"search-submit" %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="top-space">
+		<%= link_to items_ranking_path do %>
+			<h3 align="center"><i class="fas fa-crown"></i><strong> ランキング</strong></h3>
+		<% end %>
+		<div class="row">
+			<% @rankings.each do |item_id,rate,i| %>
+				<% ranking = Item.find(item_id) %>
+				<% item = RakutenWebService::Ichiba::Item.search(itemCode: ranking.rakuten_item_id) %>
+				<!-- 楽天の商品は無くなることがあるため、なくなった商品は表示しない -->
+				<% if item.first.present? %>
+					<div class="item">
+						<div class="flex-parent-column">
+							<div class="first-child" align="center">
+								<%= image_tag item.first["mediumImageUrls"][0] %>
+							</div>
+							<div class="second-child">
+								<span class="rate-star" id="ranking_<%= ranking.id %>"></span>
+								<script>
+									$('#ranking_<%= ranking.id %>').raty({
+										starOff:  '<%= asset_path('star-off.png') %>',
+							            starOn : '<%= asset_path('star-on.png') %>',
+							            starHalf: '<%= asset_path('star-half.png') %>',
+										half: true,
+										readOnly: true,
+										score: '<%= rate.to_d.to_s %>',
+									});
+								</script>
+								<%= rate.to_d.to_s %>
+								<h4><%= ranking.name %></h4>
+								<h5 class="item-price">価格: <%= number_with_delimiter(item.first["itemPrice"]) %>円</h5>
+								<div class="flex-action">
+									<%= link_to 'レビューを見る', save_item_path(item.first["itemCode"]), class:"btn review-btn" %>
+									<%= link_to '楽天の購入ページへ', "#{item.first.url}", class:"btn rakuten-btn" %>
+								</div>
+							</div>
+						</div>
+					</div>
+				<% end %>
 			<% end %>
 		</div>
 	</div>
 </div>
 
-<div class="container" style="margin-top: 50px;">
-	<h3 align="center"><i class="fas fa-crown"></i><strong> ランキング</strong></h3>
-	<div class="ranking_area">
-		<% @rankings.each do |item_id,rate,i| %>
-		<% ranking = Item.find(item_id) %>
-		<% item = RakutenWebService::Ichiba::Item.search(itemCode: ranking.rakuten_item_id) %>
-		<!-- 楽天の商品は無くなることがあるため、なくなった商品は表示しない -->
-			<% if item.first.present? %>
-				<div class="row">
-					<div class="col-xs-1">
-					</div>
-					<div class="col-xs-10">
-						<table class="table">
-							<tbody>
-								<tr>
-									<td>
-										<%= image_tag item.first["mediumImageUrls"][0] %>
-										</td>
-									<td>
-									<span class="rate-star" id="ranking_<%= ranking.id %>"></span>
-									<script>
-										$('#ranking_<%= ranking.id %>').raty({
-											starOff:  '<%= asset_path('star-off.png') %>',
-								            starOn : '<%= asset_path('star-on.png') %>',
-								            starHalf: '<%= asset_path('star-half.png') %>',
-											half: true,
-											readOnly: true,
-											score: '<%= rate.to_d.to_s %>',
-										});
-									</script>
-									<%= rate.to_d.to_s %><br>
-									<h5><%= ranking.name %></h5><br>
-									<div class="item-price">価格: <%= number_with_delimiter(item.first["itemPrice"]) %>円</div>
-									<div class="flex">
-										<div>
-											<%= link_to 'レビューを見る', save_item_path(item.first["itemCode"]), class:"btn review_btn" %>
-										</div>
-										<div>
-											<%= link_to '楽天の購入ページへ', "#{item.first.url}", class:"btn rakuten_btn" %>
-										</div>
-									</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			<% end %>
+<div class="container">
+	<div class="top-space">
+		<h3 align="center"><strong>最近書かれたレビュー</strong></h3>
+		<% @reviews.each_with_index do |review,i| %>
+			<%= render 'reviews/review_each', review: review, item: @items[i] %>
 		<% end %>
+		<div align="center">
+			<%= paginate @reviews %>
+		</div>
 	</div>
 </div>
-
-<div class="container" style="margin-top: 50px;">
-	<h3 align="center" style="margin-bottom: 30px"><strong>最近書かれたレビュー</strong></h3>
-	<% @reviews.each_with_index do |review,i| %>
-		<%= render 'reviews/review_each', review: review, item: @items[i] %>
-	<% end %>
-	<div align="center">
-		<%= paginate @reviews %>
-	</div>
-</div>
-
-<style>
-    /*header*/
-    .FitReviews_logo {
-	    color: white;
-  	}
-  	.FitReviews_logo:hover {
-	    color: white;
-	    text-decoration: none;
-  	}
-	.btn {
-		color: white;
-	}
-	.btn:hover {
-		color: white;
-		background-color: transparent;
-		border: 1px solid white;
-	}
-	.ranking {
-		border: 1px solid white;
-	}
-	.ranking:hover {
-		color: #FFFFAA;
-		background-color: transparent;
-		border: 1px solid #FFFFAA;
-	}
-	/*search bar*/
-	select {
-		width: 13%;
-		height: 40px;
-	}
-	input[type="text"] {
-        width: 60%;
-        height: 40px;
-        border-radius: 5px;
-        border-color: transparent;
-        box-shadow: 0 0 5px gray;
-    }
-    input[type="submit"] {
-    	width: 5%;
-        height: 40px;
-        border-color: transparent;
-        box-shadow: 0 0 10px gray;
-    }
-	.flex {
-		display: flex;
-		justify-content: flex-end;
-	}
-	.flex > div {
-		margin-left: 20px;
-	}
-	.rakuten_btn {
-		color: black;
-		background-color: #FFFF99;
-		border: 1px solid #CCCCCC;
-		padding: 10px;
-	}
-	.rakuten_btn:hover {
-		color: black;
-		background-color: #FFFF00;
-	}
-	.review_btn {
-    	color: white;
-    	border-radius: 5px;
-    	background-color: #FF773E;;
-    	padding: 10px;
-    }
-    .review_btn:hover {
-    	color: white;
-    	background-color: #FF4F02;
-    }
-</style>

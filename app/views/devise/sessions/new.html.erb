@@ -1,47 +1,38 @@
 <div class="container">
   <div class="row">
-    <div class="nav navbar-nav navbar-left" style="margin-top: 10px;">
-      <%= link_to 'FitReviews', fr_top_path, class:"FitReviews_logo" %>
+    <div class="nav navbar navbar-left">
+      <%= link_to 'FitReviews', fr_top_path, class:"FitReviews-logo-black" %>
     </div>
-    <div class="nav navbar-nav navbar-right" style="margin-top: 10px;">
-      <%= link_to 'まだアカウントをお持ちでない方',new_user_registration_path, class:"to_sign_up_page" %>
+    <div class="nav navbar navbar-right">
+      <%= link_to 'まだアカウントをお持ちでない方',new_user_registration_path %>
     </div>
   </div>
-  <!-- ログイン情報入力欄 -->
   <div class="row">
-    <!-- フラッシュノーティス -->
-    <div style="margin-top: 5px; text-align: center; color: white; background-color: red; border-radius: 3px; width: 42%;">
+    <div class="flash-notice">
       <%= flash[:notice] %>
     </div>
-    <div class="col-xs-4"></div>
-    <div class="col-xs-4">
-      <div class="user_login_info">
-        <h1>FitReviews</h1>
-
+    <div class="user-login-info">
+      <div>
+        <h1 class="FitReviews-logo-black">FitReviews</h1>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <table class="table-borderless">
+          <table class="table-borderless login-table">
             <tbody>
-              <!-- メールアドレス入力欄 -->
-              <tr class="field">
-                <td><%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "ユーザーネーム" %></td>
+              <tr>
+                <td class="login-field"><%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "ユーザーネーム", class:"form-control" %></td>
               </tr>
-              <!-- パスワード入力欄 -->
-              <tr class="field">
-                <td><%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード" %>
+              <tr>
+                <td class="login-field"><%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class:"form-control" %>
                   <% if devise_mapping.rememberable? %>
-                    <div class="field">
+                    <div>
                       <%= f.check_box :remember_me %>
                       <%= f.label :remember_me, "パスワードを保存する" %>
                     </div>
                   <% end %>
                 </td>
               </tr>
-              <!-- ログインボタン -->
               <tr>
-                <td>
-                  <div class="actions">
-                    <%= f.submit "ログイン", class:"btn btn-primary", style:"background-color: #0099CC; width: 100%;" %>
-                  </div>
+                <td class="login-field">
+                  <%= f.submit "ログイン", class:"btn btn-primary submit1" %>
                 </td>
               </tr>
             </tbody>
@@ -51,46 +42,4 @@
     </div>
   </div>
 </div>
-    <!-- <%= render "devise/shared/links" %> -->
-
-<style>
-  .FitReviews_logo {
-    color: black;
-    font-size: 24px;
-    font-family: Helvetica;
-    font-weight: bold;
-  }
-  .FitReviews_logo:hover {
-    color: black;
-    text-decoration: none;
-  }
-  .container {
-    text-align: center;
-  }
-  img {
-
-  }
-  .user_login_info {
-    margin-top: 50px;
-    margin-bottom: 280px;
-    box-shadow: 0 0 10px gray;
-    padding: 10px 10px 50px 10px;
-  }
-  table {
-    margin: 50px auto 15px;
-    border-collapse: separate;
-  }
-  td {
-    padding-top: 10px;
-    padding-bottom: 4px;
-  }
-  input[type="text"], input[type="password"] {
-    height: 30px;
-    width: 250px;
-    border-radius: 3px;
-    border: 1px solid #222222;
-  }
-  .to_sign_up_page:active {
-    color: black;
-  }
-</style>
+<!-- <%= render "devise/shared/links" %> -->
