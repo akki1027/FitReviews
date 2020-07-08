@@ -1,16 +1,14 @@
 <% if user_signed_in? %>
 	<% if review.liked_by?(current_user) %>
 		<%= link_to review_likes_path(review), method: :delete, remote: true do %>
-			<i class="far fa-grin-beam liked"></i><br>
+			<i class="far fa-grin-beam liked"><span class="like-text"><%= review.likes.count %> 役に立った</span></i>
 		<% end %>
-			<h6><%= review.likes.count %> 役に立った</h6>
 	<% else %>
-		<%= link_to review_likes_path(review), method: :post, remote: true do%>
-			<i class="far fa-smile-beam not-liked"></i><br>
+		<%= link_to review_likes_path(review), method: :post, remote: true do %>
+			<i class="far fa-smile-beam not-liked"><span class="like-text"><%= review.likes.count %> 役に立った</span></i>
 		<% end %>
-			<h6><%= review.likes.count %> 役に立った</h6>
 	<% end %>
 <% else %>
-		<i class="far fa-smile-beam not-liked"></i><br>
-		<h6><%= review.likes.count %> 役に立った</h6>
+		<i class="far fa-smile-beam not-liked"></i>
+		<%= review.likes.count %> 役に立った
 <% end %>

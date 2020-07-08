@@ -194,12 +194,11 @@
 
 //---user-name-----------------------------------------------
 .user-name {
-	font-weight: bold;
-	margin-left: 5px;
+	margin-left: 3px;
 }
 .profile-photo {
-	height: 60px;
-	width: 60px;
+	height: 40px;
+	width: 40px;
 	border-radius: 50%;
 	object-fit: cover;
 }
@@ -226,20 +225,25 @@
 
 //---like-icon-----------------------------------------------
 .liked {
-	font-size: 20px;
+	font-size: 15px;
 	padding: 7px;
-	border-radius: 50%;
+	border-radius: 5px;
 	color: #FEA608;
 }
 .not-liked {
-	font-size: 20px;
+	font-size: 15px;
 	padding: 7px;
-	border-radius: 50%;
+	border-radius: 5px;
 	color: black;
 }
 .liked:hover, .not-liked:hover {
 	background-color: #FFEDC1;
 	transition: 0.5s;
+}
+.like-text {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	margin-left: 3px;
 }
 //---end-----------------------------------------------------
 
