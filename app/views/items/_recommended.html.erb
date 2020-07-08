@@ -1,0 +1,45 @@
+<h4 class="recommend-title">おすすめ商品</h4>
+<div class="flex-recommended-item-tables">
+  <% rankings.each do |item_id, rate, i| %>
+    <% ranking = Item.find(item_id) %>
+    <% item = RakutenWebService::Ichiba::Item.search(itemCode: ranking.rakuten_item_id) %>
+    <!-- 楽天の商品は無くなることがあるため、なくなった商品は表示しない -->
+    <% if item.first.present? %>
+      <div class="recommended-item-table-layout">
+        <table class="table-borderless recommended-item-table">
+          <tbody>
+            <tr>
+              <td>
+                <span class="rate-star" id="ranking_<%= ranking.id %>"></span>
+                  <script>
+                    $('#ranking_<%= ranking.id %>').raty({
+                      starOff:  '<%= asset_path('star-off.png') %>',
+                      starOn : '<%= asset_path('star-on.png') %>',
+                      starHalf: '<%= asset_path('star-half.png') %>',
+                      half: true,
+                      readOnly: true,
+                      score: '<%= rate.to_d.to_s %>',
+                    });
+                  </script>
+                  <%= rate.to_d.to_s %>
+              </td>
+            </tr>
+            <tr align="center">
+              <td><%= image_tag item.first["mediumImageUrls"][0] %></td>
+            </tr>
+            <tr>
+              <td><%= ranking.name %></td>
+            </tr>
+            <tr>
+              <td class="item-price">価格: <%= number_with_delimiter(item.first["itemPrice"]) %>円</td>
+            </tr>
+            <tr>
+              <td><%= link_to 'レビューを見る', save_item_path(item.first["itemCode"]), class:"btn m-review-btn" %>
+                <%= link_to '楽天で購入', "#{item.first.url}", class:"btn m-rakuten-btn" %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  <% end %>
+</div>

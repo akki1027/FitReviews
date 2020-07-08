@@ -81,7 +81,24 @@
 	margin-top: 180px;
 	text-align: center;
 }
-.recent-title {
+.flex-recommended-item-tables {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+  align-content: space-around;
+}
+.recommended-item-table {
+  height: 400px;
+  width: 300px;
+}
+.recommended-item-table-layout {
+  margin: 20px;
+  padding: 10px;
+  box-shadow: 0 0 20px #ddd;
+  border-radius: 5px;
+  background-color: white;
+}
+.recent-title, .recommend-title {
 	margin-left: 30px;
 	margin-bottom: 20px;
 }
@@ -114,10 +131,6 @@
 .flex-bet {
 	display: flex;
 	justify-content: space-between;
-}
-.dropdown-menu {
-	min-width: 0;
-	left: -47px;
 }
 .review-body * {
 	margin-top: 10px;

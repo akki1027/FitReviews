@@ -17,6 +17,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.dropdown-menu {
+	min-width: 0;
+	left: -47px;
+}
 .top-space {
 	margin-top: 50px;
 }
