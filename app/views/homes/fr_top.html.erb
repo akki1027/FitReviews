@@ -62,14 +62,6 @@
 	</div>
 </div>
 
-<div class="container">
-	<div class="top-space">
-		<h3 align="center"><strong>最近書かれたレビュー</strong></h3>
-		<% @reviews.each_with_index do |review,i| %>
-			<%= render 'reviews/review_each', review: review, item: @items[i] %>
-		<% end %>
-		<div align="center">
-			<%= paginate @reviews %>
-		</div>
-	</div>
-</div>
+<section class="top-space">
+	<%= render 'reviews/recent', reviews: @reviews %>
+</section>
