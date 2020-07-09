@@ -5,9 +5,13 @@ class ItemsController < ApplicationController
     else
       @page = 1
     end
-    if params[:keyword]
+    if params[:keyword] && params[:genreId]
       @items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword], genreId: params[:genreId]).page(params[:page])
       @keyword = params[:keyword]
+      @genre_id = params[:genreId]
+      @has_next_page = @items.has_next_page?
+    elsif params[:genreId]
+      @items = RakutenWebService::Ichiba::Item.search(genreId: params[:genreId]).page(params[:page])
       @genre_id = params[:genreId]
       @has_next_page = @items.has_next_page?
     end

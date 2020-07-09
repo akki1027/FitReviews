@@ -81,6 +81,37 @@
 	margin-top: 180px;
 	text-align: center;
 }
+// genres-----------------
+.genres {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.genres div {
+	position: relative;
+}
+.genres div:hover {
+	outline: 1px solid orange;
+}
+.genre-name {
+	position: absolute;
+	top: 200px;
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+  width: 100%;
+	text-align: center;
+	z-index: 1;
+}
+.genre-img {
+	height: 250px;
+	width: 200px;
+	object-fit: cover;
+	border-radius: 5px;
+	margin: 15px;
+	opacity: 0.8;
+}
+// -----------------------
 .flex-recommended-item-tables {
 	display: flex;
 	flex-wrap: wrap;
