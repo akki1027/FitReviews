@@ -28,11 +28,11 @@
 		<ul class="pagination">
 			<% unless @page == 1 %>
 		    <li class="page-item"><%= link_to "前へ", controller: "items", action: "search", keyword: @keyword, page: @page - 1, genreId: @genre_id %></li>
-		    <% end %>
+		  <% end %>
 		    <li class="page-item"><a class="page-link" href="#"><%= @page %></a></li>
-		    <% if @has_next_page %>
+		  <% if @has_next_page %>
 		    <li class="page-item"><%= link_to "次へ", controller: "items", action: "search", keyword: @keyword, page: @page + 1, genreId: @genre_id %></li>
-		    <% end %>
+		  <% end %>
 		</ul>
 	</div>
 </div>

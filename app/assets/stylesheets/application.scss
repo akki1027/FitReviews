@@ -17,6 +17,22 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.pagination > li > .page-link {
+	color: white;
+	background: #238ffc;
+	border-color: #337ab7;
+}
+.pagination > li > .page-link:hover {
+	color: white;
+	background: #337ab7;
+	border-color: #337ab7;
+}
+.pagination > li > a {
+  color: #696969;
+}
+.pagination > .active > a {
+  background: #238ffc;
+}
 .dropdown-menu {
 	min-width: 0;
 	left: -47px;
