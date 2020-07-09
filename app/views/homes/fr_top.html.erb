@@ -7,11 +7,20 @@
 		    </div>
 		</div>
 	    <div class="row">
-			<div class="fr-top-search-bar">
-		    	<%= form_tag :items_search, method: :get do  %>
-		    		<%= select_tag 'genreId', options_for_select({プロテイン: 567603, 栄養補助スナック: 566807, その他のサプリ: 563727, 筋トレ器具: 201865}, 567603), include_blank: false, class:"search-select" %>
-					<%= text_field_tag 'keyword', params[:keyword], placeholder:"プロテイン、プロテインバー、シェイカー...", required: true, class:"fr-search-text-field" %>
-					<%= submit_tag "検索", class:"search-submit" %>
+			<div class="search-form">
+				<%= form_tag :items_search, method: :get do  %>
+					<label>商品検索フォーム<br>ジャンル、キーワードから探す</label>
+					<div class="search-f-select">
+						<p>ジャンル</p>
+						<%= select_tag 'genreId', options_for_select({プロテイン: 567603, 栄養補助スナック: 566807, その他のサプリ: 563727, 筋トレ器具: 201865}, 567603), include_blank: false, class:"form-control" %>
+					</div>
+					<div class="search-f-text-field">
+						<p>キーワード</p>
+						<%= text_field_tag 'keyword', params[:keyword], placeholder:"プロテイン、プロテインバー...", required: true, class:"form-control" %>
+					</div>
+					<div class="search-f-submit">
+						<%= submit_tag "検索", class:"btn search-f-submit-btn" %>
+					</div>
 				<% end %>
 			</div>
 		</div>

@@ -77,9 +77,31 @@
 	background-position: center;
 	background-size: cover;
 }
-.fr-top-search-bar {
-	margin-top: 180px;
-	text-align: center;
+// search-----------------
+.search-form {
+	width: 300px;
+	padding: 10px;
+	margin: 120px auto 0;
+	background-color: white;
+	border-radius: 5px;
+}
+.search-f-select:hover {
+	cursor: pointer;
+}
+.search-f-select,
+.search-f-text-field,
+.search-f-submit
+ {
+	 margin-top: 20px;
+	 margin-bottom: 10px;
+}
+.search-f-submit-btn {
+	color: white;
+	background-color: rgb(5, 110, 197);
+	width: 100%;
+}
+.search-f-submit-btn:hover {
+	background-color: rgb(2, 95, 172);
 }
 // genres-----------------
 .genres {
