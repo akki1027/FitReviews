@@ -1,4 +1,4 @@
-<h4 class="recent-title">最近書かれたレビュー</h4>
+<h4 class="title">最近書かれたレビュー</h4>
 <div class="recent-reviews">
   <% reviews.each do |review| %>
     <% item = RakutenWebService::Ichiba::Item.search(itemCode: review.item.rakuten_item_id) %>
