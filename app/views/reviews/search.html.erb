@@ -10,10 +10,10 @@
 							<td><%= image_tag item["mediumImageUrls"][0] %></td>
 						</tr>
 						<tr>
-							<td><%= item.name %></td>
+							<td><%= item['itemName'] %></td>
 						</tr>
 						<tr>
-							<td class="item-price">価格: <%= number_with_delimiter(item.price) %>円</td>
+							<td class="item-price">価格: <%= number_with_delimiter(item['itemPrice']) %>円</td>
 						</tr>
 						<tr>
 							<td><%= link_to 'この商品のレビューを書く', save_item_path(item["itemCode"]), class:"btn wide-review-btn" %></td>

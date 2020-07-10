@@ -29,7 +29,7 @@
               <td><%= image_tag item.first["mediumImageUrls"][0] %></td>
             </tr>
             <tr>
-              <td><%= ranking.name %></td>
+              <td><%= item.first["itemName"] %></td>
             </tr>
             <tr>
               <td class="item-price">価格: <%= number_with_delimiter(item.first["itemPrice"]) %>円</td>

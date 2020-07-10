@@ -2,7 +2,6 @@ class ReviewsController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   def create
     @items = RakutenWebService::Ichiba::Item.search(itemCode: params[:item_code])
-    # transactionを使うことで、itemが保存され、尚且つreviewも保存されないと処理が完了しない
     result = ActiveRecord::Base.transaction do
       @item = Item.find_by(item_params)
       @review = current_user.reviews.create(review_params(@item))
@@ -38,9 +37,6 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     item = Item.find_by(id: @review.item_id)
     @review.destroy
-    # 非同期通信のため以下をコメントアウト
-    # newページのURLには、楽天のitemCodeを含みたいので、rakuten_item_idに返す
-    # redirect_to reviews_new_path(item.rakuten_item_id)
   end
 
   def search
@@ -95,7 +91,8 @@ class ReviewsController < ApplicationController
   end
 
   def item_params
-    { name: @items.first['itemName'], rakuten_item_id: @items.first['itemCode'] }
+    { rakuten_item_id: @items.first['itemCode'] }
+    # { name: @items.first['itemName'], rakuten_item_id: @items.first['itemCode'] }
   end
 
   def correct_user

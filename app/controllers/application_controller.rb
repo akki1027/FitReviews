@@ -9,13 +9,12 @@ class ApplicationController < ActionController::Base
 	def after_sign_up_path_for(resource)
     	root_path
     end
-
-    # ログイン後に移動するviewの指定
-    def after_sign_in_path_for(resource)
-    	root_path
-    end
+	# ログイン後に移動するviewの指定
+	def after_sign_in_path_for(resource)
+		root_path
+	end
 	# ログアウト後に移動するviewの指定
-    def after_sign_out_path_for(resource)
-    	root_path
-    end
+	def after_sign_out_path_for(resource)
+		root_path
+	end
 end

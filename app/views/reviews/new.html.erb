@@ -13,7 +13,7 @@
 							<%= render 'bookmarks/bookmark', saved_item: @saved_item %>
 						</div>
 					</div>
-					<h4><%= item.name %></h4>
+					<h4><%= item['itemName'] %></h4>
 					<span class="form-group" id="rate_for_this_item"></span>
 					<script>
 						$('#rate_for_this_item').raty({

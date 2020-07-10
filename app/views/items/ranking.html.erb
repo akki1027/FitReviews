@@ -35,7 +35,7 @@
 									});
 								</script>
 								<%= rate.to_d.to_s %><br>
-								<%= ranking.name %><br>
+								<%= item.first["itemName"] %><br>
 								<h5 class="item-price">価格: <%= number_with_delimiter(item.first["itemPrice"]) %>円</h5>
 								<p><%= item.first['catchcopy'] %></p>
 								<div class="flex-action">
