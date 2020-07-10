@@ -344,9 +344,9 @@
 
 //---item----------------------------------------------------
 .item {
-	margin-top: 30px;
+	margin-top: 20px;
 	padding: 10px 0;
-	border-bottom: 1px solid #CCCCCC;
+	border-bottom: 1px solid #ddd;
 }
 .flex-action {
 	display: flex;
@@ -366,7 +366,8 @@
 	background-color: #E8E8E8;
 	border: 1px solid black;
 	border-radius: 3px;
-	margin: 5px;
+	margin-left: 135px;
+	margin-bottom: 20px;
 	padding: 5px;
 }
 .form:nth-child(1) {
@@ -386,8 +387,11 @@
 }
 #review-form {
 	display: none;
-	border-bottom: 1px solid #CCCCCC;
-	padding: 30px;
+	border: 1px solid #CCCCCC;
+	border-radius: 5px;
+	padding: 20px;
+  width: 67%;
+  margin: 15px auto;
 }
 //---end-----------------------------------------------------
 
@@ -402,7 +406,7 @@
 	border-radius: 5px;
 	padding: 5px;
 	margin: 30px auto;
-	box-shadow: 0 0 15px #ddd;
+	box-shadow: 0 0 5px #ddd;
 }
 .review-first-section {
 	display: flex;
@@ -487,7 +491,9 @@
 	}
 	.title2 {
 		margin-left: 30px;
-		margin-bottom: 20px;
+	}
+	.write-a-review-btn {
+		margin-left: 30px;
 	}
 	.each-review {
 		width: 90%;
@@ -560,5 +566,8 @@
 	.m-rakuten-btn {
 		width: 45%;
 		margin-top: 0;
+	}
+	#review-form {
+		width: 100%;
 	}
 }

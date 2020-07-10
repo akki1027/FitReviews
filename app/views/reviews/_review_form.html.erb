@@ -1,35 +1,32 @@
 <div class="row" id="review-form">
 	<%= form_with(model: review, remote: true) do |f| %>
-		<div class="col-xs-2"></div>
-		<div class="col-xs-8">
-			<div>
-				<div class="form">
-					<p><strong>レビュー対象商品</strong></p>
-					<div>
-						<%= image_tag @item.first["mediumImageUrls"][0] %>
-					</div>
-					<div>
-						<%= @item.first.name.truncate(100) %>
-					</div>
+		<div>
+			<div class="form">
+				<p><strong>レビュー対象商品</strong></p>
+				<div>
+					<%= image_tag @item.first["mediumImageUrls"][0] %>
 				</div>
-				<div class="form">
-					<div class="add-photo">
-						<p><strong>写真を追加する</strong></p>
-						<div class="preview"></div>
-						<%= f.attachment_field :item_image, class:"file" %>
-					</div>
+				<div>
+					<%= @item.first.name.truncate(100) %>
 				</div>
-				<div class="form">
-					<p><strong>総合評価</strong></p>
-					<span class="form-group" id="rate_by_star"><%= f.hidden_field :rate %></span>
+			</div>
+			<div class="form">
+				<div class="add-photo">
+					<p><strong>写真を追加する</strong></p>
+					<div class="preview"></div>
+					<%= f.attachment_field :item_image, class:"file" %>
 				</div>
-				<div class="form">
-					<p><strong>ここにレビューを記入してください</strong></p>
-					<%= f.text_area :body, class:"form-control", rows: "7", placeholder: "この商品の口コミを書こう！" %>
-				</div>
-				<div class="form">
-					<%= f.submit "投稿", class:"btn form-submit-btn" %>
-				</div>
+			</div>
+			<div class="form">
+				<p><strong>総合評価</strong></p>
+				<span class="form-group" id="rate_by_star"><%= f.hidden_field :rate %></span>
+			</div>
+			<div class="form">
+				<p><strong>ここにレビューを記入してください</strong></p>
+				<%= f.text_area :body, class:"form-control", rows: "7", placeholder: "この商品の口コミを書こう！" %>
+			</div>
+			<div class="form">
+				<%= f.submit "投稿", class:"btn form-submit-btn" %>
 			</div>
 		</div>
 		<!-- これがないと、商品情報を取得できない。itemCodeはreviewに保存しない。 -->
