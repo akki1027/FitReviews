@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
-	root "homes#top"
- 	get 'fr_top' => 'homes#fr_top', as: 'fr_top'
-  	get 'about' => 'homes#about', as: 'about'
+	root "homes#fr_top"
+ 	get 'top' => 'homes#top', as: 'top'
+  get 'about' => 'homes#about', as: 'about'
 
-  	devise_for :users, controllers: {
-    	sessions: 'users/sessions',
-    	passwords: 'users/passwords',
-    	registrations: 'users/registrations'
+	devise_for :users, controllers: {
+		sessions: 'users/sessions',
+		passwords: 'users/passwords',
+		registrations: 'users/registrations'
 	}
-  	resources :users, only: [:edit, :show, :update]
+  resources :users, only: [:edit, :show, :update]
 	get 'users/:id/leave' => 'users#leave', as: 'users_leave'
 	put 'users/:id/hide' => 'users#hide', as: 'users_hide'
 	get 'users/:id/my_reviews' => 'users#my_reviews', as: 'users_my_reviews'
@@ -26,6 +26,6 @@ Rails.application.routes.draw do
 	resources :bookmarks, only: :destroy
 
 	get 'items/search' => 'items#search', as: 'items_search'
-  	get 'items/ranking' => 'items#ranking', as: 'items_ranking'
+  get 'items/ranking' => 'items#ranking', as: 'items_ranking'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
