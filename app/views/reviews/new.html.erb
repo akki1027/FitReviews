@@ -18,8 +18,8 @@
 					<script>
 						$('#rate_for_this_item').raty({
 							starOff:  '<%= asset_path('star-off.png') %>',
-					        starOn : '<%= asset_path('star-on.png') %>',
-					        starHalf: '<%= asset_path('star-half.png') %>',
+							starOn : '<%= asset_path('star-on.png') %>',
+							starHalf: '<%= asset_path('star-half.png') %>',
 							half: true,
 							size: 36,
 							readOnly: true,
@@ -42,14 +42,17 @@
 	<%= render 'review_form', item: @item, review: @review %>
 </div>
 
-<div class="container" id="review_<%= @saved_item.id %>">
-	<% @reviews.each do |review| %>
-		<%= render 'review_each', review: review, item: @item %>
-	<% end %>
+<section class="top-space">
+	<h4 class="title2">カスタマーレビュー (<%= @saved_item.reviews.count %>)</h4>
+	<div id="review_<%= @saved_item.id %>">
+		<% @reviews.each do |review| %>
+			<%= render 'review_each', review: review %>
+		<% end %>
+	</div>
 	<div align="center">
 		<%= paginate @reviews %>
 	</div>
-</div>
+</section>
 
 <style>
 	.search_for_review {

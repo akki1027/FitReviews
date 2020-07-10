@@ -205,10 +205,9 @@
 
 //---btn-----------------------------------------------------
 .btn2 {
-	color: black;
-	font-size:15px;
-	background-color: #E8E8E8;
-	border-radius:5px;
+	border-bottom: 1px solid #ddd;
+	padding: 3px;
+	display: inline-block;
 }
 //---end-----------------------------------------------------
 
@@ -393,9 +392,17 @@
 //---end-----------------------------------------------------
 
 //---each-review---------------------------------------------
+.title2 {
+	margin-left: 135px;
+	margin-bottom: 20px;
+	font-weight: normal;
+}
 .each-review {
-	border-bottom: 1px solid #CCCCCC;
-	margin: 20px 0;
+	width: 70%;
+	border-radius: 5px;
+	padding: 5px;
+	margin: 30px auto;
+	box-shadow: 0 0 15px #ddd;
 }
 .review-first-section {
 	display: flex;
@@ -477,6 +484,13 @@
 	}
 	.second-child {
 		width: 90vw;
+	}
+	.title2 {
+		margin-left: 30px;
+		margin-bottom: 20px;
+	}
+	.each-review {
+		width: 90%;
 	}
 //---header--------------------------------------------------
 	#top-nav-list > li:not(:nth-child(1)){

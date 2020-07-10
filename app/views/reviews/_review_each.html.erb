@@ -1,58 +1,48 @@
-<% if item.first.present? %>
-	<div class="row each-review" id="reviews-<%= review.id %>">
-		<div class="flex-parent-column">
-			<div class="first-child">
-				<%= image_tag item.first["mediumImageUrls"][0] %>
-				<%= link_to reviews_new_path(review.item.rakuten_item_id) do %>
-					<h6><%= item.first['itemName'] %></h6>
-				<% end %>
-			</div>
-			<div class="second-child">
-				<%= attachment_image_tag review.user, :profile_photo, format: 'jpg', fallback: "user_no_image.png", size: "60x60", class:"profile-photo" %>
-				<span class="user-name"><%= review.user.name %></span>
-				<div class="review-first-section">
-					<div>
-						<span id="rated_<%= review.id %>"></span>
-						<script>
-							$('#rated_<%= review.id %>').raty({
-								starOff:  '<%= asset_path('star-off.png') %>',
-					            starOn : '<%= asset_path('star-on.png') %>',
-					            starHalf: '<%= asset_path('star-half.png') %>',
-								half: true,
-								readOnly: true,
-								score: <%= review.rate %>,
-							});
-						</script>
-					</div>
-					<div>
-						<% if review.user == current_user %>
-							<div class="dropdown">
-								<button class="btn dropdown-toggle dropdown-angle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-									<i class="fas fa-angle-down"></i>
-								</button>
-								<ul class="dropdown-menu">
-									<li><%= link_to edit_review_path(review), class:"btn" do %>
-											<i class="far fa-edit"> 編集</i>
-										<% end %>
-									</li>
-									<li><%= link_to review_path(review), method: :delete, remote: true, "data-confirm" => "本当に削除しますか？", class:"btn" do %>
-											<i class="far fa-trash-alt"> 削除</i>
-										<% end %>
-									</li>
-								</ul>
-							</div>
-						<% end %>
-					</div>
+<div class="each-review" id="reviews-<%= review.id %>">
+	<div class="flex-bet">
+		<div>
+			<%= attachment_image_tag review.user, :profile_photo, format: 'jpg', fallback: "user_no_image.png", size: "40x40", class:"profile-photo" %>
+			<span class="user-name"><%= review.user.name %></span>
+		</div>
+		<div>
+			<% if review.user == current_user %>
+				<div class="dropdown">
+					<button class="btn dropdown-toggle dropdown-angle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						<i class="fas fa-angle-down"></i>
+					</button>
+					<ul class="dropdown-menu">
+						<li><%= link_to edit_review_path(review), class:"btn" do %>
+								<i class="far fa-edit"> 編集</i>
+							<% end %>
+						</li>
+						<li><%= link_to review_path(review), method: :delete, remote: true, "data-confirm" => "本当に削除しますか？", class:"btn" do %>
+								<i class="far fa-trash-alt"> 削除</i>
+							<% end %>
+						</li>
+					</ul>
 				</div>
-				<div>
-					<div class="word-break">
-						<%= review.body %><br>
-					</div>
-					<%= attachment_image_tag review, :item_image, :fill, 330, 300 %><br>
-					<span id="like_<%= review.id %>">
-					<%= render 'likes/like', review: review %></span>
-				</div>
-			</div>
+			<% end %>
 		</div>
 	</div>
-<% end %>
+	<div class="review-body">
+		<span id="rated_<%= review.id %>"></span>
+		<script>
+			$('#rated_<%= review.id %>').raty({
+				starOff:  '<%= asset_path('star-off.png') %>',
+				starOn : '<%= asset_path('star-on.png') %>',
+				starHalf: '<%= asset_path('star-half.png') %>',
+				half: true,
+				readOnly: true,
+				score: <%= review.rate %>,
+			});
+		</script>
+		<div class="word-break">
+			<%= review.body %>
+		</div>
+		<%= attachment_image_tag review, :item_image, class:"review-img" %>
+		<div>
+			<span id="like_<%= review.id %>">
+			<%= render 'likes/like', review: review %></span>
+		</div>
+	</div>
+</div>
