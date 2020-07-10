@@ -17,6 +17,16 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.ranking-genre-select {
+	width: 200px;
+	display: inline-block;
+	margin-top: 10px;
+}
+.ranking-submit {
+	width: 60px;
+	display: inline-block;
+	margin-top: 10px;
+}
 .pagination > li > .page-link {
 	color: white;
 	background: #238ffc;
@@ -357,6 +367,15 @@
 .flex-action > div {
 	margin-top: 5px;
 	margin-left: 10px;
+}
+.rakuten-info {
+	border: 1px solid #eee;
+	padding: 10px;
+	text-align: left;
+}
+.rakuten-info > p:first-child {
+	color: #8F0502;
+	font-weight: bold;
 }
 //---end-----------------------------------------------------
 

@@ -1,4 +1,5 @@
 <h4 class="title">おすすめ商品</h4>
+<h4 class="title">ジャンル別ランキングはこちらから <i class="fas fa-long-arrow-alt-right"></i> <%= link_to 'ジャンル別ランキング', items_ranking_path %></h4>
 <div class="flex-recommended-item-tables">
   <% rankings.each do |item_id, rate, i| %>
     <% ranking = Item.find(item_id) %>
