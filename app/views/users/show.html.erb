@@ -1,7 +1,7 @@
 <%= render 'homes/header' %>
 
-<div class="container">
-	<div class="row">
+<section class="user-bio">
+	<div class="container">
 		<div class="flash-notice">
 			<%= flash[:notice] %>
 	    </div>
@@ -21,49 +21,13 @@
 			</ul>
 		</div>
 	</div>
-</div>
+</section>
 
-<!-- ブックマークした商品 -->
-<div class="container">
+<section class="top-space">
 	<%= link_to users_my_bookmarks_path(@user) do %>
-		<button class="btn2"><i class="far fa-bookmark"></i> ブックマークした商品一覧</button>
+		<h4 class="title btn2"><i class="far fa-bookmark"></i> ブックマークした商品一覧</h4>
 	<% end %>
-</div>
-<div class="my-bookmarks">
-	<div class="flex-item-tables">
-		<% @bookmarks.each_with_index do |bookmark,i| %>
-			<% if @bookmarked_items[i].first.present? %>
-				<table class="table-borderless item-table">
-					<tbody>
-						<tr>
-							<td><%= image_tag @bookmarked_items[i].first["mediumImageUrls"][0] %>
-								<span class="flex-action" id="bookmark_<%= bookmark.item.id %>">
-									<%= render 'bookmarks/bookmark', saved_item: bookmark.item %></span>
-							</td>
-						</tr>
-						<tr>
-							<td><%= link_to reviews_new_path(bookmark.item.rakuten_item_id) do %>
-									<%= bookmark.item.name %>
-								<% end %>
-							</td>
-						</tr>
-						<tr>
-							<td class="item-price">価格: <%= number_with_delimiter(@bookmarked_items[i].first["itemPrice"]) %>円</td>
-						</tr>
-						<tr>
-							<td>
-								<%= link_to 'レビューを見る', save_item_path(@bookmarked_items[i].first["itemCode"]), class:"btn m-review-btn" %>
-								<%= link_to '楽天で購入', "#{@bookmarked_items[i].first.url}", class:"btn m-rakuten-btn" %>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			<% end %>
-		<% end %>
-	</div>
-	<div align="center">
-		<%= paginate @bookmarks %>
-	</div>
+	<%= render 'all_bookmark', bookmarks: @bookmarks, bookmarked_items: @bookmarked_items %>
 </div>
 
 <section class="top-space">

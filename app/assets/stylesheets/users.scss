@@ -2,12 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.user-bio {
+	border-bottom: 1px solid #ddd;
+}
 .flex-introduction {
 	min-height: 300px;
 	width: 100%;
 	margin-bottom: 20px;
 	padding: 10px;
-	border-bottom: 1px solid #CCCCCC;
 }
 .username-intro {
 	margin-top: 20px;
