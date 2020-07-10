@@ -7,15 +7,15 @@ class ApplicationController < ActionController::Base
 	end
 	# 会員登録後に移動するviewの指定
 	def after_sign_up_path_for(resource)
-    	fr_top_path
+    	root_path
     end
 
     # ログイン後に移動するviewの指定
     def after_sign_in_path_for(resource)
-    	fr_top_path
+    	root_path
     end
 	# ログアウト後に移動するviewの指定
     def after_sign_out_path_for(resource)
-    	fr_top_path
+    	root_path
     end
 end
