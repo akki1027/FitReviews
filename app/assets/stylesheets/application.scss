@@ -160,8 +160,17 @@
 	color: white;
 	border: 1px solid white;
 }
-#show-nav, #hide-nav, .nav-user-info {
+.nav-user-info, #hide-nav {
 	display: none;
+}
+#hide-nav {
+	display: none;
+	font-size: 25px;
+}
+#show-nav {
+	display: none;
+	margin-right: 20px;
+	font-size: 25px;
 }
 //---end-----------------------------------------------------
 
