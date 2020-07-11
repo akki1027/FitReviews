@@ -1,31 +1,36 @@
 <div class="my-bookmarks">
 	<div class="flex-item-tables">
-		<% bookmarks.each_with_index do |bookmark,i| %>
-			<% if bookmarked_items[i].first.present? %>
-				<table class="table-borderless item-table">
-					<tbody>
-						<tr>
-							<td>
-								<span class="flex-action" id="bookmark_<%= bookmark.item.id %>"><%= render 'bookmarks/bookmark', saved_item: bookmark.item %></span>
-								<%= image_tag bookmarked_items[i].first["mediumImageUrls"][0] %>
-							</td>
-						</tr>
-						<tr>
-							<td><%= bookmarked_items[i].first["itemName"] %>
-							</td>
-						</tr>
-						<tr>
-							<td class="item-price">価格: <%= number_with_delimiter(bookmarked_items[i].first["itemPrice"]) %>円</td>
-						</tr>
-						<tr>
-							<td>
-								<%= link_to 'レビューを見る', save_item_path(bookmarked_items[i].first["itemCode"]), class:"btn m-review-btn" %>
-								<%= link_to '楽天で購入', "#{bookmarked_items[i].first.url}", class:"btn m-rakuten-btn" %>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+		<% if bookmarks.present? %>
+			<% bookmarks.each_with_index do |bookmark,i| %>
+				<% if bookmarked_items[i].first.present? %>
+					<table class="table-borderless item-table">
+						<tbody>
+							<tr>
+								<td>
+									<span class="flex-action" id="bookmark_<%= bookmark.item.id %>"><%= render 'bookmarks/bookmark', saved_item: bookmark.item %></span>
+									<%= image_tag bookmarked_items[i].first["mediumImageUrls"][0] %>
+								</td>
+							</tr>
+							<tr>
+								<td><%= bookmarked_items[i].first["itemName"] %>
+								</td>
+							</tr>
+							<tr>
+								<td class="item-price">価格: <%= number_with_delimiter(bookmarked_items[i].first["itemPrice"]) %>円</td>
+							</tr>
+							<tr>
+								<td>
+									<%= link_to 'レビューを見る', save_item_path(bookmarked_items[i].first["itemCode"]), class:"btn m-review-btn" %>
+									<%= link_to '楽天で購入', "#{bookmarked_items[i].first.url}", class:"btn m-rakuten-btn" %>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				<% end %>
 			<% end %>
+		<% else %>
+			<p>ブックマークした商品はありません。<br>
+			ブックマークした商品はこちらに表示されます。</p>
 		<% end %>
 	</div>
 	<div align="center">
