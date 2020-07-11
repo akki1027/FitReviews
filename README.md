@@ -1,6 +1,6 @@
 # FitReviews
 
-### URL:http://54.178.133.148/
+### URL: http://54.178.133.148/
 
 ## サイト概要
 FitReviwsはフィットネス商品の口コミサイトです。  
@@ -10,7 +10,7 @@ FitReviwsはフィットネス商品の口コミサイトです。
 ### サイトテーマ
 フィットネス商品全般（プロテイン、栄養補助スナック、サプリメント、筋トレ器具）の口コミとジャンル別ランキングの表示。
 
-<img src="https://user-images.githubusercontent.com/60538665/87222659-8c13f500-c3b0-11ea-8e9c-6245ba55afd2.png" width="50%"><img src="https://user-images.githubusercontent.com/60538665/87222637-51aa5800-c3b0-11ea-9567-575a090c38d8.png" width="50%">
+<img src="https://user-images.githubusercontent.com/60538665/87224708-714a7c00-c3c2-11ea-8001-1970920b304d.png" width="50%"><img src="https://user-images.githubusercontent.com/60538665/87222637-51aa5800-c3b0-11ea-9567-575a090c38d8.png" width="50%">
 
 ### テーマを選んだ理由
 私はジムで週5日以上の筋トレを約8年間続けており、プロテインやサプリメントなどを購入する際にどれを買えばいいかと迷うことがよくありました。そしてどれを買えばいいかと悩んでも、決め手となるような口コミサイトがありませんでした（個人で自分のブログなどに紹介しているものしかない）。  
