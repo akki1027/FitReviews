@@ -4,7 +4,7 @@
 	</div>
 	<div class="navbar-right">
 		<% if user_signed_in? %>
-			<button id="show-nav"><i class="fas fa-bars"></i></button>
+			<div id="show-nav"><i class="fas fa-bars"></i></div>
 			<ul id="nav-list">
 				<li id="hide-nav"><i class="fas fa-times"></i></li>
 				<li class="nav-user-info">
@@ -16,7 +16,7 @@
 				<li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"btn btn-sm nav-btn" %></li>
 			</ul>
 		<% else%>
-			<button id="show-nav"><i class="fas fa-bars"></i></button>
+			<div id="show-nav"><i class="fas fa-bars"></i></div>
 			<ul id="nav-list">
 				<li id="hide-nav"><i class="fas fa-times"></i></li>
 				<li></li>

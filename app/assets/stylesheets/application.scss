@@ -50,6 +50,9 @@
 .top-space {
 	margin-top: 50px;
 }
+.bottom-space {
+	margin-bottom: 50px;
+}
 .rakuten-btn {
 	color: #FFF;
 	background-color: rgb(191, 0, 0);
@@ -117,6 +120,7 @@
 .navbar {
 	margin-bottom: 0;
 	padding: 7px 50px;
+	border-radius: 0;
 }
 .nav-search {
 	display: inline-block;
@@ -163,7 +167,6 @@
 
 //---footer--------------------------------------------------
 .footer-background {
-  margin-top: 50px;
   background-color: #EEEEEE
 }
 .about-headline {
@@ -194,7 +197,8 @@
 .search-submit {
     height: 35px;
     border-radius: 5px;
-    border-color: transparent;
+		border-color: transparent;
+		background: white;
 }
 //---end-----------------------------------------------------
 
@@ -574,7 +578,7 @@
 
 @media screen and (max-width:425px) {
 	.item-table {
-		width: 100%;
+		width: 80%;
 		height: 400px;
 		margin: 20px;
 		border-bottom: 1px solid #CCCCCC;
