@@ -7,7 +7,13 @@
 				<table class="table-borderless item-table">
 					<tbody>
 						<tr>
-							<td><%= image_tag item["mediumImageUrls"][0] %></td>
+							<td>
+								<% if item["mediumImageUrls"][0].present? %>
+									<%= image_tag item["mediumImageUrls"][0] %>
+								<% else %>
+									この商品には商品画像がありません。
+								<% end %>
+							</td>
 						</tr>
 						<tr>
 							<td><%= item["itemName"] %></td>

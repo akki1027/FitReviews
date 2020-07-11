@@ -20,7 +20,11 @@
 					<div class="item">
 						<div class="flex-parent-column">
 							<div class="first-child" align="center">
-								<%= image_tag item.first["mediumImageUrls"][0] %>
+								<% if item.first["mediumImageUrls"][0].present? %>
+									<%= image_tag item.first["mediumImageUrls"][0] %>
+								<% else %>
+									この商品には商品画像がありません。
+								<% end %>
 							</div>
 							<div class="second-child">
 								<span class="rate-star" id="ranking_<%= ranking.id %>"></span>

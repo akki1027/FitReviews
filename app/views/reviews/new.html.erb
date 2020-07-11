@@ -5,7 +5,11 @@
 		<% @item.each do |item| %>
 			<div class="flex-parent-column">
 				<div class="first-child" align="center">
-					<%= image_tag item["mediumImageUrls"][0], style:"height: 150px; height: 150px; position: sticky; top: 30px" %>
+					<% if item["mediumImageUrls"][0].present? %>
+						<%= image_tag item["mediumImageUrls"][0], style:"height: 150px; height: 150px; position: sticky; top: 30px" %>
+					<% else %>
+						この商品には商品画像がありません。
+					<% end %>
 				</div>
 				<div class="second-child">
 					<div class="flex-action">

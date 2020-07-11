@@ -26,7 +26,13 @@
               </td>
             </tr>
             <tr align="center">
-              <td><%= image_tag item.first["mediumImageUrls"][0] %></td>
+              <td>
+                <% if item.first["mediumImageUrls"][0].present? %>
+                  <%= image_tag item.first["mediumImageUrls"][0] %>
+                <% else %>
+                  この商品には商品画像がありません。
+								<% end %>
+              </td>
             </tr>
             <tr>
               <td><%= item.first["itemName"] %></td>

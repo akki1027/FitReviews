@@ -6,7 +6,11 @@
       <div class="recent-review" id="reviews-<%= review.id %>">
         <div class="elems">
           <div class="left-elem">
-            <%= image_tag item.first["mediumImageUrls"][0] %>
+            <% if item.first["mediumImageUrls"][0].present? %>
+              <%= image_tag item.first["mediumImageUrls"][0] %>
+            <% else %>
+              この商品には商品画像がありません。
+						<% end %>
           </div>
           <div class="right-elem">
             <%= link_to reviews_new_path(review.item.rakuten_item_id) do %>

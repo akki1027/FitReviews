@@ -8,7 +8,11 @@
 							<tr>
 								<td>
 									<span class="flex-action" id="bookmark_<%= bookmark.item.id %>"><%= render 'bookmarks/bookmark', saved_item: bookmark.item %></span>
-									<%= image_tag bookmarked_items[i].first["mediumImageUrls"][0] %>
+									<% if bookmarked_items[i].first["mediumImageUrls"][0].present? %>
+										<%= image_tag bookmarked_items[i].first["mediumImageUrls"][0] %>
+									<% else %>
+										この商品には商品画像がありません。
+									<% end %>
 								</td>
 							</tr>
 							<tr>
