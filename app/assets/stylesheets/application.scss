@@ -17,6 +17,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.flex-genre-link {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-bottom: 20px;
+}
+.flex-genre-link > h4:nth-child(2) {
+	margin-left: 3px;
+}
 .rank-title {
 	font-size: 19px;
 	margin-top: 45px;
@@ -28,8 +37,17 @@
 	color: white;
 	background: #FFCC00;
 	border-radius: 15px;
-	padding: 5px 5px 5px 20px;
+	padding: 5px 20px 5px 20px;
 	margin: 20px 15px;
+	width: 15%;
+}
+.overall-rec {
+	font-size: 14px;
+	font-weight: bold;
+	color: white;
+	background: #FFCC00;
+	border-radius: 15px;
+	padding: 5px 20px 5px 20px;
 	width: 15%;
 }
 .ranking-genre-select {

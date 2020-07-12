@@ -1,5 +1,9 @@
-<h4 class="title">おすすめ商品</h4>
-<h4 class="title">ジャンル別ランキングはこちらから <i class="fas fa-long-arrow-alt-right"></i> <%= link_to 'ジャンル別ランキング', items_ranking_path %></h4>
+<h4 class="title">総合おすすめ商品</h4>
+<div class="flex-genre-link">
+  <h4>ジャンル別ランキングはこちらから</h4>
+  <h4><i class="fas fa-long-arrow-alt-right"></i> <%= link_to 'ジャンル別ランキング', items_ranking_path %></h4>
+</div>
+
 <div class="flex-recommended-item-tables">
   <% rankings.each do |item_id, rate, i| %>
     <% ranking = Item.find(item_id) %>
@@ -9,6 +13,11 @@
       <div class="recommended-item-table-layout">
         <table class="table-borderless recommended-item-table">
           <tbody>
+            <tr>
+              <td>
+                <span class="overall-rec">総合オススメ</span>
+              </td>
+            </tr>
             <tr>
               <td>
                 <span class="rate-star" id="ranking_<%= ranking.id %>"></span>
