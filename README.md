@@ -10,12 +10,13 @@ FitReviwsはフィットネス商品の口コミサイトです。
 ### サイトテーマ
 フィットネス商品全般（プロテイン、栄養補助スナック、サプリメント、筋トレ器具）の口コミとジャンル別ランキングの表示。
 
-<img src="https://user-images.githubusercontent.com/60538665/87224708-714a7c00-c3c2-11ea-8001-1970920b304d.png" width="50%"><img src="https://user-images.githubusercontent.com/60538665/87222637-51aa5800-c3b0-11ea-9567-575a090c38d8.png" width="50%">
+***
+<img src="https://user-images.githubusercontent.com/60538665/87240496-06965080-c455-11ea-93f1-23634a134eff.png" width="50%"><img src="https://user-images.githubusercontent.com/60538665/87240497-07c77d80-c455-11ea-944f-b40b27099844.png" width="50%">
 ***
 ### レスポンシブ対応もしております。
 
-<img src="https://user-images.githubusercontent.com/60538665/87225776-4401cc00-c3ca-11ea-8478-4fac248821bc.png" width="50%"><img src="https://user-images.githubusercontent.com/60538665/87225778-46642600-c3ca-11ea-9e87-f67162cde26d.png" width="50%">
-
+<img src="https://user-images.githubusercontent.com/60538665/87240625-15313780-c456-11ea-948c-5c8dc72e5934.png" width="50%"><img src="https://user-images.githubusercontent.com/60538665/87240626-16626480-c456-11ea-8011-199a418270fe.png" width="50%">
+***
 
 ### テーマを選んだ理由
 私はジムで週5日以上の筋トレを約8年間続けており、プロテインやサプリメントなどを購入する際にどれを買えばいいかと迷うことがよくありました。そしてどれを買えばいいかと悩んでも、決め手となるような口コミサイトがありませんでした（個人で自分のブログなどに紹介しているものしかない）。  
