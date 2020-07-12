@@ -17,15 +17,28 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.rank-title {
+	font-size: 19px;
+	margin-top: 45px;
+  margin-bottom: 30px;
+}
+.rank-num {
+	font-size: 14px;
+	font-weight: bold;
+	color: white;
+	background: #FFCC00;
+	border-radius: 15px;
+	padding: 5px 5px 5px 20px;
+	margin: 20px 15px;
+	width: 15%;
+}
 .ranking-genre-select {
 	width: 200px;
 	display: inline-block;
-	margin-top: 10px;
 }
 .ranking-submit {
 	width: 60px;
 	display: inline-block;
-	margin-top: 10px;
 }
 .pagination > li > .page-link {
 	color: white;
@@ -601,5 +614,8 @@
 	}
 	#review-form {
 		width: 100%;
+	}
+	.rank-num {
+		width: 25%;
 	}
 }

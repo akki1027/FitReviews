@@ -1,8 +1,17 @@
 <%= render 'homes/header' %>
 
 <div class="container">
-	<h3 align="center"><i class="fas fa-crown"></i><strong> ランキング</strong></h3>
+	<% if @genre == "567603" %>
+		<h4 class="rank-title" align="center"><i class="fas fa-crown"></i><strong> プロテインランキング</strong></h4>
+	<% elsif @genre == "566807" %>
+		<h4 class="rank-title" align="center"><i class="fas fa-crown"></i><strong> 栄養補助スナックランキング</strong></h4>
+	<% elsif @genre == "563727" %>
+		<h4 class="rank-title" align="center"><i class="fas fa-crown"></i><strong> その他のサプリランキング</strong></h4>
+	<% elsif @genre == "201865" %>
+		<h4 class="rank-title" align="center"><i class="fas fa-crown"></i><strong> 筋トレ器具ランキング</strong></h4>
+	<% end %>
 	<div align="center">
+		<p>ジャンルを選択できます。</p>
 		<%= form_tag :items_ranking, method: :get do  %>
 			<%= select_tag 'genreId', options_for_select({プロテイン: 567603, 栄養補助スナック: 566807, その他のサプリ: 563727, 筋トレ器具: 201865}, 567603), include_blank: false, class:"form-control ranking-genre-select" %>
 			<%= submit_tag "検索", :name => nil, class:"form-control ranking-submit" %>
@@ -17,6 +26,10 @@
 				<% ranking = Item.find(item_id) %>
 				<% item = RakutenWebService::Ichiba::Item.search(itemCode: ranking.rakuten_item_id) %>
 				<% if item.first.present? %>
+					<div class="rank-num">
+						<%= @num %>位
+						<% @num += 1 %>
+					</div>
 					<div class="item">
 						<div class="flex-parent-column">
 							<div class="first-child" align="center">
