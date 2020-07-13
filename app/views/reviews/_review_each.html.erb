@@ -40,7 +40,8 @@
 			<%= review.body %>
 		</div>
 		<%= attachment_image_tag review, :item_image, class:"review-img" %>
-		<div>
+		<div class="time-created"><%= review.created_at.to_s(:datetime_jp) %></div>
+		<div class="border-top">
 			<span id="like_<%= review.id %>">
 			<%= render 'likes/like', review: review %></span>
 		</div>

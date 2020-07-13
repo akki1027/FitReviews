@@ -17,38 +17,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.flex-genre-link {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	margin-bottom: 20px;
-}
-.flex-genre-link > h4:nth-child(2) {
-	margin-left: 3px;
-}
-.rank-title {
-	font-size: 19px;
-	margin-top: 45px;
-  margin-bottom: 30px;
-}
-.rank-num {
-	font-size: 14px;
-	font-weight: bold;
-	color: white;
-	background: #FFCC00;
-	border-radius: 15px;
-	padding: 5px 20px 5px 20px;
-	margin: 20px 15px;
-	width: 15%;
-}
-.overall-rec {
-	font-size: 14px;
-	font-weight: bold;
-	color: white;
-	background: #FFCC00;
-	border-radius: 15px;
-	padding: 5px 20px 5px 20px;
-	width: 15%;
+.border-top {
+	border-top: 1px solid #ddd;
 }
 .ranking-genre-select {
 	width: 200px;
@@ -104,7 +74,6 @@
 	color: white;
 	background-color: #E29407;
 }
-
 //---sign-in-log-in------------------------------------------
 .FitReviews-logo-black {
   color: black;
@@ -137,8 +106,6 @@
 .sign-up-field, .login-field {
   padding: 5px 0;
 }
-//---end-----------------------------------------------------
-
 //---header--------------------------------------------------
 #top-nav-list > li:not(:nth-child(1)) {
 	float: left;
@@ -203,8 +170,6 @@
 	margin-right: 20px;
 	font-size: 25px;
 }
-//---end-----------------------------------------------------
-
 //---footer--------------------------------------------------
 .footer-background {
   background-color: #EEEEEE
@@ -212,8 +177,6 @@
 .about-headline {
   color: #DD0000; padding-left: 10px;
 }
-//---end-----------------------------------------------------
-
 //---search--------------------------------------------------
 .search-select {
 	height: 35px;
@@ -240,31 +203,23 @@
 		border-color: transparent;
 		background: white;
 }
-//---end-----------------------------------------------------
-
 //---flash-notice--------------------------------------------
 .flash-notice {
 	margin-top: 5px;
 	color: #0099CC;
 	text-align: left;
 }
-//---end-----------------------------------------------------
-
 //---word-break----------------------------------------------
 .word-break {
 	word-break: break-all;
 	overflow-wrap: break-word;
 }
-//---end-----------------------------------------------------
-
 //---btn-----------------------------------------------------
 .btn2 {
 	border-bottom: 1px solid #ddd;
 	padding: 3px;
 	display: inline-block;
 }
-//---end-----------------------------------------------------
-
 //---user-name-----------------------------------------------
 .user-name {
 	margin-left: 3px;
@@ -275,27 +230,19 @@
 	border-radius: 50%;
 	object-fit: cover;
 }
-//---end-----------------------------------------------------
-
 //---item-price----------------------------------------------
 .item-price {
 	color: #777777;
 	text-align: right;
 }
-//---end-----------------------------------------------------
-
 //----rate-star----------------------------------------------
 .rate-star {
 	color: #FFCC00;
 }
-//---end-----------------------------------------------------
-
 //---fixed-sized-text-area-----------------------------------
 .fixed-size {
 	resize: none;
 }
-//---end-----------------------------------------------------
-
 //---like-icon-----------------------------------------------
 .liked {
 	font-size: 15px;
@@ -318,8 +265,6 @@
 	font-size: 12px;
 	margin-left: 3px;
 }
-//---end-----------------------------------------------------
-
 //---bookmark-icon-------------------------------------------
 .bookmark {
 	font-size: 20px;
@@ -330,8 +275,6 @@
 	padding: 7px;
 	color: #2C7CFF;
 }
-//---end-----------------------------------------------------
-
 //---item-table----------------------------------------------
 .search-results, .my-bookmarks, .my-reviews {
 	margin: 10px 0;
@@ -381,8 +324,6 @@
 	background-color: #E29407;
 	padding: 3px;
 }
-//---end-----------------------------------------------------
-
 //---flex-column---------------------------------------------
 .flex-parent-column {
 	display: flex;
@@ -394,8 +335,6 @@
 .second-child {
 	width: 50vw;
 }
-//---end-----------------------------------------------------
-
 //---item----------------------------------------------------
 .item {
 	margin-top: 20px;
@@ -421,8 +360,6 @@
 	color: #8F0502;
 	font-weight: bold;
 }
-//---end-----------------------------------------------------
-
 //---review-form---------------------------------------------
 .write-a-review-btn {
 	color: black;
@@ -456,8 +393,6 @@
   width: 67%;
   margin: 15px auto;
 }
-//---end-----------------------------------------------------
-
 //---each-review---------------------------------------------
 .title2 {
 	margin-left: 135px;
@@ -492,8 +427,48 @@
 	background-color: #FFEDC1;
 	transition: 0.5s;
 }
-//---end-----------------------------------------------------
-
+//reviiews---------------------------------------------------
+.reviews {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	margin: 0 10px;
+}
+.review {
+	width: 660px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	padding: 10px;
+	margin: 0 10px 30px;
+}
+.elems {
+	display: flex;
+	flex-wrap: wrap;
+	margin-bottom: 10px;
+	padding: 5px;
+	border-bottom: 1px solid #ddd;
+}
+.left-elem {
+	margin-right: 30px;
+}
+.right-elem {
+	width: 70%;
+}
+.flex-bet {
+	display: flex;
+	justify-content: space-between;
+}
+.review-body * {
+	margin-top: 10px;
+}
+.review-img {
+	width: 250px;
+	height: auto;
+}
+.time-created {
+	color: gray;
+}
+//responsive-------------------------------------------------
 @media screen and (max-width:1024px) {
 	.m-review-btn {
 		width: 100%;
@@ -520,7 +495,6 @@
 	    width: 40vw;
 	}
 }
-
 @media screen and (max-width:768px) {
   .flex-item-tables {
 		display: flex;
@@ -613,9 +587,7 @@
 		color: black;
 		border: 1px solid white;
 	}
-//---end-----------------------------------------------------
 }
-
 @media screen and (max-width:425px) {
 	.item-table {
 		width: 80%;

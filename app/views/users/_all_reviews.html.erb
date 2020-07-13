@@ -1,8 +1,8 @@
-<div class="recent-reviews">
+<div class="reviews">
   <% if reviews.present? %>
     <% reviews.each_with_index do |review,i| %>
       <% if items[i].first.present? %>
-        <div class="recent-review" id="reviews-<%= review.id %>">
+        <div class="review" id="reviews-<%= review.id %>">
           <div class="elems">
             <div class="left-elem">
               <% if items[i].first["mediumImageUrls"][0].present? %>
@@ -59,7 +59,8 @@
               <%= review.body %>
             </div>
             <%= attachment_image_tag review, :item_image, class:"review-img" %>
-            <div>
+            <div class="time-created"><%= review.created_at.to_s(:datetime_jp) %></div>
+            <div class="border-top">
               <span id="like_<%= review.id %>">
               <%= render 'likes/like', review: review %></span>
             </div>

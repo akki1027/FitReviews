@@ -1,9 +1,9 @@
 <h4 class="title">最近書かれたレビュー</h4>
-<div class="recent-reviews">
+<div class="reviews">
   <% reviews.each do |review| %>
     <% item = RakutenWebService::Ichiba::Item.search(itemCode: review.item.rakuten_item_id) %>
     <% if item.first.present? %>
-      <div class="recent-review" id="reviews-<%= review.id %>">
+      <div class="review" id="reviews-<%= review.id %>">
         <div class="elems">
           <div class="left-elem">
             <% if item.first["mediumImageUrls"][0].present? %>
@@ -60,7 +60,8 @@
             <%= review.body %>
           </div>
           <%= attachment_image_tag review, :item_image, class:"review-img" %>
-          <div>
+          <div class="time-created"><%= review.created_at.to_s(:datetime_jp) %></div>
+          <div class="border-top">
             <span id="like_<%= review.id %>">
             <%= render 'likes/like', review: review %></span>
           </div>
