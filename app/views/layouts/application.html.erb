@@ -16,16 +16,23 @@
     <!-- フッター -->
     <footer class="footer-background">
       <div class="container">
-        <div class="row">
-          <div align="left">
-            <h5 class="about-headline">About</h5>
-            <%= link_to 'FitReviewsとは', about_path, class:"btn btn-sm" %><br>
-            <%= link_to 'プロフィール', top_path, class:"btn btn-sm" %>
+        <div class="footer-flex">
+          <div>
+            <%= link_to 'FitReviews', root_path, class:"FitReviews-logo" %>
           </div>
-          <div class="credit" align="center">
-            <h6>Copyright ©︎ 2020 by FitReviews</h6>
-            <p><a href="https://webservice.rakuten.co.jp/" target="_blank">Supported by Rakuten Developers</a></p>
+          <div>
+            <p class="about-title">About</p>
+            <%= link_to 'FitReviewsとは', about_path, class:"btn footer-btn" %><br>
+            <%= link_to 'プロフィール', top_path, class:"btn footer-btn" %>
           </div>
+        </div>
+        <div class="credit">
+          <h5 class="copyright">Copyright ©︎ 2020 by FitReviews</h5>
+          <h5>
+            <!-- Rakuten Web Services Attribution Snippet FROM HERE -->
+            <a href="https://webservice.rakuten.co.jp/" target="_blank"><img src="https://webservice.rakuten.co.jp/img/credit/200709/credit_31130.gif" border="0" alt="楽天ウェブサービスセンター" title="楽天ウェブサービスセンター" width="311" height="30"/></a>
+            <!-- Rakuten Web Services Attribution Snippet TO HERE -->
+          </h5>
         </div>
       </div>
     </footer>
