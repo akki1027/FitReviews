@@ -1,14 +1,38 @@
 <%= render 'homes/header' %>
 
-<div class="container" id="about-background">
-	<div class="row">
-		<div>
-		<h3 id="about-headline">FitReviewsはあなたにあったプロテインパウダーやプロテインスナック選びに導きます。<br>
-		<h4 class="about-text">フィットネス商品のレビュー、ランキングなどを掲載しています。</h4>
-		<h4 class="about-text">ユーザーによる実際の評価を見てベストな商品を見つけよう！</h4>
+<section class="about-background">
+	<div class="container">
+		<div class="row">
+			<div>
+				<h1 class="how-to-use">FitReviwsのご利用方法。</h1>
+				<p class="how-to-use-text">FitReviewsでフィットネス商品の口コミの投稿・閲覧することができます。</p>
+			</div>
 		</div>
 	</div>
-</div>
+</section>
+
+<section class="container top-space about-icons">
+	<div>
+		<%= image_tag asset_path('comment-icon.png'), class:"icon-image" %>
+		<h2 class="about-rev">口コミ</h2>
+		<p class="about-exp">プロテイン、栄養補助スナック、サプリメント、筋トレ器具など<br>
+		フィットネスに欠かせない幅広い商品の口コミを掲載していきます。<br>
+		どのプロテインやサプリメントが一番いいのか、またどれを<br>
+		買えばいいのかというフィットネス界の永遠のテーマ。<br>
+		そんな悩みを同じ筋トレまたは健康を気にしている仲間同士で<br>
+		情報を共有し合うことができます。</p>
+	</div>
+	<div>
+		<%= image_tag asset_path('protein-icon.png'), class:"icon-image" %>
+		<h2 class="about-rank">ランキング</h2>
+		<p class="about-exp">ユーザーの投稿の総合評価をもとにジャンル別ランキングを掲載しています。<br>
+		人気の商品を見てフィットネス商品を選ぶ際の決めてになればと思います。<br>
+		フィットネスを始めたけど何を買えばいいかわからないという方から、<br>
+		より美味しく栄養パフォーマンスの良い商品などを求めている上級者まで<br>
+		ご利用ください。</p>
+		<p class="about-exp"><%= link_to 'ジャンル別ランキングへ', items_ranking_path %></p>
+	</div>
+</section>
 
 <style>
 	.search_for_purchase {
