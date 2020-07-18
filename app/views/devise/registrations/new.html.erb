@@ -1,16 +1,17 @@
-<div class="container">
-  <div class="row">
-    <div class="nav navbar navbar-left">
-      <%= link_to 'FitReviews', root_path, class:"FitReviews-logo-black" %>
-    </div>
-    <div class="nav navbar navbar-right">
-      <%= link_to '既にアカウントをお持ちの方',new_user_session_path %>
-    </div>
+<nav class="navbar devise-header">
+  <div class="nav navbar-left">
+    <%= link_to 'FitReviews', root_path, class:"FitReviews-logo-header" %>
   </div>
+  <div class="nav navbar-right">
+    <%= link_to '既にアカウントをお持ちの方',new_user_session_path %>
+  </div>
+</nav>
+
+<div class="container">
   <div class="row">
     <div class="sign-up-info">
       <div>
-        <h1 class="FitReviews-logo-black">FitReviews</h1>
+        <h1 class="FitReviews-logo-header">FitReviews</h1>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
           <table class="table-borderless sign-up-table">

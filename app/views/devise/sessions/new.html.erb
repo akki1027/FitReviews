@@ -1,19 +1,20 @@
-<div class="container">
-  <div class="row">
-    <div class="nav navbar navbar-left">
-      <%= link_to 'FitReviews', root_path, class:"FitReviews-logo-black" %>
-    </div>
-    <div class="nav navbar navbar-right">
-      <%= link_to 'まだアカウントをお持ちでない方',new_user_registration_path %>
-    </div>
+<nav class="navbar devise-header">
+  <div class="nav navbar-left">
+    <%= link_to 'FitReviews', root_path, class:"FitReviews-logo-header" %>
   </div>
+  <div class="nav navbar-right">
+    <%= link_to 'まだアカウントをお持ちでない方',new_user_registration_path %>
+  </div>
+</nav>
+
+<div class="container">
   <div class="row">
     <div class="flash-notice">
       <%= flash[:notice] %>
     </div>
     <div class="user-login-info">
       <div>
-        <h1 class="FitReviews-logo-black">FitReviews</h1>
+        <h1 class="FitReviews-logo-header">FitReviews</h1>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <table class="table-borderless login-table">
             <tbody>

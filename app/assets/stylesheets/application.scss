@@ -82,15 +82,12 @@
 	background-color: #E29407;
 }
 //---sign-in-log-in------------------------------------------
-.FitReviews-logo-black {
-  color: black;
-  font-size: 25px;
-  font-weight: bold;
-  font-family: Helvetica;
-}
-.FitReviewslogo-black:hover {
-  color: black;
-  text-decoration: none;
+.devise-header {
+	margin-bottom: 0;
+	padding: 11px 50px 3px;
+	border-radius: 0;
+	border-bottom: 2px solid #ddd;
+	line-height: 48px;
 }
 .submit1 {
   width: 100%;
@@ -122,7 +119,7 @@
 .navbar-color {
 	background-color: white;
 }
-.navbar {
+.sticky-header {
 	margin-bottom: 0;
 	padding: 11px 50px 3px;
 	border-radius: 0;
@@ -261,8 +258,7 @@
   left: 0;
 	right: 0;
 	justify-content: center;
-	margin-left: 5px;
-	margin-right: 5px;
+	width: 100%;
 }
 .top-select {
 	height: 55px;
@@ -274,7 +270,7 @@
 	background-color: white;
 }
 .top-search-nest {
-	width: 600px;
+	width: 60vw;
 }
 .top-search-nest * {
 	height: 55px;
@@ -314,8 +310,7 @@
 	background-color: white;
 }
 .header-search-nest {
-	width: 600px;
-	// 212px
+	width: 17vw;
 }
 .header-search-nest * {
 	height: 50px;
@@ -626,6 +621,9 @@
 	}
 	.search-text-field {
 		width: 40vw;
+	}
+	.header-search-nest {
+		width: 50vw;
 	}
 }
 @media screen and (max-width:768px) {
