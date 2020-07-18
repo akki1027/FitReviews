@@ -11,11 +11,11 @@ FitReviwsはフィットネス商品の口コミサイトです。
 フィットネス商品全般（プロテイン、栄養補助スナック、サプリメント、筋トレ器具）の口コミとジャンル別ランキングの表示。
 
 ***
-<img src="https://user-images.githubusercontent.com/60538665/87240496-06965080-c455-11ea-93f1-23634a134eff.png" width="50%"><img src="https://user-images.githubusercontent.com/60538665/87240497-07c77d80-c455-11ea-944f-b40b27099844.png" width="50%">
+<img src="https://user-images.githubusercontent.com/60538665/87845624-f45c5c80-c903-11ea-821d-08931553b501.png" width="50%"><img src="https://user-images.githubusercontent.com/60538665/87845625-f58d8980-c903-11ea-814c-6d417fe864e5.png" width="50%">
 ***
 ### レスポンシブ対応もしております。
 
-<img src="https://user-images.githubusercontent.com/60538665/87240625-15313780-c456-11ea-948c-5c8dc72e5934.png" width="50%"><img src="https://user-images.githubusercontent.com/60538665/87240626-16626480-c456-11ea-8011-199a418270fe.png" width="50%">
+<img src="https://user-images.githubusercontent.com/60538665/87845629-050cd280-c904-11ea-852e-1ee33fff679f.png" width="50%"><img src="https://user-images.githubusercontent.com/60538665/87845630-06d69600-c904-11ea-9df8-b3a4bd7957b2.png" width="50%">
 ***
 
 ### テーマを選んだ理由
