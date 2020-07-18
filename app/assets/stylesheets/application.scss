@@ -17,6 +17,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.width-90 {
+	margin: 0 auto;
+	width: 90%;
+}
+.width-90-f {
+	width: 90%;
+}
 .border-top {
 	border-top: 1px solid #ddd;
 }
@@ -77,7 +84,7 @@
 //---sign-in-log-in------------------------------------------
 .FitReviews-logo-black {
   color: black;
-  font-size: 24px;
+  font-size: 25px;
   font-weight: bold;
   font-family: Helvetica;
 }
@@ -113,25 +120,50 @@
 	text-decoration: none;
 }
 .navbar-color {
-	background-color: #343434;
+	background-color: white;
 }
 .navbar {
 	margin-bottom: 0;
-	padding: 7px 50px;
+	padding: 11px 50px 3px;
 	border-radius: 0;
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	border-bottom: 2px solid #ddd;
+	line-height: 48px;
+}
+.nav-width {
+	width: 96%;
+	margin: 0 auto;
 }
 .nav-search {
 	display: inline-block;
-	margin-left: 30px;
+	margin-left: 8px;
+	width: 39%;
 }
 .FitReviews-logo {
 	color: white;
-	font-size: 24px;
+	font-size: 25px;
 	font-weight: bold;
-    font-family: Helvetica;
+	font-family: Helvetica;
 }
 .FitReviews-logo:hover {
 	color: white;
+	text-decoration: none;
+}
+.FitReviews-logo-header {
+	color: #FEA608;
+	font-size: 25px;
+	font-weight: bold;
+	font-family: Helvetica;
+	user-select: none;
+}
+.FitReviews-logo-header:hover {
+	color: #FEA608;
+	text-decoration: none;
+}
+.FitReviews-logo-header:active {
+	color: #FEA608;
 	text-decoration: none;
 }
 #nav-list {
@@ -139,24 +171,30 @@
 	flex-direction: row;
 	list-style: none;
 	text-decoration: none;
+	padding-left: 0;
+	z-index: 100;
 }
 #nav-list > li {
 	margin-left: 5px;
 }
 .nav-ranking-btn {
+	color: #FEA608;
+	border: 1px solid #FEA608;
+	font-size: 14px;
+	padding: 10px;
+}
+.nav-ranking-btn:hover {
 	color: #FFCC00;
 	border: 1px solid #FFCC00;
 }
-.nav-ranking-btn:hover {
-	color: #FFFFAA;
-	border: 1px solid #FFFFAA;
-}
 .nav-btn {
-	color: white;
+	color: black;
+	font-size: 14px;
+	padding: 10px;
 }
 .nav-btn:hover {
-	color: white;
-	border: 1px solid white;
+	color: black;
+	border: 1px solid black;
 }
 .nav-user-info, #hide-nav {
 	display: none;
@@ -188,6 +226,7 @@
 .about-title {
 	font-size: 16px;
 	color: #DD0000;
+	padding-top: 7px;
 	padding-left: 10px;
 }
 .footer-btn {
@@ -214,30 +253,72 @@
 	padding-right: 13px;
 }
 //---search--------------------------------------------------
-.search-select {
-	height: 35px;
-	border-radius: 5px;
-	border-color: transparent;
-	background-color: white;
+.search-flex {
+	position: absolute;
+	display: flex;
+	flex-direction: row;
+	top: 343px;
+  left: 0;
+	right: 0;
+	justify-content: center;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.top-select {
+	height: 55px;
+	width: 156px;
+	border-right: none;
+	border-top-right-radius : 0;
+	border-bottom-right-radius : 0;
 	cursor: pointer;
+	background-color: white;
 }
-.fr-search-text-field {
-	height: 35px;
-    width: 60%;
-    border-radius: 5px;
-    border-color: transparent;
+.top-search-nest {
+	width: 600px;
 }
-.search-text-field {
-	height: 35px;
-    width: 16vw;
-    border-radius: 5px;
-    border-color: transparent;
+.top-search-nest * {
+	height: 55px;
 }
-.search-submit {
-    height: 35px;
-    border-radius: 5px;
-		border-color: transparent;
-		background: white;
+.top-search-textfield {
+	border-top-left-radius : 0;
+	border-bottom-left-radius : 0;
+	background-color: white;
+	border-right: transparent;
+}
+.top-search-submit {
+	background: white;
+	border-left: transparent;
+}
+.top-search-submit:hover {
+	background: white;
+}
+.fa-search {
+	height: 16px !important;
+}
+// header-search-----
+.header-search-flex {
+	display: flex;
+	flex-direction: row;
+  left: 0;
+	right: 0;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.header-select {
+	height: 50px;
+	width: 156px;
+	border-right: none;
+	border-top-right-radius : 0;
+	border-bottom-right-radius : 0;
+	cursor: pointer;
+	background-color: white;
+}
+.header-search-nest {
+	width: 600px;
+	// 212px
+}
+.header-search-nest * {
+	height: 50px;
 }
 //---flash-notice--------------------------------------------
 .flash-notice {
@@ -255,6 +336,8 @@
 	border-bottom: 1px solid #ddd;
 	padding: 3px;
 	display: inline-block;
+	margin-left: 27px;
+	font-size: 20px;
 }
 //---user-name-----------------------------------------------
 .user-name {
@@ -312,6 +395,19 @@
 	color: #2C7CFF;
 }
 //---item-table----------------------------------------------
+.search-by-flex {
+	display: flex;
+	flex-wrap: wrap;
+}
+.genre-by,
+.keyword-by {
+	margin: 5px;
+}
+.genre-label,
+.keyword-label {
+	font-weight: bold;
+	font-size: 16px;
+}
 .search-results, .my-bookmarks, .my-reviews {
 	margin: 10px 0;
 }
@@ -471,7 +567,7 @@
 	margin: 0 10px;
 }
 .review {
-	width: 660px;
+	width: 47%;;
 	border: 1px solid #ddd;
 	border-radius: 5px;
 	padding: 10px;
@@ -524,11 +620,12 @@
 		margin-left: auto;
 	}
 	.nav-search {
-		width: 100vw;
+		width: 95%;
 		margin-left: 0;
+		margin-bottom: 4px;
 	}
 	.search-text-field {
-	    width: 40vw;
+		width: 40vw;
 	}
 }
 @media screen and (max-width:768px) {
@@ -571,6 +668,9 @@
 	.each-review {
 		width: 90%;
 	}
+	.review {
+		width: 95%;
+	}
 //---header--------------------------------------------------
 	#top-nav-list > li:not(:nth-child(1)){
 		clear: both;
@@ -590,31 +690,34 @@
 		display: block;
 	}
 	.fa-bars {
-		color: white;
+		color: black;
 	}
 	#hide-nav {
 		display: block;
 		text-align: right;
-    	padding: 5px 10px 0 0;
+    padding: 5px 10px 0 0;
 	}
 	#nav-list {
 		display: none;
 		position: fixed;
 		top: 0;
 		left: 0;
-		width: 60%;
+		width: 68%;
 		min-height: 100%;
-		z-index: 1;
 		background-color: white;
 		padding: 0;
 	}
 	#nav-list > li:nth-child(-n+2) {
 		margin-left: 0;
 		color: white;
-		background-color: #343434;
+		background-color: #FEA608;
 	}
 	#nav-list > li:nth-child(n+2) {
+		margin-left: 0;
 		margin-bottom: 5px;
+		border-bottom: 1px solid #ddd;
+		padding-left: 5px;
+		padding-bottom: 10px;
 	}
 	.nav-btn  {
 		color: black;
@@ -625,6 +728,21 @@
 	}
 }
 @media screen and (max-width:425px) {
+	// search------
+	.top-select,
+	.top-search-nest * {
+		height: 50px;
+	}
+	.search-flex *,
+	.header-search-flex * {
+		font-size: 10px;
+	}
+	.top-select,
+	.header-select {
+		width: 115px;
+    padding: 6px;
+	}
+	// ------------
 	.item-table {
 		width: 80%;
 		height: 400px;
@@ -643,5 +761,8 @@
 	}
 	.rank-num {
 		width: 25%;
+	}
+	.footer-btn {
+		font-size: 14px;
 	}
 }

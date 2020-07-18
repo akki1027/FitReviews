@@ -1,26 +1,26 @@
 <h4 class="title">ジャンルで探す</h4>
 <div class="genres">
   <div>
-    <span class="genre-name">プロテイン</span>
     <%= link_to items_search_path(genreId: 567603) do %>
+      <span class="genre-name">プロテイン</span>
       <%= image_tag asset_path('protein.jpg'), class:"genre-img" %>
     <% end %>
   </div>
   <div>
-    <span class="genre-name">栄養補助スナック</span>
     <%= link_to items_search_path(genreId: 566807) do %>
+      <span class="genre-name">栄養補助スナック</span>
       <%= image_tag asset_path('snack.jpg'), class:"genre-img" %>
     <% end %>
   </div>
   <div>
-    <span class="genre-name">サプリメント</span>
     <%= link_to items_search_path(genreId: 563727) do %>
-      <%= image_tag asset_path('supplements.jpg'), class:"genre-img" %>
+      <span class="genre-name">サプリメント</span>
+      <%= image_tag asset_path('supplement.jpg'), class:"genre-img" %>
     <% end %>
   </div>
   <div>
-    <span class="genre-name">筋トレ器具</span>
     <%= link_to items_search_path(genreId: 201865) do %>
+      <span class="genre-name">筋トレ器具</span>
       <%= image_tag asset_path('equipment.jpg'), class:"genre-img" %>
     <% end %>
   </div>

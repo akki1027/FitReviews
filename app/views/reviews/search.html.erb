@@ -1,5 +1,7 @@
 <%= render 'homes/header' %>
 
+<%= render 'search_by', genre_id: @genre_id, keyword: @keyword %>
+
 <div class="search-results">
 	<div class="flex-item-tables">
 		<% if @items.present? %>

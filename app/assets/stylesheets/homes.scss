@@ -69,37 +69,11 @@
 }
 //---fr_top--------------------------------------------------
 .mv {
-	height: 600px;
+	height: 720px;
 	width: 100%;
 	background-image: image-url("plates-and-protein.jpg");
 	background-position: center;
 	background-size: cover;
-}
-// search-------------------
-.search-form {
-	width: 300px;
-	padding: 10px;
-	margin: 120px auto 0;
-	background-color: white;
-	border-radius: 5px;
-}
-.search-f-select-genre:hover {
-	cursor: pointer;
-}
-.search-f-select,
-.search-f-text-field,
-.search-f-submit
- {
-	 margin-top: 20px;
-	 margin-bottom: 10px;
-}
-.search-f-submit-btn {
-	color: white;
-	background-color: rgb(5, 110, 197);
-	width: 100%;
-}
-.search-f-submit-btn:hover {
-	background-color: rgb(2, 95, 172);
 }
 section.top-space {
 	border-bottom: 1px solid #ddd;
@@ -134,7 +108,6 @@ section.top-space {
 	object-fit: cover;
 	margin:	10px;
 }
-
 // keywords-----------------
 .keywords {
 	width: 80%;

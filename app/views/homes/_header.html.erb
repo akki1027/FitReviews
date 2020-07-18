@@ -1,49 +1,67 @@
-<nav class="navbar navbar-color flex-nav">
-	<div class="navbar-left">
-		<%= link_to 'FitReviews', root_path, class:"FitReviews-logo" %>
-	</div>
-	<div class="nav-search">
-		<div class="search_for_purchase">
-			<!-- 購入したい商品を検索する -->
-			<%= form_tag :items_search, method: :get do  %>
-				<%= select_tag 'genreId', options_for_select({プロテイン: 567603, 栄養補助スナック: 566807, その他のサプリ: 563727, 筋トレ器具: 201865}, 567603), include_blank: false, class:"search-select" %>
-				<%= text_field_tag 'keyword', params[:keyword], required: true, class:"search-text-field" %>
-				<%= submit_tag "検索", :name => nil, class:"search-submit" %>
+<nav class="navbar navbar-color">
+	<div class="flex-nav nav-width">
+		<div class="navbar-left">
+			<%= link_to 'FitReviews', root_path, class:"FitReviews-logo-header" %>
+		</div>
+		<div class="nav-search">
+			<div class="search_for_purchase">
+				<!-- 購入したい商品を検索する -->
+				<%= form_tag :items_search, method: :get do  %>
+					<div class="header-search-flex">
+							<div>
+								<%= select_tag 'genreId', options_for_select({プロテイン: 567603, 栄養補助スナック: 566807, その他のサプリ: 563727, 筋トレ器具: 201865}, 567603), include_blank: false, class:"form-control header-select" %>
+							</div>
+							<div class="input-group header-search-nest">
+								<%= text_field_tag 'keyword', params[:keyword], required: true, class:"form-control top-search-textfield" %>
+								<span class="input-group-btn">
+									<button type="submit" class="btn btn-default top-search-submit"><i class="fas fa-search"></i></button>
+								</span>
+							</div>
+					</div>
+				<% end %>
+			</div>
+			<div class="search_for_review">
+				<!-- レビューする商品を検索する -->
+				<%= form_tag :reviews_search, method: :get do  %>
+					<div class="header-search-flex">
+						<div>
+								<%= select_tag 'genreId', options_for_select({プロテイン: 567603, 栄養補助スナック: 566807, その他のサプリ: 563727, 筋トレ器具: 201865}, 567603), include_blank: false, class:"form-control header-select" %>
+						</div>
+						<div class="input-group header-search-nest">
+							<%= text_field_tag 'keyword', params[:keyword], required: true, class:"form-control top-search-textfield" %>
+							<span class="input-group-btn">
+								<button type="submit" class="btn btn-default top-search-submit"><i class="fas fa-search"></i></button>
+							</span>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+		<div class="navbar-right">
+			<% if user_signed_in? %>
+				<div id="show-nav"><i class="fas fa-bars"></i></div>
+				<ul id="nav-list">
+					<li id="hide-nav"><i class="fas fa-times"></i></li>
+					<li class="nav-user-info">
+						<%= attachment_image_tag current_user, :profile_photo, format: 'jpg', fallback: "user_no_image.png", size: "60x60", class:"profile-photo" %>
+						<p><%= current_user.name %>さん</p></li>
+					<li><%= link_to 'ランキング', items_ranking_path, class:"btn btn-sm nav-ranking-btn" %></li>
+					<li><%= link_to 'レビューを書く', reviews_search_path, class:"btn btn-sm nav-btn" %></li>
+					<li><%= link_to 'マイページ', user_path(current_user), class:"btn btn-sm nav-btn" %></li>
+					<li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"btn btn-sm nav-btn" %></li>
+				</ul>
+			<% else%>
+				<div id="show-nav"><i class="fas fa-bars"></i></div>
+				<ul id="nav-list">
+					<li id="hide-nav"><i class="fas fa-times"></i></li>
+					<li></li>
+					<li><%= link_to 'ランキング', items_ranking_path, class:"btn btn-sm nav-ranking-btn" %></li>
+					<li><%= link_to 'レビューを書く', reviews_search_path, class:"btn btn-sm nav-btn" %></li>
+					<li><%= link_to 'ログイン', new_user_session_path, class:"btn btn-sm nav-btn" %></li>
+					<li><%= link_to 'サインアップ', new_user_registration_path, class:"btn btn-sm nav-btn" %></li>
+				</ul>
 			<% end %>
 		</div>
-		<div class="search_for_review">
-			<!-- レビューする商品を検索する -->
-			<%= form_tag :reviews_search, method: :get do  %>
-				<%= select_tag 'genreId', options_for_select({プロテイン: 567603, 栄養補助スナック: 566807, その他のサプリ: 563727, 筋トレ器具: 201865}, 567603), include_blank: false, class:"search-select" %>
-				<%= text_field_tag 'keyword', params[:keyword], required: true, class:"search-text-field" %>
-				<%= submit_tag "検索", :name => nil, class:"search-submit" %>
-			<% end %>
-		</div>
-	</div>
-	<div class="navbar-right">
-		<% if user_signed_in? %>
-			<div id="show-nav"><i class="fas fa-bars"></i></div>
-			<ul id="nav-list">
-				<li id="hide-nav"><i class="fas fa-times"></i></li>
-				<li class="nav-user-info">
-					<%= attachment_image_tag current_user, :profile_photo, format: 'jpg', fallback: "user_no_image.png", size: "60x60", class:"profile-photo" %>
-					<p>ようこそ、<%= current_user.name %>さん</p></li>
-				<li><%= link_to 'ランキング', items_ranking_path, class:"btn btn-sm nav-ranking-btn" %></li>
-				<li><%= link_to 'レビューを書く', reviews_search_path, class:"btn btn-sm nav-btn" %></li>
-				<li><%= link_to 'マイページ', user_path(current_user), class:"btn btn-sm nav-btn" %></li>
-				<li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"btn btn-sm nav-btn" %></li>
-			</ul>
-		<% else%>
-			<div id="show-nav"><i class="fas fa-bars"></i></div>
-			<ul id="nav-list">
-				<li id="hide-nav"><i class="fas fa-times"></i></li>
-				<li></li>
-				<li><%= link_to 'ランキング', items_ranking_path, class:"btn btn-sm nav-ranking-btn" %></li>
-				<li><%= link_to 'レビューを書く', reviews_search_path, class:"btn btn-sm nav-btn" %></li>
-				<li><%= link_to 'ログイン', new_user_session_path, class:"btn btn-sm nav-btn" %></li>
-				<li><%= link_to 'サインアップ', new_user_registration_path, class:"btn btn-sm nav-btn" %></li>
-			</ul>
-		<% end %>
 	</div>
 </nav>
 

@@ -28,9 +28,9 @@
 		<h4 class="title btn2"><i class="far fa-bookmark"></i> ブックマークした商品一覧</h4>
 	<% end %>
 	<%= render 'all_bookmark', bookmarks: @bookmarks, bookmarked_items: @bookmarked_items %>
-</div>
+</section>
 
-<section class="top-space bottom-space">
+<section class="top-space">
 	<%= link_to users_my_reviews_path(@user) do %>
 		<h4 class="title btn2"><i class="fas fa-pen"></i> レビューを書いた商品一覧</h4>
 	<% end %>

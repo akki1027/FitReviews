@@ -1,0 +1,16 @@
+<div class="top-space search-by-flex container">
+  <span class="genre-by">ジャンル:
+    <% if genre_id == "567603" or genre_id == 567603 %>
+    <span class="genre-label"> "プロテイン"</span>
+    <% elsif genre_id == "566807" %>
+    <span class="genre-label"> "栄養補助スナック"</span>
+    <% elsif genre_id == "563727" %>
+    <span class="genre-label"> "その他のサプリ"</span>
+    <% elsif genre_id == "201865" %>
+    <span class="genre-label"> "筋トレ器具"</span>
+    <% end %>
+  </span>
+  <span class="keyword-by">
+		キーワード: <span class="keyword-label">"<%= keyword %>"</span>
+  </span>
+</div>
