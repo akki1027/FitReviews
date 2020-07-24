@@ -28,7 +28,6 @@
 				<% if item.first.present? %>
 					<div class="rank-num">
 						<%= @num %>位
-						<% @num += 1 %>
 					</div>
 					<div class="item">
 						<div class="flex-parent-column">
@@ -69,7 +68,11 @@
 							</div>
 						</div>
 					</div>
-				<% end %>
+					<% @num += 1
+						if @num == 6 then
+						break
+						end %>
+					<% end %>
 			<% end %>
 		<% else %>
 			<p>このジャンルのレビューはまだありません。</p>

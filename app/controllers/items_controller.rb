@@ -19,11 +19,11 @@ class ItemsController < ApplicationController
 
   def ranking
     if params[:genreId]
-      @rankings = Review.joins(:item).where("items.rakuten_genre_id = ?", params[:genreId]).group(:item_id).limit(5).select("reviews_item_id, average_rate").order('average_rate desc').average(:rate)
+      @rankings = Review.joins(:item).where("items.rakuten_genre_id = ?", params[:genreId]).group(:item_id).select("reviews_item_id, average_rate").order('average_rate desc').average(:rate)
       @num = 1
       @genre = params[:genreId]
     else
-      @rankings = Review.joins(:item).where("items.rakuten_genre_id = ?", 567603).group(:item_id).limit(5).select("reviews_item_id, average_rate").order('average_rate desc').average(:rate)
+      @rankings = Review.joins(:item).where("items.rakuten_genre_id = ?", 567603).group(:item_id).select("reviews_item_id, average_rate").order('average_rate desc').average(:rate)
       @num = 1
       @genre = "567603"
     end
