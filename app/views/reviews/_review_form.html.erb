@@ -1,5 +1,6 @@
 <div class="row" id="review-form">
 	<%= form_with(model: review, remote: true) do |f| %>
+		<%= render 'result_message', review: review %>
 		<div>
 			<div class="form">
 				<p><strong>レビュー対象商品</strong></p>
@@ -17,7 +18,7 @@
 			<div class="form">
 				<div class="add-photo">
 					<p><strong>写真を追加する</strong></p>
-					<div class="preview"></div>
+					<div class="preview" id="clear-img"></div>
 					<%= f.attachment_field :item_image, class:"file" %>
 				</div>
 			</div>

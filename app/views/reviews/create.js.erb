@@ -1,5 +1,6 @@
 $("#review_<%= @item.id %>").prepend("<%= j(render 'review_each', {review: @review, item: @items} ) %>");
 // item: @itemsで楽天のitemCodeから画像を取得するため
-$('#review_rate').val('')
-$('#review_body').val('')
-$('#review_item_image').val('')
+$('input[type=file]').val('');
+$('#clear-img > img').hide();
+$('#rate_by_star').raty('score', 0);
+$('#review_body').val('');
