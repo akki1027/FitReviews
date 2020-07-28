@@ -102,7 +102,7 @@ class ReviewsController < ApplicationController
   def correct_user
     review = Review.find(params[:id])
     if current_user != review.user
-      redirect_to fr_top_path
+      redirect_to root_path
     end
   end
 end

@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     #ログアウトさせる
     reset_session
     flash[:notice] = "FitReviewsをご利用いただきまして誠にありがとうございました。またのご利用を心よりお待ちしております。"
-    redirect_to fr_top_path
+    redirect_to root_path
   end
 
   def my_reviews
@@ -68,7 +68,7 @@ class UsersController < ApplicationController
   def correct_user
     user = User.find(params[:id])
     if current_user != user
-      redirect_to fr_top_path
+      redirect_to root_path
     end
   end
 end
