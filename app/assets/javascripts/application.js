@@ -36,12 +36,6 @@ $(function () {
 });
 
 $(function () {
-    $('#show-form').click(function () {
-        $("#review-form").toggle();
-    });
-});
-
-$(function () {
     $('.form').on('change', '.file', function (event) {
         var file = event.target.files[0];
         var reader = new FileReader();

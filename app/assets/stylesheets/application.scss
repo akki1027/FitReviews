@@ -58,6 +58,9 @@
 .top-space {
 	margin-top: 50px;
 }
+.top-sm-space {
+	margin-top: 15px;
+}
 .bottom-space {
 	margin-bottom: 50px;
 }
@@ -80,6 +83,12 @@
 .review-btn:hover {
 	color: white;
 	background-color: #E29407;
+}
+.required-message {
+	color: hsl(0, 60%, 60%);
+}
+.required-field {
+	border: 1px solid hsl(0, 60%, 60%);
 }
 //---sign-in-log-in------------------------------------------
 .devise-header {
@@ -510,15 +519,31 @@
 	color: white;
 	background-color: #FEA608;
 	padding: 5px 10px;
-	float: right;
+}
+.form-close-icon {
+	font-size: 18px;
+	color: rgba(0, 0, 0, 0.603);
+	padding: 7px 10px 3px;
+	margin-left: 20px;
+	cursor: pointer;
+}
+.hide-form {
+	display: none;
+}
+.show-form {
+	display: block;
 }
 #review-form {
-	display: none;
 	border: 1px solid #CCCCCC;
 	border-radius: 5px;
 	padding: 20px;
-  width: 67%;
+  width: 70%;
   margin: 15px auto;
+}
+.edit-form {
+	width: 70%;
+	margin: 15px auto;
+	padding: 20px;
 }
 //---each-review---------------------------------------------
 .title2 {
@@ -669,6 +694,12 @@
 	.review {
 		width: 95%;
 	}
+	#review-form {
+		width: 90%;
+	}
+	.edit-form {
+		width: 90%;
+	}
 //---header--------------------------------------------------
 	#top-nav-list > li:not(:nth-child(1)){
 		clear: both;
@@ -755,6 +786,9 @@
 		margin-top: 0;
 	}
 	#review-form {
+		width: 100%;
+	}
+	.edit-form {
 		width: 100%;
 	}
 	.rank-num {

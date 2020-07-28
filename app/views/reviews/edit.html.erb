@@ -3,8 +3,7 @@
 <div class="container">
 	<div class="row">
 		<%= form_for @review do |f| %>
-			<div class="col-xs-2"></div>
-			<div class="col-xs-8">
+			<div class="edit-form">
 				<div>
 					<div class="form">
 						<span id="referrer"></span>
@@ -36,7 +35,8 @@
 						</div>
 					</div>
 					<div class="form">
-						<p><strong>総合評価</strong></p>
+						<p><strong>総合評価</strong><br>
+						<small>*必須項目</small></p>
 						<span class="form-group" id="edit_rated_star"><%= f.hidden_field :rate %></span>
 						<script>
 							$(function() {
@@ -55,14 +55,31 @@
 						</script>
 					</div>
 					<div class="form">
-						<p><strong>ここにレビューを記入してください</strong></p>
-						<%= f.text_area :body, class:"fixed-size form-control", rows: "15" %>
-					</div>
-					<div class="form">
-						<%= f.submit "投稿", class:"btn form-submit-btn" %>
+						<p><strong>ここにレビューを記入してください</strong><br>
+						<small id="required-edit-body">*必須項目</small></p>
+						<%= f.text_area :body, class:"fixed-size form-control", id:"edit-body", rows: "15", required: true %>
+						<span class="flex-action top-sm-space">
+							<%= f.submit "更新", class:"btn form-submit-btn", id:"submit-edit-form" %>
+						</span>
 					</div>
 				</div>
 			</div>
 		<% end %>
 	</div>
 </div>
+
+<script>
+const requiredEditBody = document.getElementById('required-edit-body');
+const editBody = document.getElementById('edit-body');
+const submit = document.getElementById('submit-edit-form');
+
+submit.addEventListener('mouseenter', () => {
+	if (editBody.value === "") {
+		requiredEditBody.classList.add('required-message');
+		editBody.classList.add('required-field');
+	} else if (editBody.value !== "" && requiredEditBody.classList.contains('required-message')) {
+		requiredEditBody.classList.remove('required-message');
+		editBody.classList.remove('required-field');
+	}
+});
+</script>

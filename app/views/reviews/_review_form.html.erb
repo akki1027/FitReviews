@@ -1,50 +1,76 @@
-<div class="row" id="review-form">
-	<%= form_with(model: review, remote: true) do |f| %>
-		<%= render 'result_message', review: review %>
-		<div>
-			<div class="form">
-				<p><strong>レビュー対象商品</strong></p>
-				<div>
-					<% if @item.first["mediumImageUrls"][0].present? %>
-						<%= image_tag @item.first["mediumImageUrls"][0] %>
-					<% else %>
-						この商品には商品画像がありません。
-					<% end %>
-				</div>
-				<div>
-					<%= @item.first.name.truncate(100) %>
-				</div>
+<%= form_with(model: review, remote: true) do |f| %>
+	<div>
+		<div class="form">
+			<p><strong>レビュー対象商品</strong></p>
+			<div>
+				<% if @item.first["mediumImageUrls"][0].present? %>
+					<%= image_tag @item.first["mediumImageUrls"][0] %>
+				<% else %>
+					この商品には商品画像がありません。
+				<% end %>
 			</div>
-			<div class="form">
-				<div class="add-photo">
-					<p><strong>写真を追加する</strong></p>
-					<div class="preview" id="clear-img"></div>
-					<%= f.attachment_field :item_image, class:"file" %>
-				</div>
-			</div>
-			<div class="form">
-				<p><strong>総合評価</strong></p>
-				<span class="form-group" id="rate_by_star"><%= f.hidden_field :rate %></span>
-			</div>
-			<div class="form">
-				<p><strong>ここにレビューを記入してください</strong></p>
-				<%= f.text_area :body, class:"form-control", rows: "7", placeholder: "この商品の口コミを書こう！" %>
-			</div>
-			<div class="form">
-				<%= f.submit "投稿", class:"btn form-submit-btn" %>
+			<div>
+				<%= @item.first.name.truncate(100) %>
 			</div>
 		</div>
-		<!-- これがないと、商品情報を取得できない。itemCodeはreviewに保存しない。 -->
-		<%= hidden_field_tag :item_code, item.first["itemCode"] %>
-	<% end %>
-</div>
+		<div class="form">
+			<div class="add-photo">
+				<p><strong>写真を追加する</strong></p>
+				<div class="preview" id="clear-img"></div>
+				<%= f.attachment_field :item_image, class:"file" %>
+			</div>
+		</div>
+		<div class="form">
+			<p><strong>総合評価</strong><br>
+			<small id="required-star">*必須項目</small></p>
+			<span class="form-group" id="rate_by_star"><%= f.hidden_field :rate %></span>
+		</div>
+		<div class="form">
+			<p><strong>ここにレビューを記入してください</strong><br>
+			<small id="required-body">*必須項目</small></p>
+			<%= f.text_area :body, class:"form-control", id:"body", rows: "7", placeholder: "この商品の口コミを書こう！" %>
+			<span class="flex-action top-sm-space">
+				<%= f.submit "投稿", class:"btn form-submit-btn", id:"submit-form" %><a href="#after-closing-form"><i class="fas fa-times form-close-icon" id="close-icon"></i></a>
+			</span>
+		</div>
+	</div>
+	<!-- これがないと、商品情報を取得できない。itemCodeはreviewに保存しない。 -->
+	<%= hidden_field_tag :item_code, item.first["itemCode"] %>
+<% end %>
 
 <script>
 	$('#rate_by_star').raty({
 		starOff:  '<%= asset_path('star-off.png') %>',
-	    starOn : '<%= asset_path('star-on.png') %>',
-	    starHalf: '<%= asset_path('star-half.png') %>',
+	  starOn : '<%= asset_path('star-on.png') %>',
+	  starHalf: '<%= asset_path('star-half.png') %>',
 		half: true,
 		scoreName: 'review[rate]',
+	});
+
+	const requiredBody = document.getElementById('required-body');
+	const body = document.getElementById('body');
+	const requiredStar = document.getElementById('required-star');
+	const star = document.querySelector('#rate_by_star');
+	const starImages = star.querySelectorAll('img');
+	const submit = document.getElementById('submit-form');
+	const closeIcon = document.getElementById('close-icon');
+
+	submit.addEventListener('click', () => {
+			if (starImages[0].src.includes('star-off')) {
+				requiredStar.classList.add('required-message');
+			} else if (starImages[0].src.includes('star-off') === false && requiredStar.classList.contains('required-message')) {
+				requiredStar.classList.remove('required-message');
+			}
+			if (body.value === "") {
+				requiredBody.classList.add('required-message');
+				body.classList.add('required-field');
+			} else if (body.value !== "" && requiredBody.classList.contains('required-message')) {
+				requiredBody.classList.remove('required-message');
+				body.classList.remove('required-field');
+			}
+	});
+	closeIcon.addEventListener('click', () => {
+		form.classList.remove('show-form');
+		form.classList.add('hide-form');
 	});
 </script>

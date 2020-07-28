@@ -1,14 +1,16 @@
 class ReviewsController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   def create
-    @items = RakutenWebService::Ichiba::Item.search(itemCode: params[:item_code])
-    result = ActiveRecord::Base.transaction do
-      @item = Item.find_by(item_params)
-      @review = current_user.reviews.create(review_params(@item))
-      true
-    end
-    if result != true
-      render 'new'
+    @item = RakutenWebService::Ichiba::Item.search(itemCode: params[:item_code])
+    ActiveRecord::Base.transaction do
+      @saved_item = Item.find_by(item_params)
+      @review = current_user.reviews.new(review_params(@saved_item))
+      @review.save
+      if not @review.save
+        @reviews = Review.where(item_id: @saved_item.id).page(params[:page]).reverse_order
+        @average_rate = Review.where(item_id: @saved_item.id).average(:rate)
+        render :new
+      end
     end
   end
 
@@ -26,11 +28,13 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    review = Review.find(params[:id])
-    item = Item.find_by(id: review.item_id)
-    review.update(review_update_params)
-    # redirect to the page previously visited
-    redirect_to params[:referrer]
+    @review = Review.find(params[:id])
+    item = Item.find_by(id: @review.item_id)
+    @referrer = params[:referrer]
+    if @review.update(review_update_params)
+      # redirect to the page previously visited
+      redirect_to @referrer
+    end
   end
 
   def destroy
@@ -82,7 +86,7 @@ class ReviewsController < ApplicationController
 
   private
   def review_params(item)
-    params.require(:review).permit(:body, :item_image, :rate).merge({item_id: item.id})
+    params.require(:review).permit(:body, :item_image, :rate).merge({item_id: @saved_item.id})
     # { body: '', item_image: 'utl/ho/huga/item.img, rate: 5 }
   end
 
@@ -91,7 +95,7 @@ class ReviewsController < ApplicationController
   end
 
   def item_params
-    { rakuten_item_id: @items.first['itemCode'] }
+    { rakuten_item_id: @item.first['itemCode'] }
     # { name: @items.first['itemName'], rakuten_item_id: @items.first['itemCode'] }
   end
 

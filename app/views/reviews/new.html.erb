@@ -61,12 +61,17 @@
 	</div>
 </section>
 
+<div id="after-closing-form"></div>
+
 <section class="top-space bottom-space">
 	<h4 class="title2">カスタマーレビュー (<%= @saved_item.reviews.count %>)</h4>
 	<a class="btn write-a-review-btn" id="show-form"><i class="fas fa-pen"></i> この商品のレビューを書く</a>
 	<section>
-		<%= render 'review_form', item: @item, review: @review %>
+		<div class="row hide-form" id="review-form">
+			<%= render 'review_form', item: @item, review: @review %>
+		</div>
 	</section>
+
 	<div id="review_<%= @saved_item.id %>">
 		<% @reviews.each do |review| %>
 			<%= render 'review_each', review: review %>
@@ -82,3 +87,17 @@
 		display: block;
 	}
 </style>
+
+<script>
+const form = document.getElementById('review-form');
+const showForm = document.getElementById('show-form');
+showForm.addEventListener('click', () => {
+    if (form.classList.contains('hide-form')) {
+			form.classList.remove('hide-form');
+			form.classList.add('show-form');
+		} else {
+			form.classList.remove('show-form');
+			form.classList.add('hide-form');
+		}
+});
+</script>
