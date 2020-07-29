@@ -25,14 +25,22 @@
 	display: flex;
 	justify-content: center;
 }
+.top-flex * {
+	margin-top: 10px;
+}
 #my-profile-pic {
 	height: 200px;
 	width: auto;
 	border-radius: 5%;
 }
 .my-introduction {
-	margin-left: 10px;
+	margin-left: 20px;
+	margin-right: 20px;
 	text-align: left;
+}
+.line-h {
+	font-size: 15px;
+	line-height: 25px;
 }
 .skills-flex {
 	display: flex;
@@ -61,6 +69,9 @@
 }
 .portfolio-pic:hover {
 	box-shadow: 0 0 10px gray;
+}
+.portfolio-info {
+	margin: 10px 20px;
 }
 #contact {
 	margin-bottom: 50px;
