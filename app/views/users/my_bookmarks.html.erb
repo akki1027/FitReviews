@@ -1,7 +1,9 @@
 <%= render 'homes/header' %>
 
 <section class="top-space">
-	<h4 class="title">ブックマークした商品一覧</h4>
+	<div class="u-width">
+		<h4>ブックマークした商品一覧</h4>
+	</div>
 	<%= render 'all_bookmark', bookmarks: @bookmarks, bookmarked_items: @bookmarked_items %>
 </section>
 

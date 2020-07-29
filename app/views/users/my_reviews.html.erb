@@ -1,6 +1,8 @@
 <%= render 'homes/header' %>
 
 <section class="top-space">
-	<h4 class="title">レビューを書いた商品一覧</h4>
+	<div class="u-width">
+		<h4>レビューを書いた商品一覧</h4>
+	</div>
 	<%= render 'all_reviews', reviews: @reviews, items: @items %>
 </section>

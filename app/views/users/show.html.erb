@@ -1,6 +1,6 @@
 <%= render 'homes/header' %>
 
-<section class="user-bio">
+<section class="user-bio bottom-space">
 	<div class="container">
 		<div class="flash-notice">
 			<%= flash[:notice] %>
@@ -23,22 +23,62 @@
 	</div>
 </section>
 
-<section class="top-space">
+<div class="u-width">
+	<ul class="nav nav-tabs" id="nav-tabs">
+		<li role="presentation" class="active"><a>最近書いたレビュー</a></li>
+		<li role="presentation"><a>ブックマークした商品</a></li>
+	</ul>
+</div>
+
+<div class="top-space bottom-space hide-form" id="bookmarked-items">
 	<%= link_to users_my_bookmarks_path(@user) do %>
-		<h4 class="title btn2"><i class="far fa-bookmark"></i> ブックマークした商品一覧</h4>
+		<div class="u-width">
+			<h6 class="btn2"><i class="far fa-bookmark"></i> ブックマークした商品一覧</h6>
+		</div>
 	<% end %>
 	<%= render 'all_bookmark', bookmarks: @bookmarks, bookmarked_items: @bookmarked_items %>
-</section>
+</div>
 
-<section class="top-space">
+<div class="top-space bottom-space show-form" id="reviewed-items">
 	<%= link_to users_my_reviews_path(@user) do %>
-		<h4 class="title btn2"><i class="fas fa-pen"></i> レビューを書いた商品一覧</h4>
+		<div class="u-width">
+			<h4 class="btn2"><i class="fas fa-pen"></i> レビューを書いた商品一覧</h4>
+		</div>
 	<% end %>
 	<%= render 'all_reviews', reviews: @reviews, items: @items %>
-</section>
+</div>
 
 <style>
 	.search_for_purchase {
 		display: block;
 	}
 </style>
+
+<script>
+const navTabs = document.getElementById('nav-tabs');
+const tabs = navTabs.querySelectorAll('li');
+const rItems = document.getElementById('reviewed-items');
+const bItems = document.getElementById('bookmarked-items');
+
+tabs[0].addEventListener('click', () => {
+	tabs[0].classList.add('active');
+	tabs[1].classList.remove('active');
+	if (rItems.classList.contains('hide-form')) {
+		rItems.classList.remove('hide-form');
+		rItems.classList.add('show-form');
+		bItems.classList.remove('show-form');
+		bItems.classList.add('hide-form');
+	}
+});
+
+tabs[1].addEventListener('click', () => {
+	tabs[1].classList.add('active');
+	tabs[0].classList.remove('active');
+	if (bItems.classList.contains('hide-form')) {
+		bItems.classList.remove('hide-form');
+		bItems.classList.add('show-form');
+		rItems.classList.remove('show-form');
+		rItems.classList.add('hide-form');
+	}
+});
+</script>

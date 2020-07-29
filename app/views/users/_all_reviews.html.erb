@@ -1,17 +1,17 @@
-<div class="reviews">
+<div class="user-reviews u-width bottom-space">
   <% if reviews.present? %>
     <% reviews.each_with_index do |review,i| %>
       <% if items[i].first.present? %>
-        <div class="review" id="reviews-<%= review.id %>">
-          <div class="elems">
-            <div class="left-elem">
+        <div class="user-review" id="reviews-<%= review.id %>">
+          <div class="flex-parent-column border-b">
+            <div class="first-child">
               <% if items[i].first["mediumImageUrls"][0].present? %>
                 <%= image_tag items[i].first["mediumImageUrls"][0] %>
               <% else %>
                 この商品には商品画像がありません。
               <% end %>
             </div>
-            <div class="right-elem">
+            <div class="second-child">
               <%= link_to reviews_new_path(review.item.rakuten_item_id) do %>
                 <%= items[i].first['itemName'] %>
               <% end %>
@@ -73,8 +73,10 @@
       <% end %>
     <% end %>
   <% else %>
-    <p>まだレビューを書いた商品がありません。<br>
-    さっそくレビューを書いてみよう！</p>
+    <div class="user-review bottom-space">
+      <p>まだレビューを書いた商品がありません。<br>
+      さっそくレビューを書いてみよう！</p>
+    </div>
   <% end %>
 </div>
 <div align="center">

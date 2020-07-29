@@ -1,42 +1,37 @@
-<div class="my-bookmarks">
-	<div class="flex-item-tables">
-		<% if bookmarks.present? %>
-			<% bookmarks.each_with_index do |bookmark,i| %>
-				<% if bookmarked_items[i].first.present? %>
-					<table class="table-borderless item-table">
-						<tbody>
-							<tr>
-								<td>
-									<span class="flex-action" id="bookmark_<%= bookmark.item.id %>"><%= render 'bookmarks/bookmark', saved_item: bookmark.item %></span>
-									<% if bookmarked_items[i].first["mediumImageUrls"][0].present? %>
-										<%= image_tag bookmarked_items[i].first["mediumImageUrls"][0] %>
-									<% else %>
-										この商品には商品画像がありません。
-									<% end %>
-								</td>
-							</tr>
-							<tr>
-								<td><%= bookmarked_items[i].first["itemName"] %>
-								</td>
-							</tr>
-							<tr>
-								<td class="item-price">価格: <%= number_with_delimiter(bookmarked_items[i].first["itemPrice"]) %>円</td>
-							</tr>
-							<tr>
-								<td>
-									<%= link_to 'レビューを見る', save_item_path(bookmarked_items[i].first["itemCode"]), class:"btn m-review-btn" %>
-									<%= link_to '楽天で購入', "#{bookmarked_items[i].first.url}", class:"btn m-rakuten-btn" %>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				<% end %>
+<div class="u-width">
+	<% if bookmarks.present? %>
+		<% bookmarks.each_with_index do |bookmark,i| %>
+			<% if bookmarked_items[i].first.present? %>
+				<div class="item b-item">
+					<div class="flex-parent-column">
+						<div class="first-child" align="center">
+							<% if bookmarked_items[i].first["mediumImageUrls"][0].present? %>
+								<%= image_tag bookmarked_items[i].first["mediumImageUrls"][0] %>
+							<% else %>
+								この商品には商品画像がありません。
+							<% end %>
+						</div>
+						<div class="second-child">
+							<span class="flex-action" id="bookmark_<%= bookmark.item.id %>"><%= render 'bookmarks/bookmark', saved_item: bookmark.item %></span>
+							<%= bookmarked_items[i].first["itemName"] %>
+							<h5 class="item-price">価格: <%= number_with_delimiter(bookmarked_items[i].first["itemPrice"]) %>円</h5>
+							<p><%= bookmarked_items[i].first['catchcopy'] %></p>
+							<p><%= bookmarked_items[i].first['itemCaption'].truncate(120) %></p>
+							<div class="flex-action">
+								<%= link_to 'レビューを見る', save_item_path(bookmarked_items[i].first["itemCode"]), class:"btn review-btn" %>
+								<%= link_to '楽天の購入ページへ', "#{bookmarked_items[i].first.url}", class:"btn rakuten-btn" %>
+							</div>
+						</div>
+					</div>
+				</div>
 			<% end %>
-		<% else %>
+		<% end %>
+	<% else %>
+		<div class="item b-item bottom-space">
 			<p>ブックマークした商品はありません。<br>
 			ブックマークした商品はこちらに表示されます。</p>
-		<% end %>
-	</div>
+		</div>
+	<% end %>
 	<div align="center">
 		<%= paginate bookmarks %>
 	</div>
