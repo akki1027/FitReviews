@@ -37,6 +37,13 @@
 		</div>
 	<% end %>
 	<%= render 'all_bookmark', bookmarks: @bookmarks, bookmarked_items: @bookmarked_items %>
+	<% if @user.bookmarks.count > 4 %>
+		<div class="u-width top-space">
+			<%= link_to users_my_bookmarks_path(@user) do %>
+				<button class="see-more">もっと見る</button>
+			<% end %>
+		</div>
+	<% end %>
 </div>
 
 <div class="top-space bottom-space show-form" id="reviewed-items">
@@ -46,6 +53,13 @@
 		</div>
 	<% end %>
 	<%= render 'all_reviews', reviews: @reviews, items: @items %>
+	<% if @user.reviews.count > 4 %>
+		<%= link_to users_my_reviews_path(@user) do %>
+			<div class="u-width">
+				<button class="see-more">もっと見る</button>
+			</div>
+		<% end %>
+	<% end %>
 </div>
 
 <style>

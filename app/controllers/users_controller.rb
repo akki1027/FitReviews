@@ -6,12 +6,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @bookmarks = Bookmark.where(user_id: current_user.id).page(params[:page]).per(4).reverse_order
+    @bookmarks = Bookmark.where(user_id: current_user.id).limit(4).reverse_order
     @bookmarked_items = []
     @bookmarks.each do |bookmark|
       @bookmarked_items << RakutenWebService::Ichiba::Item.search(itemCode: bookmark.item.rakuten_item_id)
     end
-    @reviews = Review.where(user_id: current_user.id).page(params[:page]).per(4).reverse_order
+    @reviews = Review.where(user_id: current_user.id).limit(4).reverse_order
     @items = []
     @reviews.each do |review|
       @items << RakutenWebService::Ichiba::Item.search(itemCode: review.item.rakuten_item_id)

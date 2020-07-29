@@ -5,6 +5,9 @@
 		<h4>ブックマークした商品一覧</h4>
 	</div>
 	<%= render 'all_bookmark', bookmarks: @bookmarks, bookmarked_items: @bookmarked_items %>
+	<div align="center">
+		<%= paginate @bookmarks %>
+	</div>
 </section>
 
  <style>
