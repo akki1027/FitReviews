@@ -20,14 +20,10 @@
 }
 //---user-form-----------------------------------------------
 .user-form {
-	margin-top: 10px;
-	margin-left: 10px;
+	margin: 10px 5px;
 }
-.user-form > table > tbody > tr > td:nth-child(1) {
-	padding-right: 10px;
-}
-.user-form > table > tbody > tr > td:nth-child(2) {
-	width: 50vw;
+.user-form > table > tbody > tr > td {
+	width: 65vw;
 }
 .user-input-field {
 	margin-bottom: 10px;
@@ -35,7 +31,7 @@
 }
 .user-form-submit {
 	display: flex;
-    justify-content: flex-end;
+  justify-content: flex-end;
 }
 .user-form-submit > div:nth-child(2) {
 	margin-left: 5px;
@@ -54,7 +50,6 @@
 	border-radius: 50%;
 	object-fit: cover;
 }
-//---end-----------------------------------------------------
 
 //---deactivate-account--------------------------------------
 .deactive-account-form {
@@ -67,7 +62,7 @@
 .deactivate-account-btn {
 	margin-top: 10px;
 }
-//---end-----------------------------------------------------
+//---nav-tabs--------------------------------------------------
 .active {
 	border-bottom: 2px solid hsl(0, 60%, 60%);
 }
@@ -76,12 +71,18 @@
 }
 .nav-tabs > li.active > a:hover {
 	border: none !important;
-	text-decoration: none;
+	text-decoration: none !important;
 }
 .nav-tabs > li > a:hover {
 	cursor: pointer;
 	color: hsl(0, 60%, 60%);
-	text-decoration: underline;
+	text-decoration: underline !important;
 	background: transparent !important;
 	border: none !important;
+}
+
+@media screen and (max-width:768px) {
+	.user-form > table > tbody > tr > td {
+		width: 95vw;
+	}
 }

@@ -22,19 +22,18 @@
 				<table>
 					<tbody>
 						<tr>
-							<td><%= f.label :name, 'ユーザーネーム' %></td>
-							<td><%= f.text_field :name, class:"user-input-field form-control" %></td>
+							<td><%= f.label :name, 'ユーザーネーム' %>
+							<%= f.text_field :name, class:"user-input-field form-control" %></td>
 						</tr>
 						<tr>
-							<td><%= f.label :introduction, '自己紹介' %></td>
-							<td><%= f.text_area :introduction, class:"form-control", rows: "7", class:"user-input-field form-control" %></td>
+							<td><%= f.label :introduction, '自己紹介' %>
+							<%= f.text_area :introduction, class:"form-control", rows: "9", class:"user-input-field form-control" %></td>
 						</tr>
 						<tr>
-							<td><%= f.label :email, "メールアドレス" %></td>
-							<td><%= f.email_field :email, class:"user-input-field form-control" %></td>
+							<td><%= f.label :email, "メールアドレス" %>
+							<%= f.email_field :email, class:"user-input-field form-control" %></td>
 						</tr>
 						<tr>
-							<td></td>
 							<td class="user-form-submit">
 								<div>
 									<%= f.submit "変更を保存する", class:"btn btn-sm btn-blue" %>
