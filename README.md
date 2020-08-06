@@ -18,10 +18,11 @@ FitReviwsはフィットネス商品の口コミサイトです。
 * jQuery  
 
 サーバーサイド
-* Ruby/Ruby on Rails
+* Ruby / Ruby on Rails
 
 ### 使用技術
 * Docker / Docker-compose
+* CircleCI
 * 楽天市場商品検索API
 * Ruby v.2.5.7
 * Rails v5.2.4.2
@@ -33,7 +34,7 @@ FitReviwsはフィットネス商品の口コミサイトです。
 
 ***
 ### AWS構成図
-![AWS構成図](https://user-images.githubusercontent.com/60538665/89485680-434b3280-d7dc-11ea-9ddc-0b4ac11ad7e6.png)
+![AWS構成図](https://user-images.githubusercontent.com/60538665/89554634-15043c00-d84a-11ea-8a37-01b31c0a5092.png)
 ***
 
 ### テーマを選んだ理由
