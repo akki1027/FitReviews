@@ -1,0 +1,36 @@
+version: 2.1
+orbs:
+  ruby: circleci/ruby@0.1.2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.5.7-node-browsers
+        environment:
+          BUNDLER_VERSION: 2.1.4
+          RAILS_ENV: test
+          PGHOST: 127.0.0.1
+          PGUSER: postgres
+    executor: ruby/default
+    working_directory: ~/FitReviews
+    steps:
+      - checkout
+      - run:
+          name: Which bundler?
+          command: |
+            gem install bundler -v 2.1.4
+            bundle -v
+      - ruby/bundle-install
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
+      # - run:
+      #     name: Yarn のインストール
+      #     command: yarn install
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
