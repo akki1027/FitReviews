@@ -10,12 +10,30 @@ FitReviwsはフィットネス商品の口コミサイトです。
 ### サイトテーマ
 フィットネス商品全般（プロテイン、栄養補助スナック、サプリメント、筋トレ器具）の口コミとジャンル別ランキングの表示。
 
-***
-<img src="https://user-images.githubusercontent.com/60538665/87845624-f45c5c80-c903-11ea-821d-08931553b501.png" width="50%"><img src="https://user-images.githubusercontent.com/60538665/87845625-f58d8980-c903-11ea-814c-6d417fe864e5.png" width="50%">
-***
-### レスポンシブ対応もしております。
+### 使用言語
+フロントエンド
+* HTML
+* SCSS
+* JavaScipt
+* jQuery  
 
-<img src="https://user-images.githubusercontent.com/60538665/87845629-050cd280-c904-11ea-852e-1ee33fff679f.png" width="50%"><img src="https://user-images.githubusercontent.com/60538665/87845630-06d69600-c904-11ea-9df8-b3a4bd7957b2.png" width="50%">
+サーバーサイド
+* Ruby/Ruby on Rails
+
+### 使用技術
+* Docker / Docker-compose
+* 楽天市場商品検索API
+* Ruby v.2.5.7
+* Rails v5.2.4.2
+* AWS
+* DB: MySQL
+* OS: Linux
+* WEBサーバー: nginx
+* アプリケーションサーバー: puma
+
+***
+### AWS構成図
+![AWS構成図](https://user-images.githubusercontent.com/60538665/89485680-434b3280-d7dc-11ea-9ddc-0b4ac11ad7e6.png)
 ***
 
 ### テーマを選んだ理由
@@ -31,6 +49,14 @@ FitReviwsはフィットネス商品の口コミサイトです。
 どのプロテイン、栄養補助スナック、サプリメント、筋トレ器具などを買えばいいかわからない時が主な利用シーンになります。  
 フィットネスを始めたけどどのサプリメントがいいかわからない初心者の方から、より美味しい味や栄養価パフォーマンスの良い商品などを求めている上級者まで利用することができます。  
 また自分のオススメ商品の口コミを書くことで、他のユーザーの手助けになりたいと思う際にも利用することができます。
+
+***
+<img src="https://user-images.githubusercontent.com/60538665/87845624-f45c5c80-c903-11ea-821d-08931553b501.png" width="50%"><img src="https://user-images.githubusercontent.com/60538665/87845625-f58d8980-c903-11ea-814c-6d417fe864e5.png" width="50%">
+***
+### レスポンシブ対応もしております。
+
+<img src="https://user-images.githubusercontent.com/60538665/87845629-050cd280-c904-11ea-852e-1ee33fff679f.png" width="50%"><img src="https://user-images.githubusercontent.com/60538665/87845630-06d69600-c904-11ea-9df8-b3a4bd7957b2.png" width="50%">
+***
 
 ## 設計書
 * [ER図](https://drive.google.com/file/d/14SuCJ3ysa02aD8aWZ5SxGW75UZNaoeM9/view?usp=sharing)
