@@ -85,6 +85,9 @@ gem 'pry-rails'
 # pagination
 gem 'kaminari'
 
+gem 'rubocop', require: false
+gem 'rubocop-rails', require: false
+
 group :production do
   gem 'mysql2'
 end

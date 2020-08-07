@@ -1,0 +1,65 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rails
+
+AllCops:
+  Exclude:
+    - "app/helpers/*"
+    - "test/**/*"
+    - "tmp/**/*"
+    - "config/initializers/*"
+    - "config/puma.rb"
+    - "vendor/**/*"
+    - "db/schema.rb"
+    - "node_modules/**/*"
+    - "db/migrate/*.rb"
+    - "bin/*"
+  DisplayCopNames: true
+  TargetRubyVersion: 2.5.7
+
+Rails:
+  Enabled: true
+Style/AndOr:
+  EnforcedStyle: conditionals
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Lint/ShadowedException:
+  Enabled: false
+
+LineLength:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Metrics/BlockLength:
+#   Exclude:
+#     - 'spec/**/*'
+#   Max: 40
+
+Metrics/AbcSize:
+  Enabled: true
+  Max: 57
+
+Metrics/MethodLength:
+  Enabled: true
+  Max: 16
+
+# 日本語でのコメントを許可
+AsciiComments:
+  Enabled: false
