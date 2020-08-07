@@ -14,7 +14,7 @@ FitReviwsはフィットネス商品の口コミサイトです。
 フロントエンド
 * HTML
 * SCSS
-* JavaScipt
+* JavaScript
 * jQuery  
 
 サーバーサイド
@@ -51,14 +51,6 @@ FitReviwsはフィットネス商品の口コミサイトです。
 フィットネスを始めたけどどのサプリメントがいいかわからない初心者の方から、より美味しい味や栄養価パフォーマンスの良い商品などを求めている上級者まで利用することができます。  
 また自分のオススメ商品の口コミを書くことで、他のユーザーの手助けになりたいと思う際にも利用することができます。
 
-***
-<img src="https://user-images.githubusercontent.com/60538665/87845624-f45c5c80-c903-11ea-821d-08931553b501.png" width="50%"><img src="https://user-images.githubusercontent.com/60538665/87845625-f58d8980-c903-11ea-814c-6d417fe864e5.png" width="50%">
-***
-### レスポンシブ対応もしております。
-
-<img src="https://user-images.githubusercontent.com/60538665/87845629-050cd280-c904-11ea-852e-1ee33fff679f.png" width="50%"><img src="https://user-images.githubusercontent.com/60538665/87845630-06d69600-c904-11ea-9df8-b3a4bd7957b2.png" width="50%">
-***
-
 ## 設計書
 * [ER図](https://drive.google.com/file/d/14SuCJ3ysa02aD8aWZ5SxGW75UZNaoeM9/view?usp=sharing)
 * [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1YAr8jJYacm2ObtUZ7UDjfSLlpsn1ceGR9ekceWvjiak/edit?usp=sharing)
@@ -69,3 +61,11 @@ FitReviwsはフィットネス商品の口コミサイトです。
 
 ### 機能一覧
 * [機能一覧](https://docs.google.com/spreadsheets/d/12e0huV0xxld_0SAGjxnzJT9gKJmOFaBJ3P7VzYWYjxU/edit?usp=sharing)
+
+***
+<img src="https://user-images.githubusercontent.com/60538665/87845624-f45c5c80-c903-11ea-821d-08931553b501.png" width="50%"><img src="https://user-images.githubusercontent.com/60538665/87845625-f58d8980-c903-11ea-814c-6d417fe864e5.png" width="50%">
+***
+### レスポンシブ対応もしております。
+
+<img src="https://user-images.githubusercontent.com/60538665/87845629-050cd280-c904-11ea-852e-1ee33fff679f.png" width="50%"><img src="https://user-images.githubusercontent.com/60538665/87845630-06d69600-c904-11ea-9df8-b3a4bd7957b2.png" width="50%">
+***
