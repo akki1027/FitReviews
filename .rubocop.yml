@@ -15,6 +15,7 @@ AllCops:
     - "node_modules/**/*"
     - "db/migrate/*.rb"
     - "bin/*"
+    - "spec/**/*"
   DisplayCopNames: true
   TargetRubyVersion: 2.5.7
 
