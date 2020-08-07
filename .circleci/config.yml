@@ -34,7 +34,7 @@ jobs:
           paths:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-      Rubocop
+      # Rubocop
       - run:
           name: Rubocop
           command: bundle exec rubocop
