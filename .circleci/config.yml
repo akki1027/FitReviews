@@ -43,5 +43,5 @@ jobs:
       - run:
           name: Rspec
           command: |
-          rails db:migrate RAILS_ENV=test
-          bundle exec rspec spec/ --format documentation
+            rails db:migrate RAILS_ENV=test
+            bundle exec rspec spec/ --format documentation
