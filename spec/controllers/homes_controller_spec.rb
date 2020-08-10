@@ -21,6 +21,12 @@ RSpec.describe HomesController, type: :controller do
         get :fr_top
       end
       render_views
+      it 'ヘッダーのリンクの文字が正しく表示されていること' do
+        expect(response.body).to include('ランキング')
+        expect(response.body).to include('レビューを書く')
+        expect(response.body).to include('ログイン')
+        expect(response.body).to include('サインアップ')
+      end
       it 'セクションタイトルが正しく表示されていること' do
         expect(response.body).to include('ジャンルで探す')
         expect(response.body).to include('キーワードで探す')
