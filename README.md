@@ -20,10 +20,6 @@ FitReviwsはフィットネス商品の口コミサイトです。
 サーバーサイド
 * Ruby / Ruby on Rails
 
-### テスト
-* rspec
-* rubocop
-
 ### 使用技術
 * Docker / Docker-compose
 * CircleCI
@@ -35,6 +31,10 @@ FitReviwsはフィットネス商品の口コミサイトです。
 * OS: Linux
 * WEBサーバー: nginx
 * アプリケーションサーバー: puma
+
+### テスト
+* rspec
+* rubocop
 
 ***
 ### AWS構成図
