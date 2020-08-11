@@ -48,10 +48,10 @@ LineLength:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-# Metrics/BlockLength:
-#   Exclude:
-#     - 'spec/**/*'
-#   Max: 40
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+  Max: 40
 
 Metrics/AbcSize:
   Enabled: true
